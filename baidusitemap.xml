@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/13/hello-world/</loc>
+    <lastmod>2017-12-14T15:17:24.285Z</lastmod>
+    <data>
+        <display>
+        <title>第一篇博客，记录转载学习随笔</title>
+        <pubTime>2017-12-13T14:40:07.000Z</pubTime>
+        
+        <tag>随笔 photo 测试 第一</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2017-12-13T15:45:59.586Z</lastmod>
+    <data>
+        <display>
+        <title>Github Pages + Hexo搭建博客</title>
+        <pubTime>2017-12-13T15:40:07.000Z</pubTime>
+        
+        <tag>Hexo Github Pages 博客搭建</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+</urlset>
