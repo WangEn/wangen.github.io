@@ -2,16 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/12/16/dede-template-1/</loc>
+    
+    <lastmod>2017-12-15T16:30:47.436Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/12/16/dede-article-2/</loc>
+    
+    <lastmod>2017-12-15T16:23:43.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/12/16/dede-admin-404-1/</loc>
+    
+    <lastmod>2017-12-15T16:15:29.814Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/12/16/dede-article-1/</loc>
+    
+    <lastmod>2017-12-15T16:15:01.847Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/12/13/hello-world/</loc>
     
-    <lastmod>2017-12-14T15:17:24.285Z</lastmod>
+    <lastmod>2017-12-15T15:54:56.806Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/photos/index.html</loc>
+    
+    <lastmod>2017-12-15T15:48:04.794Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
     
-    <lastmod>2017-12-13T15:45:59.586Z</lastmod>
+    <lastmod>2017-12-15T15:46:48.070Z</lastmod>
     
   </url>
   

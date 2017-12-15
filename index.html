@@ -165,6 +165,373 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-dede-template-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/dede-template-1/">DedeCMS网站批量更新所有目录模板文件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/dede-template-1/" class="archive-article-date">
+  	<time datetime="2017-12-15T16:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#DedeCMS网站批量更新所有目录模板文件</p>
+<blockquote>
+<p>通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地</p>
+</blockquote>
+<p>##修改栏目频道页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> tempindex = replace(tempindex,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/index_article.htm"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>##修改栏目列表页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>##修改栏目内容页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> temparticle = replace(temparticle,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/article_article.htm"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>##修改指定ID栏目的列表页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>) <span class="built_in">where</span> id <span class="keyword">in</span>(1,2,3,4,5,6)</span><br></pre></td></tr></table></figure></p>
+<p>##后记<br>以上所有命令都通用，在前三种后面加上where id in(ID1,ID2,ID3,ID4,ID5,……)，里面写入你打算修改的频道/栏目/文章ID，可批量修改指定ID的模板文件。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">DedeCMS Template</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/dede-template-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dede-article-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/dede-article-2/">DedeCMS织梦首页调用指定一篇文章body内容的教程</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/dede-article-2/" class="archive-article-date">
+  	<time datetime="2017-12-15T16:16:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#DedeCMS织梦首页调用指定一篇文章body内容的教程</p>
+<blockquote>
+<p>我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。</p>
+</blockquote>
+<p>分享给大家供大家参考。具体实现方法如下：</p>
+<p>##直接调用（包含样式等代码）<br>代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(@me,330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
+<p>##过滤调用（只调用纯文本内容）<br>如果是要过滤掉文本中的html，使用如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(html2text(@me),330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
+<p>##后记<br>idlist 是要调用文章的id, channelid 是这个内容模型id,  addfields 是要调用附加表里面的字段.</p>
+<blockquote>
+<p>本文参考地址<a href="http://www.xiuzhanwang.com/dedecms_jq/765.html" target="_blank" rel="noopener">来源</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DedeCMS dedecms body</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/dede-article-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dede-article-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/dede-article-1/">Dedecms判断文章是否有缩略图没有就不显示默认图片</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/dede-article-1/" class="archive-article-date">
+  	<time datetime="2017-12-15T16:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Dedecms判断文章是否有缩略图没有就不显示默认图片</p>
+<p>##调用参考代码：<br>以下代码可直接复制使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[field:array runphp=<span class="string">'yes'</span>]  </span><br><span class="line">@me=(strpos(@me[<span class="string">'litpic'</span>],<span class="string">'defaultpic'</span>)?<span class="string">''</span>:<span class="string">"&lt;a href='&#123;@me['arcurl']&#125;' alt='&#123;@me['title']&#125;'&gt;&lt;img src='&#123;@me['litpic']&#125;' alt='&#123;@me['title']&#125;'/&gt;&lt;/a&gt;"</span>);  </span><br><span class="line">[/field:array]</span><br></pre></td></tr></table></figure></p>
+<p>以上代码意思是，如果没有缩略图就显示为空白，有则显示</p>
+<p>##编译之后的代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">'&#123;@me['</span>arcurl<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>&gt; &lt;img src=<span class="string">'&#123;@me['</span>litpic<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>/&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>##后记<br>如果你想自定义没有缩略图的样式，则修改’defaultpic’)?’’问号后面的单引号里面的内容。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">DedeCMS 缩略图</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/dede-article-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dede-admin-404-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/dede-admin-404-1/">DedeCMS网站搬家重装后，登陆后台404</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/dede-admin-404-1/" class="archive-article-date">
+  	<time datetime="2017-12-15T16:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#DedeCMS网站搬家重装后，登陆后台404</p>
+<p>##主要现象<br>DedeCMS网站搬家重装完成后，正常登陆后台提示404错误</p>
+<p>##测试分析<br>测试重新安装dede目录无效；<br>测试修改目录权限无效；<br>在本地搭建正常打开</p>
+<p>##解决方法<br>在本地搭建后，对dede程序升级备份，重新打包上传；测试可以正常安装打开</p>
+<p>##实测案例<br>dede程序源码版本由20150522更新到20150618后，404问题解决</p>
+<p>##后记<br>个人猜测可能是因为新的主机环境版本和以前不大一样，对PHP等支持的兼容性造成的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dedecms DedeCMS 织梦</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/dede-admin-404-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Github-Pages-Hexo搭建博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -185,7 +552,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#Mac搭建参考网址说明<br><a href="http://www.jianshu.com/p/484e4ca7edf0" target="_blank" rel="noopener">http://www.jianshu.com/p/484e4ca7edf0</a><br><a href="http://fanzhenyu.me/2016/11/30/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="noopener">http://fanzhenyu.me/2016/11/30/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%80%EF%BC%89/</a></p>
+        <blockquote>
+<p>Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。</p>
+<p>#Mac搭建参考网址说明<br><a href="http://www.jianshu.com/p/484e4ca7edf0" target="_blank" rel="noopener">在Mac上搭建基于Hexo的个人博客网站</a><br><a href="http://fanzhenyu.me/categories/Hexo/" target="_blank" rel="noopener">Github Pages + Hexo搭建博客</a></p>
+</blockquote>
+<p>#MarkDown</p>
+<p>##Cmd MarkDown编辑器<br><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">在线MarkDown文本编辑</a></p>
+<p>#Hexo Theme</p>
+<p>##[yilia] (<a href="https://github.com/litten/hexo-theme-yilia/issues/63" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia/issues/63</a>)<br>作者：<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a><br>第三方评论工具：<a href="https://livere.com/" target="_blank" rel="noopener">来必力</a></p>
 
       
 
@@ -259,7 +633,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <blockquote>
+<p>默认生成的Hexo第一篇博客，在我开始搭建的时候，Python开始进入中学课本……<br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+</blockquote>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -268,6 +644,9 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="新建一个页面目录"><a href="#新建一个页面目录" class="headerlink" title="新建一个页面目录"></a>新建一个页面目录</h3><p>在命令行里面输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page <span class="string">"about"</span></span><br></pre></td></tr></table></figure></p>
+<p>然后你会发现source里面多了个目录about，里面有个index.md。其实你也可以手动建立。页面的格式和文章一样。<br>接着把链接加上，themes/<theme_name>/_config.yml里面的menu一项，添加一行About: /about。<br>完事。来源：<a href="https://segmentfault.com/q/1010000000618915" target="_blank" rel="noopener">Hexo菜单中添加分类和页面</a> 还有<a href="https://www.zhihu.com/question/33324071" target="_blank" rel="noopener">知乎</a></theme_name></p>
+<p>###<a href="http://www.jianshu.com/p/e6e54389c88f" target="_blank" rel="noopener">Hexo主题中实现多级分类</a></p>
 
       
 
@@ -281,7 +660,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">随笔 photo 测试 第一</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -435,11 +814,27 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo Github Pages 博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">随笔 photo 测试 第一</a>
+                <a href="javascript:void(0)" class="js-tag color2">DedeCMS Template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dedecms DedeCMS 织梦</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DedeCMS dedecms body</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hexo Github Pages 博客搭建</a>
               </li>
             
             <div class="clearfix"></div>
