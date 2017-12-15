@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>DedeCMS网站批量更新所有目录模板文件 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#DedeCMS网站批量更新所有目录模板文件  通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  ##修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#">
+  <meta name="description" content="DedeCMS网站批量更新所有目录模板文件 通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;">
 <meta name="keywords" content="DedeCMS Template">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DedeCMS网站批量更新所有目录模板文件">
 <meta property="og:url" content="http://yoursite.com/2017/12/16/dede-template-1/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="#DedeCMS网站批量更新所有目录模板文件  通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  ##修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#">
+<meta property="og:description" content="DedeCMS网站批量更新所有目录模板文件 通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-15T16:30:47.436Z">
+<meta property="og:updated_time" content="2017-12-15T16:35:53.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DedeCMS网站批量更新所有目录模板文件">
-<meta name="twitter:description" content="#DedeCMS网站批量更新所有目录模板文件  通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  ##修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#">
+<meta name="twitter:description" content="DedeCMS网站批量更新所有目录模板文件 通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -185,15 +185,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#DedeCMS网站批量更新所有目录模板文件</p>
-<blockquote>
+        <h1 id="DedeCMS网站批量更新所有目录模板文件"><a href="#DedeCMS网站批量更新所有目录模板文件" class="headerlink" title="DedeCMS网站批量更新所有目录模板文件"></a>DedeCMS网站批量更新所有目录模板文件</h1><blockquote>
 <p>通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地</p>
 </blockquote>
-<p>##修改栏目频道页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> tempindex = replace(tempindex,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/index_article.htm"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>##修改栏目列表页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>##修改栏目内容页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> temparticle = replace(temparticle,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/article_article.htm"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>##修改指定ID栏目的列表页<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>) <span class="built_in">where</span> id <span class="keyword">in</span>(1,2,3,4,5,6)</span><br></pre></td></tr></table></figure></p>
-<p>##后记<br>以上所有命令都通用，在前三种后面加上where id in(ID1,ID2,ID3,ID4,ID5,……)，里面写入你打算修改的频道/栏目/文章ID，可批量修改指定ID的模板文件。</p>
+<h2 id="修改栏目频道页"><a href="#修改栏目频道页" class="headerlink" title="修改栏目频道页"></a>修改栏目频道页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> tempindex = replace(tempindex,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/index_article.htm"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修改栏目列表页"><a href="#修改栏目列表页" class="headerlink" title="修改栏目列表页"></a>修改栏目列表页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修改栏目内容页"><a href="#修改栏目内容页" class="headerlink" title="修改栏目内容页"></a>修改栏目内容页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> temparticle = replace(temparticle,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/article_article.htm"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修改指定ID栏目的列表页"><a href="#修改指定ID栏目的列表页" class="headerlink" title="修改指定ID栏目的列表页"></a>修改指定ID栏目的列表页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>) <span class="built_in">where</span> id <span class="keyword">in</span>(1,2,3,4,5,6)</span><br></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>以上所有命令都通用，在前三种后面加上where id in(ID1,ID2,ID3,ID4,ID5,……)，里面写入你打算修改的频道/栏目/文章ID，可批量修改指定ID的模板文件。</p>
 
       
 
@@ -468,19 +467,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DedeCMS Template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">dedecms DedeCMS 织梦</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DedeCMS dedecms body</a>
+                <a href="javascript:void(0)" class="js-tag color3">Hexo Github Pages 博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,7 +479,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo Github Pages 博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color1">DedeCMS dedecms body</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DedeCMS Template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
               </li>
             
             <div class="clearfix"></div>

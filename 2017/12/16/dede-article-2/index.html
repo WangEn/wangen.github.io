@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>DedeCMS织梦首页调用指定一篇文章body内容的教程 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#DedeCMS织梦首页调用指定一篇文章body内容的教程  我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。  分享给大家供大家参考。具体实现方法如下： ##直接调用（包含样式等代码）代码如下：123&amp;#123;dede:arclist idlist=&apos;要调用文章的id&apos; channelid=&apos;1&apos;">
+  <meta name="description" content="DedeCMS织梦首页调用指定一篇文章body内容的教程 我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。  分享给大家供大家参考。具体实现方法如下： 直接调用（包含样式等代码）代码如下：123&amp;#123;dede:arclist idlist=&apos;要调用文章的id&apos; channelid=&apos;1&apos; addf">
 <meta name="keywords" content="DedeCMS dedecms body">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DedeCMS织梦首页调用指定一篇文章body内容的教程">
 <meta property="og:url" content="http://yoursite.com/2017/12/16/dede-article-2/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="#DedeCMS织梦首页调用指定一篇文章body内容的教程  我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。  分享给大家供大家参考。具体实现方法如下： ##直接调用（包含样式等代码）代码如下：123&amp;#123;dede:arclist idlist=&apos;要调用文章的id&apos; channelid=&apos;1&apos;">
+<meta property="og:description" content="DedeCMS织梦首页调用指定一篇文章body内容的教程 我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。  分享给大家供大家参考。具体实现方法如下： 直接调用（包含样式等代码）代码如下：123&amp;#123;dede:arclist idlist=&apos;要调用文章的id&apos; channelid=&apos;1&apos; addf">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-15T16:23:43.373Z">
+<meta property="og:updated_time" content="2017-12-15T16:35:21.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DedeCMS织梦首页调用指定一篇文章body内容的教程">
-<meta name="twitter:description" content="#DedeCMS织梦首页调用指定一篇文章body内容的教程  我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。  分享给大家供大家参考。具体实现方法如下： ##直接调用（包含样式等代码）代码如下：123&amp;#123;dede:arclist idlist=&apos;要调用文章的id&apos; channelid=&apos;1&apos;">
+<meta name="twitter:description" content="DedeCMS织梦首页调用指定一篇文章body内容的教程 我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。  分享给大家供大家参考。具体实现方法如下： 直接调用（包含样式等代码）代码如下：123&amp;#123;dede:arclist idlist=&apos;要调用文章的id&apos; channelid=&apos;1&apos; addf">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -185,14 +185,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#DedeCMS织梦首页调用指定一篇文章body内容的教程</p>
-<blockquote>
+        <h1 id="DedeCMS织梦首页调用指定一篇文章body内容的教程"><a href="#DedeCMS织梦首页调用指定一篇文章body内容的教程" class="headerlink" title="DedeCMS织梦首页调用指定一篇文章body内容的教程"></a>DedeCMS织梦首页调用指定一篇文章body内容的教程</h1><blockquote>
 <p>我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。</p>
 </blockquote>
 <p>分享给大家供大家参考。具体实现方法如下：</p>
-<p>##直接调用（包含样式等代码）<br>代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(@me,330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##过滤调用（只调用纯文本内容）<br>如果是要过滤掉文本中的html，使用如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(html2text(@me),330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##后记<br>idlist 是要调用文章的id, channelid 是这个内容模型id,  addfields 是要调用附加表里面的字段.</p>
+<h2 id="直接调用（包含样式等代码）"><a href="#直接调用（包含样式等代码）" class="headerlink" title="直接调用（包含样式等代码）"></a>直接调用（包含样式等代码）</h2><p>代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(@me,330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="过滤调用（只调用纯文本内容）"><a href="#过滤调用（只调用纯文本内容）" class="headerlink" title="过滤调用（只调用纯文本内容）"></a>过滤调用（只调用纯文本内容）</h2><p>如果是要过滤掉文本中的html，使用如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(html2text(@me),330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>idlist 是要调用文章的id, channelid 是这个内容模型id,  addfields 是要调用附加表里面的字段.</p>
 <blockquote>
 <p>本文参考地址<a href="http://www.xiuzhanwang.com/dedecms_jq/765.html" target="_blank" rel="noopener">来源</a></p>
 </blockquote>
@@ -479,19 +478,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DedeCMS Template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">dedecms DedeCMS 织梦</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DedeCMS dedecms body</a>
+                <a href="javascript:void(0)" class="js-tag color3">Hexo Github Pages 博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,7 +490,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo Github Pages 博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color1">DedeCMS dedecms body</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DedeCMS Template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
               </li>
             
             <div class="clearfix"></div>
