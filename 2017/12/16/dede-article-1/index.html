@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Dedecms判断文章是否有缩略图没有就不显示默认图片 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Dedecms判断文章是否有缩略图没有就不显示默认图片调用参考代码：以下代码可直接复制使用123[field:array runphp=&apos;yes&apos;]  @me=(strpos(@me[&apos;litpic&apos;],&apos;defaultpic&apos;)?&apos;&apos;:&quot;&amp;lt;a href=&apos;&amp;#123;@me[&apos;arcurl&apos;]&amp;#125;&apos; alt=&apos;&amp;#123;@me[&apos;title&apos;]&amp;#125;&apos;&amp;gt;&amp;lt;img">
+  <meta name="description" content="调用参考代码：以下代码可直接复制使用123[field:array runphp=&apos;yes&apos;]  @me=(strpos(@me[&apos;litpic&apos;],&apos;defaultpic&apos;)?&apos;&apos;:&quot;&amp;lt;a href=&apos;&amp;#123;@me[&apos;arcurl&apos;]&amp;#125;&apos; alt=&apos;&amp;#123;@me[&apos;title&apos;]&amp;#125;&apos;&amp;gt;&amp;lt;img src=&apos;&amp;#123;@me[&apos;litpic&apos;]&amp;#">
 <meta name="keywords" content="DedeCMS 缩略图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dedecms判断文章是否有缩略图没有就不显示默认图片">
 <meta property="og:url" content="http://yoursite.com/2017/12/16/dede-article-1/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="Dedecms判断文章是否有缩略图没有就不显示默认图片调用参考代码：以下代码可直接复制使用123[field:array runphp=&apos;yes&apos;]  @me=(strpos(@me[&apos;litpic&apos;],&apos;defaultpic&apos;)?&apos;&apos;:&quot;&amp;lt;a href=&apos;&amp;#123;@me[&apos;arcurl&apos;]&amp;#125;&apos; alt=&apos;&amp;#123;@me[&apos;title&apos;]&amp;#125;&apos;&amp;gt;&amp;lt;img">
+<meta property="og:description" content="调用参考代码：以下代码可直接复制使用123[field:array runphp=&apos;yes&apos;]  @me=(strpos(@me[&apos;litpic&apos;],&apos;defaultpic&apos;)?&apos;&apos;:&quot;&amp;lt;a href=&apos;&amp;#123;@me[&apos;arcurl&apos;]&amp;#125;&apos; alt=&apos;&amp;#123;@me[&apos;title&apos;]&amp;#125;&apos;&amp;gt;&amp;lt;img src=&apos;&amp;#123;@me[&apos;litpic&apos;]&amp;#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-15T16:35:35.721Z">
+<meta property="og:updated_time" content="2017-12-16T03:29:06.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dedecms判断文章是否有缩略图没有就不显示默认图片">
-<meta name="twitter:description" content="Dedecms判断文章是否有缩略图没有就不显示默认图片调用参考代码：以下代码可直接复制使用123[field:array runphp=&apos;yes&apos;]  @me=(strpos(@me[&apos;litpic&apos;],&apos;defaultpic&apos;)?&apos;&apos;:&quot;&amp;lt;a href=&apos;&amp;#123;@me[&apos;arcurl&apos;]&amp;#125;&apos; alt=&apos;&amp;#123;@me[&apos;title&apos;]&amp;#125;&apos;&amp;gt;&amp;lt;img">
+<meta name="twitter:description" content="调用参考代码：以下代码可直接复制使用123[field:array runphp=&apos;yes&apos;]  @me=(strpos(@me[&apos;litpic&apos;],&apos;defaultpic&apos;)?&apos;&apos;:&quot;&amp;lt;a href=&apos;&amp;#123;@me[&apos;arcurl&apos;]&amp;#125;&apos; alt=&apos;&amp;#123;@me[&apos;title&apos;]&amp;#125;&apos;&amp;gt;&amp;lt;img src=&apos;&amp;#123;@me[&apos;litpic&apos;]&amp;#">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -185,7 +185,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Dedecms判断文章是否有缩略图没有就不显示默认图片"><a href="#Dedecms判断文章是否有缩略图没有就不显示默认图片" class="headerlink" title="Dedecms判断文章是否有缩略图没有就不显示默认图片"></a>Dedecms判断文章是否有缩略图没有就不显示默认图片</h1><h2 id="调用参考代码："><a href="#调用参考代码：" class="headerlink" title="调用参考代码："></a>调用参考代码：</h2><p>以下代码可直接复制使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[field:array runphp=<span class="string">'yes'</span>]  </span><br><span class="line">@me=(strpos(@me[<span class="string">'litpic'</span>],<span class="string">'defaultpic'</span>)?<span class="string">''</span>:<span class="string">"&lt;a href='&#123;@me['arcurl']&#125;' alt='&#123;@me['title']&#125;'&gt;&lt;img src='&#123;@me['litpic']&#125;' alt='&#123;@me['title']&#125;'/&gt;&lt;/a&gt;"</span>);  </span><br><span class="line">[/field:array]</span><br></pre></td></tr></table></figure></p>
+        <h2 id="调用参考代码："><a href="#调用参考代码：" class="headerlink" title="调用参考代码："></a>调用参考代码：</h2><p>以下代码可直接复制使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[field:array runphp=<span class="string">'yes'</span>]  </span><br><span class="line">@me=(strpos(@me[<span class="string">'litpic'</span>],<span class="string">'defaultpic'</span>)?<span class="string">''</span>:<span class="string">"&lt;a href='&#123;@me['arcurl']&#125;' alt='&#123;@me['title']&#125;'&gt;&lt;img src='&#123;@me['litpic']&#125;' alt='&#123;@me['title']&#125;'/&gt;&lt;/a&gt;"</span>);  </span><br><span class="line">[/field:array]</span><br></pre></td></tr></table></figure></p>
 <p>以上代码意思是，如果没有缩略图就显示为空白，有则显示</p>
 <h2 id="编译之后的代码如下："><a href="#编译之后的代码如下：" class="headerlink" title="编译之后的代码如下："></a>编译之后的代码如下：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">'&#123;@me['</span>arcurl<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>&gt; &lt;img src=<span class="string">'&#123;@me['</span>litpic<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>/&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>如果你想自定义没有缩略图的样式，则修改’defaultpic’)?’’问号后面的单引号里面的内容。</p>
@@ -318,7 +318,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          DedeCMS织梦首页调用指定一篇文章body内容的教程
+          DedeCMS织梦首页调用指定一篇文章body内容的方法
         
       </div>
     </a>
@@ -472,15 +472,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dedecms DedeCMS 织梦</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hexo Github Pages 博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">dedecms DedeCMS 织梦</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,11 +488,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DedeCMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">DedeCMS Template</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

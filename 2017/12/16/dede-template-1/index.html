@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>DedeCMS网站批量更新所有目录模板文件 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DedeCMS网站批量更新所有目录模板文件 通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;">
+  <meta name="description" content="通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;/index_article.htm&quot;)">
 <meta name="keywords" content="DedeCMS Template">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DedeCMS网站批量更新所有目录模板文件">
 <meta property="og:url" content="http://yoursite.com/2017/12/16/dede-template-1/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="DedeCMS网站批量更新所有目录模板文件 通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;">
+<meta property="og:description" content="通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;/index_article.htm&quot;)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-15T16:35:53.881Z">
+<meta property="og:updated_time" content="2017-12-16T03:29:20.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DedeCMS网站批量更新所有目录模板文件">
-<meta name="twitter:description" content="DedeCMS网站批量更新所有目录模板文件 通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;">
+<meta name="twitter:description" content="通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地  修改栏目频道页1update dede_arctype set tempindex = replace(tempindex,&quot;&amp;#123;style&amp;#125;/page.htm&quot;,&quot;&amp;#123;style&amp;#125;/index_article.htm&quot;)">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -185,7 +185,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="DedeCMS网站批量更新所有目录模板文件"><a href="#DedeCMS网站批量更新所有目录模板文件" class="headerlink" title="DedeCMS网站批量更新所有目录模板文件"></a>DedeCMS网站批量更新所有目录模板文件</h1><blockquote>
+        <blockquote>
 <p>通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地</p>
 </blockquote>
 <h2 id="修改栏目频道页"><a href="#修改栏目频道页" class="headerlink" title="修改栏目频道页"></a>修改栏目频道页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> tempindex = replace(tempindex,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/index_article.htm"</span>)</span><br></pre></td></tr></table></figure>
@@ -318,9 +318,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/12/16/dede-list-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/12/16/dede-article-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DedeCMS织梦首页调用指定一篇文章body内容的教程</div>
+      <div class="article-nav-title">DedeCMS织梦首页调用指定一篇文章body内容的方法</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -467,15 +476,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dedecms DedeCMS 织梦</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hexo Github Pages 博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">dedecms DedeCMS 织梦</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,11 +492,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DedeCMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">DedeCMS Template</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">DedeCMS 缩略图</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
