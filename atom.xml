@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Warn&amp;Christina的博客</title>
+  <icon>https://www.gravatar.com/avatar/597d8656b53fbc8b405cee571e45b3fa</icon>
+  <subtitle>九流杂耍，蹒跚学步</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-12-16T04:19:50.033Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Warn</name>
+    <email>imwarn@163.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>dedecms织梦列表页内容页栏目高亮和当前栏目调用二级三级栏目</title>
+    <link href="http://yoursite.com/2017/12/16/dede-list-2/"/>
+    <id>http://yoursite.com/2017/12/16/dede-list-2/</id>
+    <published>2017-12-16T04:00:39.000Z</published>
+    <updated>2017-12-16T04:19:50.033Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>在处理企业站的时候，经常会用到在列表页或内容页调用二三级栏目，且需要跟随栏目切换高亮显示。</p></blockquote><p><img src="http://www.dedediy.com/uploads/allimg/channlecurrent.gif" alt="channlecurrent"></p><h2 id="具体实现方法如下"><a href="#具体实现方法如下" class="headerlink" title="具体实现方法如下"></a>具体实现方法如下</h2><h3 id="1、打开-include-taglib-channelartlist-lib-php-找到"><a href="#1、打开-include-taglib-channelartlist-lib-php-找到" class="headerlink" title="1、打开 \include\taglib\channelartlist.lib.php 找到"></a>1、打开 \include\taglib\channelartlist.lib.php 找到</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$tpsql</span> = <span class="string">" reid='<span class="variable">$typeid</span>' AND ispart&lt;&gt;2 AND ishidden&lt;&gt;1 "</span>;</span><br></pre></td></tr></table></figure><p>改成</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$type</span>==<span class="string">'son'</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$typeid</span> = ( !empty(<span class="variable">$refObj</span>-&gt;TypeLink-&gt;TypeInfos[<span class="string">'id'</span>]) ?  GetTopid(<span class="variable">$refObj</span>-&gt;TypeLink-&gt;TypeInfos[<span class="string">'id'</span>]) : 0 );</span><br><span class="line"><span class="variable">$tpsql</span> = <span class="string">" reid='<span class="variable">$typeid</span>' AND ishidden&lt;&gt;1 "</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$tpsql</span> = <span class="string">" reid='<span class="variable">$typeid</span>' AND ispart&lt;&gt;2 AND ishidden&lt;&gt;1 "</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2、打开-include-taglib-channel-lib-php-找到"><a href="#2、打开-include-taglib-channel-lib-php-找到" class="headerlink" title="2、打开 \include\taglib\channel.lib.php 找到"></a>2、打开 \include\taglib\channel.lib.php 找到</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$type</span>==<span class="string">'son'</span> &amp;&amp; <span class="variable">$reid</span>!=0 &amp;&amp; <span class="variable">$totalRow</span>==0)</span><br></pre></td></tr></table></figure><p>改成</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$type</span>==<span class="string">'son'</span> &amp;&amp; <span class="variable">$reid</span>!=0 &amp;&amp; <span class="variable">$totalRow</span>==0 &amp;&amp; <span class="variable">$noself</span>==<span class="string">''</span>)</span><br></pre></td></tr></table></figure><h3 id="3、去掉模板引擎禁用PHP标签"><a href="#3、去掉模板引擎禁用PHP标签" class="headerlink" title="3、去掉模板引擎禁用PHP标签"></a>3、去掉模板引擎禁用PHP标签</h3><p>后台-系统-其它选项 模板引擎禁用标签 去掉php<br><img src="http://www.dedediy.com/uploads/allimg/QQimg20170807131443.png" alt="去掉PHP标签禁用"></p><h2 id="前台模板文件中调用代码如下："><a href="#前台模板文件中调用代码如下：" class="headerlink" title="前台模板文件中调用代码如下："></a>前台模板文件中调用代码如下：</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">&#123;dede:php&#125;</span><br><span class="line">$GLOBALS['thisid'] = intval($refObj-&gt;Fields['typeid']);</span><br><span class="line">$GLOBALS['reid'] = intval($refObj-&gt;Fields['reid']);</span><br><span class="line">$GLOBALS['topid'] = intval($refObj-&gt;Fields['topid']);</span><br><span class="line">&#123;/dede:php&#125;</span><br><span class="line">&#123;dede:channelartlist type=son&#125;</span><br><span class="line">    &lt;li&#123;dede:field.typeid runphp=yes&#125;(@me==$GLOBALS['thisid']||@me==$GLOBALS['reid']||@me==$GLOBALS['topid'])? @me=' class="current"':@me='';&#123;/dede:field.typeid&#125;&gt;&lt;a href='&#123;dede:field.typeurl/&#125;' &gt;&#123;dede:field.typename/&#125;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">    &#123;dede:channel type=son noself=yes&#125;</span><br><span class="line">    &lt;li[field:id runphp=yes](@me==$GLOBALS['thisid'])? @me=' class="current2"':@me='';[/field:id]&gt;&lt;a href='[field:typelink /]' title='[field:typename/]'&gt;[field:typename/]&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &#123;/dede:channel&#125;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&#123;/dede:channelartlist&#125;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure><p>至此，全部完成。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;在处理企业站的时候，经常会用到在列表页或内容页调用二三级栏目，且需要跟随栏目切换高亮显示。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.dedediy.com/uploads/allimg/channlecu
+      
+    
+    </summary>
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
+    
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/tags/DedeCMS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能</title>
+    <link href="http://yoursite.com/2017/12/16/dede-list-1/"/>
+    <id>http://yoursite.com/2017/12/16/dede-list-1/</id>
+    <published>2017-12-16T03:28:35.000Z</published>
+    <updated>2017-12-16T03:54:48.321Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。</p></blockquote><h2 id="修改方法如下："><a href="#修改方法如下：" class="headerlink" title="修改方法如下："></a>修改方法如下：</h2><h3 id="第一步：执行SQL命令为数据库的栏目表结构添加一个字段"><a href="#第一步：执行SQL命令为数据库的栏目表结构添加一个字段" class="headerlink" title="第一步：执行SQL命令为数据库的栏目表结构添加一个字段"></a>第一步：执行SQL命令为数据库的栏目表结构添加一个字段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table `dede_arctype` add `typeimg` char(100) NOT NULL default <span class="string">''</span>;</span><br></pre></td></tr></table></figure><h3 id="第二步：修改涉及到文件："><a href="#第二步：修改涉及到文件：" class="headerlink" title="第二步：修改涉及到文件："></a>第二步：修改涉及到文件：</h3><ul><li style="list-style: none"><input type="checkbox" checked> dede/catalog_add.php </li><li style="list-style: none"><input type="checkbox" checked> dede/catalog_edit.php</li><li style="list-style: none"><input type="checkbox" checked> dede/templets/catalog_add.htm</li><li style="list-style: none"><input type="checkbox" checked> dede/templets/catalog_edit.htm<h4 id="1、打开dede-catalog-add-php"><a href="#1、打开dede-catalog-add-php" class="headerlink" title="1、打开dede/catalog_add.php"></a>1、打开dede/catalog_add.php</h4></li></ul><p>查找<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$queryTemplate</span> = <span class="string">"INSERT INTO `#@__arctype`</span></span><br></pre></td></tr></table></figure></p><p>定义添加新变量字段typeimg,将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(reid,topid,sortrank,typename,typedir,</span><br></pre></td></tr></table></figure></p><p>修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(reid,topid,sortrank,typename,typedir,typeimg,</span><br></pre></td></tr></table></figure></p><p>将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'~reid~'</span>,<span class="string">'~topid~'</span>,<span class="string">'~rank~'</span>,<span class="string">'~typename~'</span>,<span class="string">'~typedir~'</span>,</span><br></pre></td></tr></table></figure></p><p>修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'~reid~'</span>,<span class="string">'~topid~'</span>,<span class="string">'~rank~'</span>,<span class="string">'~typename~'</span>,<span class="string">'~typedir~'</span>,<span class="string">'~typeimg~'</span>,</span><br></pre></td></tr></table></figure></p><h4 id="2、打开dede-catalog-edit-php"><a href="#2、打开dede-catalog-edit-php" class="headerlink" title="2、打开dede/catalog_edit.php"></a>2、打开dede/catalog_edit.php</h4><p>查找(一般是Ctrl+F快捷键)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$upquery</span> = <span class="string">"Update</span></span><br></pre></td></tr></table></figure></p><p>在其下面新加一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeimg=<span class="string">'$typeimg'</span>,</span><br></pre></td></tr></table></figure></p><h4 id="3、打开dede-templets-catalog-add-htm"><a href="#3、打开dede-templets-catalog-add-htm" class="headerlink" title="3、打开dede/templets/catalog_add.htm"></a>3、打开dede/templets/catalog_add.htm</h4><p>修改后台的页面模板，查找<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">   &lt;td height=<span class="string">"26"</span> style=<span class="string">"padding-left:10px;"</span>&gt;列表命名规则：&lt;/td&gt;</span><br><span class="line">   &lt;td&gt;</span><br><span class="line">      &lt;input name=<span class="string">"namerule2"</span> <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"namerule2"</span> value=<span class="string">"&#123;typedir&#125;/list_&#123;tid&#125;_&#123;page&#125;.html"</span>  class=<span class="string">"pubinputs"</span>  style=<span class="string">"width:250px"</span> /&gt;</span><br><span class="line">      &lt;img src=<span class="string">"images/help.gif"</span> alt=<span class="string">"帮助"</span> width=<span class="string">"16"</span> height=<span class="string">"16"</span> border=<span class="string">"0"</span> style=<span class="string">"cursor:pointer"</span> onClick=<span class="string">"ShowHide('helpvar3')"</span>/&gt;&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure></p><p>在其下面增加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td height=<span class="string">"65"</span> style=<span class="string">"padding-left:10px;"</span>&gt;栏目图片：&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;</span><br><span class="line">     &lt;input name=<span class="string">"typeimg"</span> <span class="built_in">type</span>=<span class="string">"text"</span> style=<span class="string">"width:250px"</span> id=<span class="string">"typeimg"</span> class=<span class="string">"alltxt"</span> value=<span class="string">""</span> /&gt;</span><br><span class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"set9"</span> value=<span class="string">"浏览... "</span>class=<span class="string">"coolbg np"</span> style=<span class="string">"width:60px"</span> onClick=<span class="string">"SelectImage('form1.typeimg','');"</span> /&gt;</span><br><span class="line">   &lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure></p><p>并在文件的<head></head>里面增加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">'javascript'</span> src=<span class="string">"js/main.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p><h4 id="4、打开dede-templets-catalog-edit-htm"><a href="#4、打开dede-templets-catalog-edit-htm" class="headerlink" title="4、打开dede/templets/catalog_edit.htm"></a>4、打开dede/templets/catalog_edit.htm</h4><p>在第3步文件（同上catalog_add.htm）同样的位置插入修改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">   &lt;td height=<span class="string">"26"</span> style=<span class="string">"padding-left:10px;"</span>&gt;列表命名规则：&lt;/td&gt;</span><br><span class="line">   &lt;td&gt;</span><br><span class="line">      &lt;input name=<span class="string">"namerule2"</span> <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"namerule2"</span> value=<span class="string">"&#123;typedir&#125;/list_&#123;tid&#125;_&#123;page&#125;.html"</span>  class=<span class="string">"pubinputs"</span>  style=<span class="string">"width:250px"</span> /&gt;</span><br><span class="line">      &lt;img src=<span class="string">"images/help.gif"</span> alt=<span class="string">"帮助"</span> width=<span class="string">"16"</span> height=<span class="string">"16"</span> border=<span class="string">"0"</span> style=<span class="string">"cursor:pointer"</span> onClick=<span class="string">"ShowHide('helpvar3')"</span>/&gt;&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure></p><p>在其下面加入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td height=<span class="string">"65"</span> style=<span class="string">"padding-left:10px;"</span>&gt;栏目图片：&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;</span><br><span class="line">     &lt;input name=<span class="string">"typeimg"</span> <span class="built_in">type</span>=<span class="string">"text"</span> style=<span class="string">"width:250px"</span> id=<span class="string">"typeimg"</span> class=<span class="string">"alltxt"</span> value=<span class="string">"&lt;?php echo <span class="variable">$myrow</span>['typeimg']?&gt;"</span> /&gt;</span><br><span class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"set9"</span> value=<span class="string">"浏览... "</span>class=<span class="string">"coolbg np"</span> style=<span class="string">"width:60px"</span> onClick=<span class="string">"SelectImage('form1.typeimg','');"</span> /&gt;</span><br><span class="line">   &lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure></p><blockquote><p>备注说明：下面这句会调用出已添加的路片路径。<br>&lt;?php echo $myrow[‘typeimg’]?&gt;<br>和第三步一样，在文件的<head></head>里面增加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">'javascript'</span> src=<span class="string">"js/main.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p></blockquote><h3 id="在前台栏目模板中调用自定义缩略图"><a href="#在前台栏目模板中调用自定义缩略图" class="headerlink" title="在前台栏目模板中调用自定义缩略图"></a>在前台栏目模板中调用自定义缩略图</h3><blockquote><p>在模版里用：{dede:field.typeimg /} 是调不出数据的，所以改成SQL调用。<br>原来是这样的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:channel <span class="built_in">type</span>=<span class="string">'top'</span> row=<span class="string">'13'</span>&#125;</span><br><span class="line">     &lt;li&gt;&lt;a href=<span class="string">'[field:typeurl/]'</span> [field:rel/]&gt;[field:typeimg/]&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&#123;/dede:channel&#125;</span><br></pre></td></tr></table></figure></p></blockquote><p>在这里面加上[field:typeimg]是调不出来的，栏目缩略图就是通过循环出来的，而循环不出来则意义不大，所以改成了如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:sql sql=<span class="string">"SELECT typename,typedir,typeimg FROM dede_arctype"</span>&#125;</span><br><span class="line">    &lt;li&gt;&lt;a href=<span class="string">"[field:typedir/]"</span>&gt;[field:typeimg/]&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&#123;/dede:sql&#125;</span><br></pre></td></tr></table></figure></p><p>这样就顺利的调出来了,当然如果你要调用子ID的话，只要加上相应的条件ID调用就可以了。</p><blockquote><p>添加或修改图片时在DedeCMS后台-《栏目管理》-高级选项中操作管理</p><h3 id="以下内容个人尚未实例测试"><a href="#以下内容个人尚未实例测试" class="headerlink" title="以下内容个人尚未实例测试"></a>以下内容个人尚未实例测试</h3><p>如果想同时在文章内容页调用自定义添加的缩略图<br>打开\include\arc.archives.class.php<br>查找<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$this</span>-&gt;ChannelUnit-&gt;ChannelInfos[<span class="string">'issystem'</span>]!=-1)</span><br></pre></td></tr></table></figure></p></blockquote><p>将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$query</span> = <span class="string">"Select arc.*,tp.reid,tp.typedir,ch.addtable</span></span><br><span class="line"><span class="string">                 from `ant_archives` arc</span></span><br><span class="line"><span class="string">                          left join ant_arctype tp on tp.id=arc.typeid</span></span><br><span class="line"><span class="string">                           left join ant_channeltype as ch on arc.channel = ch.id</span></span><br><span class="line"><span class="string">                           where arc.id='<span class="variable">$aid</span>' "</span>;</span><br><span class="line">                 <span class="variable">$this</span>-&gt;Fields = <span class="variable">$this</span>-&gt;dsql-&gt;GetOne(<span class="variable">$query</span>);</span><br></pre></td></tr></table></figure></p><p>替换为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$query</span> = <span class="string">"Select arc.*,tp.reid,tp.typedir,tp.typeimg,ch.addtable</span></span><br><span class="line"><span class="string">                 from `ant_archives` arc</span></span><br><span class="line"><span class="string">                          left join ant_arctype tp on tp.id=arc.typeid</span></span><br><span class="line"><span class="string">                           left join ant_channeltype as ch on arc.channel = ch.id</span></span><br><span class="line"><span class="string">                           where arc.id='<span class="variable">$aid</span>' "</span>;</span><br><span class="line">                 <span class="variable">$this</span>-&gt;Fields = <span class="variable">$this</span>-&gt;dsql-&gt;GetOne(<span class="variable">$query</span>);</span><br></pre></td></tr></table></figure></p><p>即可。<br>如果需要在内容页中使用栏目缩略图的朋友，可以去试一下。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;
+      
+    
+    </summary>
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
+    
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/tags/DedeCMS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DedeCMS网站批量更新所有目录模板文件</title>
+    <link href="http://yoursite.com/2017/12/16/dede-template-1/"/>
+    <id>http://yoursite.com/2017/12/16/dede-template-1/</id>
+    <published>2017-12-15T16:23:03.000Z</published>
+    <updated>2017-12-16T03:29:20.905Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地</p></blockquote><h2 id="修改栏目频道页"><a href="#修改栏目频道页" class="headerlink" title="修改栏目频道页"></a>修改栏目频道页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> tempindex = replace(tempindex,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/index_article.htm"</span>)</span><br></pre></td></tr></table></figure><h2 id="修改栏目列表页"><a href="#修改栏目列表页" class="headerlink" title="修改栏目列表页"></a>修改栏目列表页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>)</span><br></pre></td></tr></table></figure><h2 id="修改栏目内容页"><a href="#修改栏目内容页" class="headerlink" title="修改栏目内容页"></a>修改栏目内容页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> temparticle = replace(temparticle,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/article_article.htm"</span>)</span><br></pre></td></tr></table></figure><h2 id="修改指定ID栏目的列表页"><a href="#修改指定ID栏目的列表页" class="headerlink" title="修改指定ID栏目的列表页"></a>修改指定ID栏目的列表页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>) <span class="built_in">where</span> id <span class="keyword">in</span>(1,2,3,4,5,6)</span><br></pre></td></tr></table></figure><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>以上所有命令都通用，在前三种后面加上where id in(ID1,ID2,ID3,ID4,ID5,……)，里面写入你打算修改的频道/栏目/文章ID，可批量修改指定ID的模板文件。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;修改栏目频道页&quot;&gt;&lt;a href=&quot;#修改栏目频道页&quot; cl
+      
+    
+    </summary>
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
+    
+    
+      <category term="DedeCMS Template" scheme="http://yoursite.com/tags/DedeCMS-Template/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DedeCMS织梦首页调用指定一篇文章body内容的方法</title>
+    <link href="http://yoursite.com/2017/12/16/dede-article-2/"/>
+    <id>http://yoursite.com/2017/12/16/dede-article-2/</id>
+    <published>2017-12-15T16:16:24.000Z</published>
+    <updated>2017-12-16T03:30:58.072Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。</p></blockquote><p>分享给大家供大家参考。具体实现方法如下：</p><h2 id="直接调用（包含样式等代码）"><a href="#直接调用（包含样式等代码）" class="headerlink" title="直接调用（包含样式等代码）"></a>直接调用（包含样式等代码）</h2><p>代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(@me,330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p><h2 id="过滤调用（只调用纯文本内容）"><a href="#过滤调用（只调用纯文本内容）" class="headerlink" title="过滤调用（只调用纯文本内容）"></a>过滤调用（只调用纯文本内容）</h2><p>如果是要过滤掉文本中的html，使用如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(html2text(@me),330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>idlist 是要调用文章的id, channelid 是这个内容模型id,  addfields 是要调用附加表里面的字段.</p><blockquote><p>本文参考地址<a href="http://www.xiuzhanwang.com/dedecms_jq/765.html" target="_blank" rel="noopener">来源</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;分享给大家供大家参考。具体实现方法如下：&lt;/p&gt;
+&lt;h2 i
+      
+    
+    </summary>
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
+    
+    
+      <category term="DedeCMS dedecms body" scheme="http://yoursite.com/tags/DedeCMS-dedecms-body/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dedecms判断文章是否有缩略图没有就不显示默认图片</title>
+    <link href="http://yoursite.com/2017/12/16/dede-article-1/"/>
+    <id>http://yoursite.com/2017/12/16/dede-article-1/</id>
+    <published>2017-12-15T16:09:24.000Z</published>
+    <updated>2017-12-16T03:29:06.104Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="调用参考代码："><a href="#调用参考代码：" class="headerlink" title="调用参考代码："></a>调用参考代码：</h2><p>以下代码可直接复制使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[field:array runphp=<span class="string">'yes'</span>]  </span><br><span class="line">@me=(strpos(@me[<span class="string">'litpic'</span>],<span class="string">'defaultpic'</span>)?<span class="string">''</span>:<span class="string">"&lt;a href='&#123;@me['arcurl']&#125;' alt='&#123;@me['title']&#125;'&gt;&lt;img src='&#123;@me['litpic']&#125;' alt='&#123;@me['title']&#125;'/&gt;&lt;/a&gt;"</span>);  </span><br><span class="line">[/field:array]</span><br></pre></td></tr></table></figure></p><p>以上代码意思是，如果没有缩略图就显示为空白，有则显示</p><h2 id="编译之后的代码如下："><a href="#编译之后的代码如下：" class="headerlink" title="编译之后的代码如下："></a>编译之后的代码如下：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">'&#123;@me['</span>arcurl<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>&gt; &lt;img src=<span class="string">'&#123;@me['</span>litpic<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>/&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>如果你想自定义没有缩略图的样式，则修改’defaultpic’)?’’问号后面的单引号里面的内容。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;调用参考代码：&quot;&gt;&lt;a href=&quot;#调用参考代码：&quot; class=&quot;headerlink&quot; title=&quot;调用参考代码：&quot;&gt;&lt;/a&gt;调用参考代码：&lt;/h2&gt;&lt;p&gt;以下代码可直接复制使用&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;tab
+      
+    
+    </summary>
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
+    
+    
+      <category term="DedeCMS 缩略图" scheme="http://yoursite.com/tags/DedeCMS-%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DedeCMS网站搬家重装后，登陆后台404</title>
+    <link href="http://yoursite.com/2017/12/16/dede-admin-404-1/"/>
+    <id>http://yoursite.com/2017/12/16/dede-admin-404-1/</id>
+    <published>2017-12-15T16:00:34.000Z</published>
+    <updated>2017-12-16T03:29:11.523Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="主要现象"><a href="#主要现象" class="headerlink" title="主要现象"></a>主要现象</h2><p>DedeCMS网站搬家重装完成后，正常登陆后台提示404错误</p><h2 id="测试分析"><a href="#测试分析" class="headerlink" title="测试分析"></a>测试分析</h2><p>测试重新安装dede目录无效；<br>测试修改目录权限无效；<br>在本地搭建正常打开</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在本地搭建后，对dede程序升级备份，重新打包上传；测试可以正常安装打开</p><h2 id="实测案例"><a href="#实测案例" class="headerlink" title="实测案例"></a>实测案例</h2><p>dede程序源码版本由20150522更新到20150618后，404问题解决</p><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>个人猜测可能是因为新的主机环境版本和以前不大一样，对PHP等支持的兼容性造成的</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;主要现象&quot;&gt;&lt;a href=&quot;#主要现象&quot; class=&quot;headerlink&quot; title=&quot;主要现象&quot;&gt;&lt;/a&gt;主要现象&lt;/h2&gt;&lt;p&gt;DedeCMS网站搬家重装完成后，正常登陆后台提示404错误&lt;/p&gt;
+&lt;h2 id=&quot;测试分析&quot;&gt;&lt;a href=&quot;#测试分
+      
+    
+    </summary>
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
+    
+    
+      <category term="dedecms DedeCMS 织梦" scheme="http://yoursite.com/tags/dedecms-DedeCMS-%E7%BB%87%E6%A2%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github Pages + Hexo搭建博客</title>
+    <link href="http://yoursite.com/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2017/12/13/Github-Pages-Hexo搭建博客/</id>
+    <published>2017-12-13T15:40:07.000Z</published>
+    <updated>2017-12-16T03:29:29.512Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。</p><h2 id="Mac搭建参考网址说明"><a href="#Mac搭建参考网址说明" class="headerlink" title="Mac搭建参考网址说明"></a>Mac搭建参考网址说明</h2><p><a href="http://www.jianshu.com/p/484e4ca7edf0" target="_blank" rel="noopener">在Mac上搭建基于Hexo的个人博客网站</a><br><a href="http://fanzhenyu.me/categories/Hexo/" target="_blank" rel="noopener">Github Pages + Hexo搭建博客</a></p></blockquote><h2 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h2><h3 id="Cmd-MarkDown编辑器"><a href="#Cmd-MarkDown编辑器" class="headerlink" title="Cmd MarkDown编辑器"></a>Cmd MarkDown编辑器</h3><p><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">在线MarkDown文本编辑</a></p><h2 id="Hexo-Theme"><a href="#Hexo-Theme" class="headerlink" title="Hexo Theme"></a>Hexo Theme</h2><h3 id="yilia-https-github-com-litten-hexo-theme-yilia-issues-63"><a href="#yilia-https-github-com-litten-hexo-theme-yilia-issues-63" class="headerlink" title="[yilia] (https://github.com/litten/hexo-theme-yilia/issues/63)"></a>[yilia] (<a href="https://github.com/litten/hexo-theme-yilia/issues/63" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia/issues/63</a>)</h3><p>作者：<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a><br>第三方评论工具：<a href="https://livere.com/" target="_blank" rel="noopener">来必力</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。&lt;/p&gt;
+&lt;h2 id=&quot;Mac搭建参考网址说明&quot;&gt;&lt;a href=&quot;#Mac搭建参考网址说明&quot; class=&quot;headerlink&quot; title=&quot;M
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo Github Pages 博客搭建" scheme="http://yoursite.com/tags/Hexo-Github-Pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一篇博客，记录转载学习随笔</title>
+    <link href="http://yoursite.com/2017/12/13/hello-world/"/>
+    <id>http://yoursite.com/2017/12/13/hello-world/</id>
+    <published>2017-12-13T14:40:07.000Z</published>
+    <updated>2017-12-15T15:54:56.806Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>默认生成的Hexo第一篇博客，在我开始搭建的时候，Python开始进入中学课本……<br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p></blockquote><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="新建一个页面目录"><a href="#新建一个页面目录" class="headerlink" title="新建一个页面目录"></a>新建一个页面目录</h3><p>在命令行里面输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page <span class="string">"about"</span></span><br></pre></td></tr></table></figure></p><p>然后你会发现source里面多了个目录about，里面有个index.md。其实你也可以手动建立。页面的格式和文章一样。<br>接着把链接加上，themes/<theme_name>/_config.yml里面的menu一项，添加一行About: /about。<br>完事。来源：<a href="https://segmentfault.com/q/1010000000618915" target="_blank" rel="noopener">Hexo菜单中添加分类和页面</a> 还有<a href="https://www.zhihu.com/question/33324071" target="_blank" rel="noopener">知乎</a></theme_name></p><p>###<a href="http://www.jianshu.com/p/e6e54389c88f" target="_blank" rel="noopener">Hexo主题中实现多级分类</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;默认生成的Hexo第一篇博客，在我开始搭建的时候，Python开始进入中学课本……&lt;br&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! 
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>
