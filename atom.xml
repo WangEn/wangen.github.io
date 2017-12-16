@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-16T04:19:50.033Z</updated>
+  <updated>2017-12-16T16:32:26.428Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DedeCMS技术可参考网站备份</title>
+    <link href="http://yoursite.com/2017/12/17/dede-web-1/"/>
+    <id>http://yoursite.com/2017/12/17/dede-web-1/</id>
+    <published>2017-12-16T16:25:27.000Z</published>
+    <updated>2017-12-16T16:32:26.428Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="DedeCMS技术点及模板使用可参考网站部分备忘"><a href="#DedeCMS技术点及模板使用可参考网站部分备忘" class="headerlink" title="DedeCMS技术点及模板使用可参考网站部分备忘"></a>DedeCMS技术点及模板使用可参考网站部分备忘</h2><p>存在即合理,流行就代表优秀…</p><blockquote><p>1、<a href="http://www.dedediy.com/luojishuju/" target="_blank" rel="noopener">织梦二次开发</a></p><p>2、<a href="http://www.dedejs.com/html/list-11.html" target="_blank" rel="noopener">CMS资源网</a></p><p>3、<a href="http://www.dede58.com/a/dedeaz/2792.html" target="_blank" rel="noopener">织梦58</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;DedeCMS技术点及模板使用可参考网站部分备忘&quot;&gt;&lt;a href=&quot;#DedeCMS技术点及模板使用可参考网站部分备忘&quot; class=&quot;headerlink&quot; title=&quot;DedeCMS技术点及模板使用可参考网站部分备忘&quot;&gt;&lt;/a&gt;DedeCMS技术点及模板使
+      
+    
+    </summary>
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
+    
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/tags/DedeCMS/"/>
+    
+      <category term="参考网站" scheme="http://yoursite.com/tags/%E5%8F%82%E8%80%83%E7%BD%91%E7%AB%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dedecms织梦会员邮件验证与自定义表单发送邮件-官方类版-支持QQ邮箱163邮箱</title>
+    <link href="http://yoursite.com/2017/12/17/dede-email-1/"/>
+    <id>http://yoursite.com/2017/12/17/dede-email-1/</id>
+    <published>2017-12-16T16:11:03.000Z</published>
+    <updated>2017-12-16T16:24:45.003Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="会员邮件验证效果"><a href="#会员邮件验证效果" class="headerlink" title="会员邮件验证效果"></a>会员邮件验证效果</h4><p><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031201926.png" alt="member-email"></p><h4 id="自定义表单发送邮件效果"><a href="#自定义表单发送邮件效果" class="headerlink" title="自定义表单发送邮件效果"></a>自定义表单发送邮件效果</h4><p><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031201550.png" alt="form-email"></p><h2 id="设置步骤如下："><a href="#设置步骤如下：" class="headerlink" title="设置步骤如下："></a>设置步骤如下：</h2><h4 id="1、QQ邮箱-或者-163邮箱-开启SMTP服务，拿到授权码"><a href="#1、QQ邮箱-或者-163邮箱-开启SMTP服务，拿到授权码" class="headerlink" title="1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码"></a>1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码</h4><p><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031202215.png" alt="email-shouquanma"></p><h4 id="2、网站后台-系统-系统基本参数-核心设置"><a href="#2、网站后台-系统-系统基本参数-核心设置" class="headerlink" title="2、网站后台 - 系统 - 系统基本参数 - 核心设置"></a>2、网站后台 - 系统 - 系统基本参数 - 核心设置</h4><blockquote><p>网站发信EMAIL：wuruhua@163.com 或者 65602960@qq.com (本文邮箱均为示例，请按需求填写自己的邮箱)</p><p>是否启用smtp方式发送邮件：是</p><p>smtp服务器：ssl://smtp.163.com 或者 ssl://smtp.qq.com</p><p>smtp服务器端口：465</p><p>SMTP服务器的用户邮箱：wuruhua@163.com 或者 65602960@qq.com</p><p>SMTP服务器的用户帐号：wuruhua 或者 65602960</p><p>SMTP服务器的用户密码：填你邮箱授权码，不是邮箱登录密码</p></blockquote><p>如图</p><blockquote><p>配置QQ邮箱的是这样<br><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031195906.png" alt="email-qq-set"></p><p>配置163邮箱的是这样<br><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031195754.png" alt="email-163-set"></p><p>至此会员邮件验证配置完成，会员就能收到验证邮件了；自定义表单发送邮件的小伙伴继续往下看</p></blockquote><h4 id="3、网站后台-系统-系统基本参数-添加新变量"><a href="#3、网站后台-系统-系统基本参数-添加新变量" class="headerlink" title="3、网站后台 - 系统 - 系统基本参数 - 添加新变量"></a>3、网站后台 - 系统 - 系统基本参数 - 添加新变量</h4><blockquote><p>变量名称：cfg_shoujianren<br>变量类型：文本<br>参数说明：收件人<br>变量值：发送邮件通知者，如65602960@qq.com<br>所属组：站点设置</p></blockquote><p>如图<br><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031203350.png" alt="system-set"></p><h4 id="4、打开-plus-diy-php-找到"><a href="#4、打开-plus-diy-php-找到" class="headerlink" title="4、打开 /plus/diy.php 找到"></a>4、打开 /plus/diy.php 找到</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$dsql</span>-&gt;GetLastID();</span><br></pre></td></tr></table></figure><p>在它的下面加入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mailtitle</span> = <span class="string">"&#123;<span class="variable">$diy</span>-&gt;name&#125;--留言通知"</span>;</span><br><span class="line"><span class="variable">$mailbody</span> = <span class="string">''</span>;</span><br><span class="line">foreach(<span class="variable">$diy</span>-&gt;getFieldList() as <span class="variable">$field</span>=&gt;<span class="variable">$fieldvalue</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$mailbody</span> .= <span class="string">"&#123;<span class="variable">$fieldvalue</span>[0]&#125;:&#123;<span class="variable">$&#123;$field&#125;</span>&#125;\r\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$headers</span> = <span class="string">"From: "</span>.<span class="variable">$cfg_adminemail</span>.<span class="string">"\r\nReply-To: "</span>.<span class="variable">$cfg_adminemail</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$cfg_sendmail_bysmtp</span> == <span class="string">'Y'</span> &amp;&amp; !empty(<span class="variable">$cfg_smtp_server</span>))</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$mailtype</span> = <span class="string">'TXT'</span>;</span><br><span class="line">require_once(DEDEINC.<span class="string">'/mail.class.php'</span>);</span><br><span class="line"><span class="variable">$smtp</span> = new smtp(<span class="variable">$cfg_smtp_server</span>,<span class="variable">$cfg_smtp_port</span>,<span class="literal">true</span>,<span class="variable">$cfg_smtp_usermail</span>,<span class="variable">$cfg_smtp_password</span>);</span><br><span class="line"><span class="variable">$smtp</span>-&gt;debug = <span class="literal">false</span>;</span><br><span class="line"><span class="variable">$smtp</span>-&gt;sendmail(<span class="variable">$cfg_shoujianren</span>,<span class="variable">$cfg_webname</span> ,<span class="variable">$cfg_smtp_usermail</span>, <span class="variable">$mailtitle</span>, <span class="variable">$mailbody</span>, <span class="variable">$mailtype</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">@mail(<span class="variable">$cfg_shoujianren</span>, <span class="variable">$mailtitle</span>, <span class="variable">$mailbody</span>, <span class="variable">$headers</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>至此自定义表单发送邮件通知管理者设置完成</p><p>本文来源<a href="http://www.dedediy.com/luojishuju/175.html" target="_blank" rel="noopener">www.dedediy.com</a> ，仅作为备份参考使用</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;会员邮件验证效果&quot;&gt;&lt;a href=&quot;#会员邮件验证效果&quot; class=&quot;headerlink&quot; title=&quot;会员邮件验证效果&quot;&gt;&lt;/a&gt;会员邮件验证效果&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://www.dedediy.com/uploads/allim
+      
+    
+    </summary>
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
+    
+    
+      <category term="DedeCMS" scheme="http://yoursite.com/tags/DedeCMS/"/>
+    
+      <category term="邮件" scheme="http://yoursite.com/tags/%E9%82%AE%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>dedecms织梦列表页内容页栏目高亮和当前栏目调用二级三级栏目</title>
@@ -167,7 +221,7 @@
     <link href="http://yoursite.com/2017/12/16/dede-admin-404-1/"/>
     <id>http://yoursite.com/2017/12/16/dede-admin-404-1/</id>
     <published>2017-12-15T16:00:34.000Z</published>
-    <updated>2017-12-16T08:56:14.000Z</updated>
+    <updated>2017-12-16T16:14:02.162Z</updated>
     
     <content type="html"><![CDATA[<h2 id="主要现象"><a href="#主要现象" class="headerlink" title="主要现象"></a>主要现象</h2><p>DedeCMS网站搬家重装完成后，正常登陆后台提示404错误</p><h2 id="测试分析"><a href="#测试分析" class="headerlink" title="测试分析"></a>测试分析</h2><p>测试重新安装dede目录无效；<br>测试修改目录权限无效；<br>在本地搭建正常打开</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在本地搭建后，对dede程序升级备份，重新打包上传；测试可以正常安装打开</p><h2 id="实测案例"><a href="#实测案例" class="headerlink" title="实测案例"></a>实测案例</h2><p>dede程序源码版本由20150522更新到20150618后，404问题解决</p><h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>个人猜测可能是因为新的主机环境版本和以前不大一样，对PHP等支持的兼容性造成的</p>]]></content>
     
@@ -184,7 +238,9 @@
       <category term="DedeCMS" scheme="http://yoursite.com/categories/DedeCMS/"/>
     
     
-      <category term="DedeCMS - 织梦" scheme="http://yoursite.com/tags/DedeCMS-%E7%BB%87%E6%A2%A6/"/>
+      <category term="DedeCMS" scheme="http://yoursite.com/tags/DedeCMS/"/>
+    
+      <category term="织梦" scheme="http://yoursite.com/tags/%E7%BB%87%E6%A2%A6/"/>
     
   </entry>
   
@@ -193,7 +249,7 @@
     <link href="http://yoursite.com/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2017/12/13/Github-Pages-Hexo搭建博客/</id>
     <published>2017-12-13T15:40:07.000Z</published>
-    <updated>2017-12-16T03:29:29.512Z</updated>
+    <updated>2017-12-16T16:13:22.428Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。</p><h2 id="Mac搭建参考网址说明"><a href="#Mac搭建参考网址说明" class="headerlink" title="Mac搭建参考网址说明"></a>Mac搭建参考网址说明</h2><p><a href="http://www.jianshu.com/p/484e4ca7edf0" target="_blank" rel="noopener">在Mac上搭建基于Hexo的个人博客网站</a><br><a href="http://fanzhenyu.me/categories/Hexo/" target="_blank" rel="noopener">Github Pages + Hexo搭建博客</a></p></blockquote><h2 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h2><h3 id="Cmd-MarkDown编辑器"><a href="#Cmd-MarkDown编辑器" class="headerlink" title="Cmd MarkDown编辑器"></a>Cmd MarkDown编辑器</h3><p><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">在线MarkDown文本编辑</a></p><h2 id="Hexo-Theme"><a href="#Hexo-Theme" class="headerlink" title="Hexo Theme"></a>Hexo Theme</h2><h3 id="yilia-https-github-com-litten-hexo-theme-yilia-issues-63"><a href="#yilia-https-github-com-litten-hexo-theme-yilia-issues-63" class="headerlink" title="[yilia] (https://github.com/litten/hexo-theme-yilia/issues/63)"></a>[yilia] (<a href="https://github.com/litten/hexo-theme-yilia/issues/63" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia/issues/63</a>)</h3><p>作者：<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a><br>第三方评论工具：<a href="https://livere.com/" target="_blank" rel="noopener">来必力</a></p>]]></content>
     
@@ -208,8 +264,14 @@
     
     </summary>
     
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
     
-      <category term="Hexo Github Pages 博客搭建" scheme="http://yoursite.com/tags/Hexo-Github-Pages-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+    
+      <category term="博客搭建" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   

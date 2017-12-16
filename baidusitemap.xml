@@ -4,6 +4,96 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/12/17/dede-web-1/</loc>
+    <lastmod>2017-12-16T16:32:26.428Z</lastmod>
+    <data>
+        <display>
+        <title>DedeCMS技术可参考网站备份</title>
+        <pubTime>2017-12-16T16:25:27.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+        <tag>参考网站</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/17/dede-email-1/</loc>
+    <lastmod>2017-12-16T16:24:45.003Z</lastmod>
+    <data>
+        <display>
+        <title>Dedecms织梦会员邮件验证与自定义表单发送邮件-官方类版-支持QQ邮箱163邮箱</title>
+        <pubTime>2017-12-16T16:11:03.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+        <tag>邮件</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/16/dede-admin-404-1/</loc>
+    <lastmod>2017-12-16T16:14:02.162Z</lastmod>
+    <data>
+        <display>
+        <title>DedeCMS网站搬家重装后，登陆后台404</title>
+        <pubTime>2017-12-15T16:00:34.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+        <tag>织梦</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2017-12-16T16:13:22.428Z</lastmod>
+    <data>
+        <display>
+        <title>Github Pages + Hexo搭建博客</title>
+        <pubTime>2017-12-13T15:40:07.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+        <tag>Github</tag>
+         
+        <tag>博客搭建</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://yoursite.com/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/12/16/dede-template-1/</loc>
     <lastmod>2017-12-16T08:57:14.179Z</lastmod>
     <data>
@@ -38,26 +128,6 @@
         <tag>织梦</tag>
          
         <tag>body</tag>
-         
-         
-           
-             
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/16/dede-admin-404-1/</loc>
-    <lastmod>2017-12-16T08:56:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>DedeCMS网站搬家重装后，登陆后台404</title>
-        <pubTime>2017-12-15T16:00:34.000Z</pubTime>
-        
-        <tag>DedeCMS - 织梦</tag>
          
          
            
@@ -126,23 +196,6 @@
              
               <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2017-12-16T03:29:29.512Z</lastmod>
-    <data>
-        <display>
-        <title>Github Pages + Hexo搭建博客</title>
-        <pubTime>2017-12-13T15:40:07.000Z</pubTime>
-        
-        <tag>Hexo Github Pages 博客搭建</tag>
-         
-         
-           
         </display>
     </data>
     </url>
