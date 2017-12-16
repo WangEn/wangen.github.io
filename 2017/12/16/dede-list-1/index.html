@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。 修改方法如下：第一步：执行SQL命令为数据库的栏目表结构添加一个字段1alter table `dede_arctype` add `typeimg` char(100) NOT NULL defaul">
+  <meta name="description" content="我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。  修改方法如下：第一步：执行SQL命令为数据库的栏目表结构添加一个字段1alter table `dede_arctype` add `typeimg` char(100) NOT NULL defau">
 <meta name="keywords" content="DedeCMS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能">
 <meta property="og:url" content="http://yoursite.com/2017/12/16/dede-list-1/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。 修改方法如下：第一步：执行SQL命令为数据库的栏目表结构添加一个字段1alter table `dede_arctype` add `typeimg` char(100) NOT NULL defaul">
+<meta property="og:description" content="我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。  修改方法如下：第一步：执行SQL命令为数据库的栏目表结构添加一个字段1alter table `dede_arctype` add `typeimg` char(100) NOT NULL defau">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-16T03:49:23.350Z">
+<meta property="og:updated_time" content="2017-12-16T03:54:48.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能">
-<meta name="twitter:description" content="我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。 修改方法如下：第一步：执行SQL命令为数据库的栏目表结构添加一个字段1alter table `dede_arctype` add `typeimg` char(100) NOT NULL defaul">
+<meta name="twitter:description" content="我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。  修改方法如下：第一步：执行SQL命令为数据库的栏目表结构添加一个字段1alter table `dede_arctype` add `typeimg` char(100) NOT NULL defau">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -187,10 +187,15 @@
       
         <blockquote>
 <p>我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。</p>
-<h2 id="修改方法如下："><a href="#修改方法如下：" class="headerlink" title="修改方法如下："></a>修改方法如下：</h2><h3 id="第一步：执行SQL命令为数据库的栏目表结构添加一个字段"><a href="#第一步：执行SQL命令为数据库的栏目表结构添加一个字段" class="headerlink" title="第一步：执行SQL命令为数据库的栏目表结构添加一个字段"></a>第一步：执行SQL命令为数据库的栏目表结构添加一个字段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table `dede_arctype` add `typeimg` char(100) NOT NULL default <span class="string">''</span>;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h3 id="第二步：修改涉及到文件："><a href="#第二步：修改涉及到文件：" class="headerlink" title="第二步：修改涉及到文件："></a>第二步：修改涉及到文件：</h3><p>-[x] dede/catalog_add.php<br>-[x] dede/catalog_edit.php<br>-[x] dede/templets/catalog_add.htm<br>-[x] dede/templets/catalog_edit.htm</p>
-<h4 id="1、打开dede-catalog-add-php"><a href="#1、打开dede-catalog-add-php" class="headerlink" title="1、打开dede/catalog_add.php"></a>1、打开dede/catalog_add.php</h4><p>查找<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$queryTemplate</span> = <span class="string">"INSERT INTO `#@__arctype`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="修改方法如下："><a href="#修改方法如下：" class="headerlink" title="修改方法如下："></a>修改方法如下：</h2><h3 id="第一步：执行SQL命令为数据库的栏目表结构添加一个字段"><a href="#第一步：执行SQL命令为数据库的栏目表结构添加一个字段" class="headerlink" title="第一步：执行SQL命令为数据库的栏目表结构添加一个字段"></a>第一步：执行SQL命令为数据库的栏目表结构添加一个字段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table `dede_arctype` add `typeimg` char(100) NOT NULL default <span class="string">''</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="第二步：修改涉及到文件："><a href="#第二步：修改涉及到文件：" class="headerlink" title="第二步：修改涉及到文件："></a>第二步：修改涉及到文件：</h3><ul>
+<li style="list-style: none"><input type="checkbox" checked> dede/catalog_add.php </li>
+<li style="list-style: none"><input type="checkbox" checked> dede/catalog_edit.php</li>
+<li style="list-style: none"><input type="checkbox" checked> dede/templets/catalog_add.htm</li>
+<li style="list-style: none"><input type="checkbox" checked> dede/templets/catalog_edit.htm<h4 id="1、打开dede-catalog-add-php"><a href="#1、打开dede-catalog-add-php" class="headerlink" title="1、打开dede/catalog_add.php"></a>1、打开dede/catalog_add.php</h4></li>
+</ul>
+<p>查找<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$queryTemplate</span> = <span class="string">"INSERT INTO `#@__arctype`</span></span><br></pre></td></tr></table></figure></p>
 <p>定义添加新变量字段typeimg,将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(reid,topid,sortrank,typename,typedir,</span><br></pre></td></tr></table></figure></p>
 <p>修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(reid,topid,sortrank,typename,typedir,typeimg,</span><br></pre></td></tr></table></figure></p>
 <p>将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'~reid~'</span>,<span class="string">'~topid~'</span>,<span class="string">'~rank~'</span>,<span class="string">'~typename~'</span>,<span class="string">'~typedir~'</span>,</span><br></pre></td></tr></table></figure></p>
@@ -341,6 +346,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/12/16/dede-list-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          dedecms织梦列表页内容页栏目高亮和当前栏目调用二级三级栏目
+        
+      </div>
+    </a>
   
   
     <a href="/2017/12/16/dede-template-1/" id="article-nav-older" class="article-nav-link-wrap">
