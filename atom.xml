@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-16T17:17:42.591Z</updated>
+  <updated>2017-12-19T16:01:57.236Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Firefox火狐浏览器模拟手机等多种浏览器</title>
+    <link href="http://yoursite.com/2017/12/19/firefox-set-1/"/>
+    <id>http://yoursite.com/2017/12/19/firefox-set-1/</id>
+    <published>2017-12-19T15:58:31.000Z</published>
+    <updated>2017-12-19T16:01:57.236Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载旧版本Firefox浏览器"><a href="#下载旧版本Firefox浏览器" class="headerlink" title="下载旧版本Firefox浏览器"></a>下载旧版本Firefox浏览器</h2><p>官方下载地址：<a href="http://ftp.mozilla.org/pub/firefox/releases/" target="_blank" rel="noopener">http://ftp.mozilla.org/pub/firefox/releases/</a><br>因为最新更新的Firefox57版本使用了新引擎，之前的绝大部分扩展组件都不再支持，所以我们要选用适合自己电脑系统的旧版本Firefox浏览器下载作为开发使用。<br>我先用的是<a href="http://ftp.mozilla.org/pub/firefox/releases/53.0/win64/" target="_blank" rel="noopener">Firefox 53.0 64位版本</a>（win10 64位系统环境下），仅作为参考</p><blockquote><p>安装完成后，打开浏览器在【工具】-【选项】-【高级】-【更新】中选择“不检查更新”</p></blockquote><h2 id="安装附加组件User-Agent-Switcher"><a href="#安装附加组件User-Agent-Switcher" class="headerlink" title="安装附加组件User Agent Switcher"></a>安装附加组件User Agent Switcher</h2><p>【工具】-【附加组件】-【搜索】User Agent Switcher，安装后重启浏览器</p><blockquote><p>点击菜单栏的【】工具】下拉，选择”iPhone3.0”选项即可在火狐浏览器模拟手机浏览器了</p></blockquote><h2 id="扩展UA列表伪装更多平台版本"><a href="#扩展UA列表伪装更多平台版本" class="headerlink" title="扩展UA列表伪装更多平台版本"></a>扩展UA列表伪装更多平台版本</h2><p>下载地址：<a href="https://techpatterns.com/forums/about304.html" target="_blank" rel="noopener">https://techpatterns.com/forums/about304.html</a><br>点击 <code>Download via Save As File Dialogue</code>将xml文件下载到本地，打开 【User Agent Switcher】组件，导入下载的xml文件后重启浏览器即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;下载旧版本Firefox浏览器&quot;&gt;&lt;a href=&quot;#下载旧版本Firefox浏览器&quot; class=&quot;headerlink&quot; title=&quot;下载旧版本Firefox浏览器&quot;&gt;&lt;/a&gt;下载旧版本Firefox浏览器&lt;/h2&gt;&lt;p&gt;官方下载地址：&lt;a href=&quot;ht
+      
+    
+    </summary>
+    
+      <category term="Browser" scheme="http://yoursite.com/categories/Browser/"/>
+    
+    
+      <category term="Firefox" scheme="http://yoursite.com/tags/Firefox/"/>
+    
+      <category term="组件" scheme="http://yoursite.com/tags/%E7%BB%84%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>制作透明背景 PNG 图片和 GIF 动图的几种方法</title>
