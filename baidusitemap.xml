@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/12/20/office-word-1/</loc>
+    <lastmod>2017-12-20T15:19:21.304Z</lastmod>
+    <data>
+        <display>
+        <title>如何优雅的在 Microsoft word中插入代码</title>
+        <pubTime>2017-12-20T15:10:14.000Z</pubTime>
+        
+        <tag>Microsoft</tag>
+         
+        <tag>Word</tag>
+         
+        <tag>Code</tag>
+         
+         
+           
+             
+              <breadCrumb title="Office" url="http://yoursite.com/categories/Office/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/12/19/firefox-set-1/</loc>
-    <lastmod>2017-12-19T16:01:57.236Z</lastmod>
+    <lastmod>2017-12-20T15:08:47.040Z</lastmod>
     <data>
         <display>
         <title>使用Firefox火狐浏览器模拟手机等多种浏览器</title>
