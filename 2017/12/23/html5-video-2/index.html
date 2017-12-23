@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>使用HTML5 &lt;video&gt; 标签-调用视频的当前播放时间值 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Video对象Video 对象是 HTML5 中的新对象。 Video 对象表示 HTML &amp;lt; video &amp;gt; 元素。 currentTime基础使用在用HTML5技术处理视频时,设置(setting)和获取(getting)时间都是非常重要的知识点，尤其是对于记录播放时间实现续播的功能。在管理视频状态时，最重要的是要了解 ```是个什么鬼,简而言之你可以通过这个属性获取当前播放到了哪">
+  <meta name="description" content="Video对象Video 对象是 HTML5 中的新对象。 Video 对象表示 HTML &amp;lt; video &amp;gt; 元素。 currentTime基础使用在用HTML5技术处理视频时,设置(setting)和获取(getting)时间都是非常重要的知识点，尤其是对于记录播放时间实现续播的功能。在管理视频状态时，最重要的是要了解 currentTime是个什么鬼,简而言之你可以通过这个属性获">
 <meta name="keywords" content="HTML5,Video,视频">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用HTML5 &lt;video&gt; 标签-调用视频的当前播放时间值">
 <meta property="og:url" content="http://yoursite.com/2017/12/23/html5-video-2/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="Video对象Video 对象是 HTML5 中的新对象。 Video 对象表示 HTML &amp;lt; video &amp;gt; 元素。 currentTime基础使用在用HTML5技术处理视频时,设置(setting)和获取(getting)时间都是非常重要的知识点，尤其是对于记录播放时间实现续播的功能。在管理视频状态时，最重要的是要了解 ```是个什么鬼,简而言之你可以通过这个属性获取当前播放到了哪">
+<meta property="og:description" content="Video对象Video 对象是 HTML5 中的新对象。 Video 对象表示 HTML &amp;lt; video &amp;gt; 元素。 currentTime基础使用在用HTML5技术处理视频时,设置(setting)和获取(getting)时间都是非常重要的知识点，尤其是对于记录播放时间实现续播的功能。在管理视频状态时，最重要的是要了解 currentTime是个什么鬼,简而言之你可以通过这个属性获">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-23T15:50:37.446Z">
+<meta property="og:updated_time" content="2017-12-23T15:55:26.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用HTML5 &lt;video&gt; 标签-调用视频的当前播放时间值">
-<meta name="twitter:description" content="Video对象Video 对象是 HTML5 中的新对象。 Video 对象表示 HTML &amp;lt; video &amp;gt; 元素。 currentTime基础使用在用HTML5技术处理视频时,设置(setting)和获取(getting)时间都是非常重要的知识点，尤其是对于记录播放时间实现续播的功能。在管理视频状态时，最重要的是要了解 ```是个什么鬼,简而言之你可以通过这个属性获取当前播放到了哪">
+<meta name="twitter:description" content="Video对象Video 对象是 HTML5 中的新对象。 Video 对象表示 HTML &amp;lt; video &amp;gt; 元素。 currentTime基础使用在用HTML5技术处理视频时,设置(setting)和获取(getting)时间都是非常重要的知识点，尤其是对于记录播放时间实现续播的功能。在管理视频状态时，最重要的是要了解 currentTime是个什么鬼,简而言之你可以通过这个属性获">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -197,7 +197,8 @@ var _hmt = _hmt || [];
       
         <h3 id="Video对象"><a href="#Video对象" class="headerlink" title="Video对象"></a>Video对象</h3><p>Video 对象是 HTML5 中的新对象。</p>
 <p>Video 对象表示 HTML &lt; video &gt; 元素。</p>
-<h3 id="currentTime基础使用"><a href="#currentTime基础使用" class="headerlink" title="currentTime基础使用"></a>currentTime基础使用</h3><p>在用HTML5技术处理视频时,设置(setting)和获取(getting)时间都是非常重要的知识点，尤其是对于记录播放时间实现续播的功能。在管理视频状态时，最重要的是要了解 <figure class="highlight plain"><figcaption><span>```是个什么鬼,简而言之你可以通过这个属性获取当前播放到了哪个时间点（比如当前播放到了2分30秒，当然``` currentTime ```的单位是``` 秒 ```(seconds)，所以我们获取到的值是``` 150 ```）.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">// https://www.youtube.com/watch?v=Cwkej79U3ek</span><br><span class="line">console.log(video.currentTime);  // 25.431747</span><br></pre></td></tr></table></figure></p>
+<h3 id="currentTime基础使用"><a href="#currentTime基础使用" class="headerlink" title="currentTime基础使用"></a>currentTime基础使用</h3><p>在用HTML5技术处理视频时,设置(setting)和获取(getting)时间都是非常重要的知识点，尤其是对于记录播放时间实现续播的功能。在管理视频状态时，最重要的是要了解 <code>currentTime</code>是个什么鬼,简而言之你可以通过这个属性获取当前播放到了哪个时间点（比如当前播放到了2分30秒，当然<code>currentTime</code> 的单位是 <code>秒</code> (seconds)，所以我们获取到的值是 <code>150</code>）.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// https://www.youtube.com/watch?v=Cwkej79U3ek</span><br><span class="line">console.log(video.currentTime);  // 25.431747</span><br></pre></td></tr></table></figure>
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>返回(getter) currentTime 属性(数字值，表示当前播放的时间，以秒计)：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">videoObject.currentTime</span><br></pre></td></tr></table></figure>
 <p>设置 currentTime 属性：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">videoObject.currentTime=seconds</span><br></pre></td></tr></table></figure></p>
@@ -208,7 +209,8 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>注意：Internet Explorer 8 或更早的浏览器不支持该属性。</p>
 </blockquote>
-<figure class="highlight plain"><figcaption><span>``` 既是 getter 又是 setter 属性, 所以可以直接设置 currentTime 值来控制播放进度:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">video.currentTime = 0; // Restart,初始化设置当前播放到了0秒</span><br></pre></td></tr></table></figure>
+<p><code>currentTime</code> 既是 getter 又是 setter 属性, 所以可以直接设置 currentTime 值来控制播放进度:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video.currentTime = 0; // Restart,初始化设置当前播放到了0秒</span><br></pre></td></tr></table></figure>
 <h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><p>API 接口很容易理解,而且是自解释的(self-explanatory)。你仍然需要处理“second”来指定时间,包括内在实际的和外在显示的(both inward and outward),但是秒(second)这个单位和你预期的一样公平,所以说这个API设计是非常巧妙的。</p>
 <blockquote>
 <p>使用参考：小米空气净化器 <a href="http://www.mi.com/air/" target="_blank" rel="noopener">http://www.mi.com/air/</a> (页面已撤销)</p>
