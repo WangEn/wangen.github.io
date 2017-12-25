@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-23T15:55:26.489Z</updated>
+  <updated>2017-12-25T15:02:32.206Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jquery无刷新添加和删除input输入框 增加减少input框</title>
+    <link href="http://yoursite.com/2017/12/25/form-input-1/"/>
+    <id>http://yoursite.com/2017/12/25/form-input-1/</id>
+    <published>2017-12-25T14:48:11.000Z</published>
+    <updated>2017-12-25T15:02:32.206Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="演示说明"><a href="#演示说明" class="headerlink" title="演示说明"></a>演示说明</h3><p><img src="http://www.freejs.net/demo/278/demo.jpg" alt="form-input-1"><br><a href="http://www.freejs.net/demo/278/index.html" target="_blank" rel="noopener">点击查看演示</a></p><h3 id="主要实现代码"><a href="#主要实现代码" class="headerlink" title="主要实现代码"></a>主要实现代码</h3><p>HTML代码部分<br>主要展示一个input输入框，一个点击事件的按钮；删除时判断至少存在一个元素，增加时可以限制最大允许生成的input个数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;span&gt;&lt;a href=<span class="string">"#"</span> id=<span class="string">"AddMoreFileBox"</span> class=<span class="string">"btn btn-info"</span>&gt;添加更多的input输入框&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;  </span><br><span class="line">&lt;div id=<span class="string">"InputsWrapper"</span>&gt;  </span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"mytext[]"</span> id=<span class="string">"field_1"</span> value=<span class="string">"Text 1"</span>/&gt;</span><br><span class="line">        &lt;a href=<span class="string">"#"</span> class=<span class="string">"removeclass"</span>&gt;×&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;  </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p><p>JavaScript代码部分<br>首先引入jQuery文件，调用代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;  </span><br><span class="line">$(document).ready(<span class="function"><span class="title">function</span></span>() &#123;  </span><br><span class="line">  </span><br><span class="line">    var MaxInputs       = 8; //maximum input boxes allowed  </span><br><span class="line">    var InputsWrapper   = $(<span class="string">"#InputsWrapper"</span>); //Input boxes wrapper ID  </span><br><span class="line">    var AddButton       = $(<span class="string">"#AddMoreFileBox"</span>); //Add button ID  </span><br><span class="line">  </span><br><span class="line">    var x = InputsWrapper.length; //initlal text box count  </span><br><span class="line">    var FieldCount=1; //to keep track of text box added  </span><br><span class="line">  </span><br><span class="line">    $(AddButton).click(<span class="keyword">function</span> (e)  //on add input button click  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(x &lt;= MaxInputs) //max input box allowed  </span><br><span class="line">        &#123;  </span><br><span class="line">            FieldCount++; //text box added increment  </span><br><span class="line">            //add input box  </span><br><span class="line">            $(InputsWrapper).append(<span class="string">'&lt;div&gt;&lt;input type="text" name="mytext['</span>+FieldCount+<span class="string">']" id="field_'</span>+ FieldCount +<span class="string">'" value="Text '</span>+ FieldCount +<span class="string">'"/&gt;&lt;a href="#" class="removeclass"&gt;×&lt;/a&gt;&lt;/div&gt;'</span>);  </span><br><span class="line">            x++; //text box increment  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;);  </span><br><span class="line">  </span><br><span class="line">    $(<span class="string">"body"</span>).on(<span class="string">"click"</span>,<span class="string">".removeclass"</span>, <span class="keyword">function</span>(e)&#123; //user click on remove text  </span><br><span class="line">        <span class="keyword">if</span>( x &gt; 1 ) &#123;  </span><br><span class="line">                $(this).parent(<span class="string">'div'</span>).remove(); //remove text box  </span><br><span class="line">                x--; //decrement textbox  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;)   </span><br><span class="line">  </span><br><span class="line">&#125;);  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p><h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><blockquote><p>原文地址:<a href="http://www.freejs.net/article_biaodan_278.html" target="_blank" rel="noopener">http://www.freejs.net/article_biaodan_278.html</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;演示说明&quot;&gt;&lt;a href=&quot;#演示说明&quot; class=&quot;headerlink&quot; title=&quot;演示说明&quot;&gt;&lt;/a&gt;演示说明&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://www.freejs.net/demo/278/demo.jpg&quot; alt=&quot;form-i
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>使用HTML5 &lt;video&gt; 标签-调用视频的当前播放时间值</title>

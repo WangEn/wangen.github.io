@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Warn&amp;Christina的博客</title>
+  <title>jquery无刷新添加和删除input输入框 增加减少input框 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="供职前端，普通博客一只。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Warn&amp;Christina的博客">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="演示说明点击查看演示 主要实现代码HTML代码部分主要展示一个input输入框，一个点击事件的按钮；删除时判断至少存在一个元素，增加时可以限制最大允许生成的input个数1234567&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;AddMoreFileBox&quot; class=&quot;btn btn-info&quot;&amp;gt;添加更多的input输入框&amp;lt;/a&amp;gt;&amp;lt;/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery无刷新添加和删除input输入框 增加减少input框">
+<meta property="og:url" content="http://yoursite.com/2017/12/25/form-input-1/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="供职前端，普通博客一只。">
+<meta property="og:description" content="演示说明点击查看演示 主要实现代码HTML代码部分主要展示一个input输入框，一个点击事件的按钮；删除时判断至少存在一个元素，增加时可以限制最大允许生成的input个数1234567&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;AddMoreFileBox&quot; class=&quot;btn btn-info&quot;&amp;gt;添加更多的input输入框&amp;lt;/a&amp;gt;&amp;lt;/">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.freejs.net/demo/278/demo.jpg">
+<meta property="og:updated_time" content="2017-12-25T15:02:32.206Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Warn&amp;Christina的博客">
-<meta name="twitter:description" content="供职前端，普通博客一只。">
+<meta name="twitter:title" content="jquery无刷新添加和删除input输入框 增加减少input框">
+<meta name="twitter:description" content="演示说明点击查看演示 主要实现代码HTML代码部分主要展示一个input输入框，一个点击事件的按钮；删除时判断至少存在一个元素，增加时可以限制最大允许生成的input个数1234567&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;&amp;lt;a href=&quot;#&quot; id=&quot;AddMoreFileBox&quot; class=&quot;btn btn-info&quot;&amp;gt;添加更多的input输入框&amp;lt;/a&amp;gt;&amp;lt;/">
+<meta name="twitter:image" content="http://www.freejs.net/demo/278/demo.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -173,185 +176,143 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-dede-template-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-form-input-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/16/dede-template-1/">DedeCMS网站批量更新所有目录模板文件</a>
+    <h1 class="article-title" itemprop="name">
+      jquery无刷新添加和删除input输入框 增加减少input框
     </h1>
   
 
         
-        <a href="/2017/12/16/dede-template-1/" class="archive-article-date">
-  	<time datetime="2017-12-15T16:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+        <a href="/2017/12/25/form-input-1/" class="archive-article-date">
+  	<time datetime="2017-12-25T14:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地</p>
-</blockquote>
-<h2 id="修改栏目频道页"><a href="#修改栏目频道页" class="headerlink" title="修改栏目频道页"></a>修改栏目频道页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> tempindex = replace(tempindex,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/index_article.htm"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="修改栏目列表页"><a href="#修改栏目列表页" class="headerlink" title="修改栏目列表页"></a>修改栏目列表页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="修改栏目内容页"><a href="#修改栏目内容页" class="headerlink" title="修改栏目内容页"></a>修改栏目内容页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> temparticle = replace(temparticle,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/article_article.htm"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="修改指定ID栏目的列表页"><a href="#修改指定ID栏目的列表页" class="headerlink" title="修改指定ID栏目的列表页"></a>修改指定ID栏目的列表页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>) <span class="built_in">where</span> id <span class="keyword">in</span>(1,2,3,4,5,6)</span><br></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>以上所有命令都通用，在前三种后面加上where id in(ID1,ID2,ID3,ID4,ID5,……)，里面写入你打算修改的频道/栏目/文章ID，可批量修改指定ID的模板文件。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Template</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/16/dede-template-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dede-article-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/16/dede-article-2/">DedeCMS织梦首页调用指定一篇文章body内容的方法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/16/dede-article-2/" class="archive-article-date">
-  	<time datetime="2017-12-15T16:16:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。</p>
-</blockquote>
-<p>分享给大家供大家参考。具体实现方法如下：</p>
-<h2 id="直接调用（包含样式等代码）"><a href="#直接调用（包含样式等代码）" class="headerlink" title="直接调用（包含样式等代码）"></a>直接调用（包含样式等代码）</h2><p>代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(@me,330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="过滤调用（只调用纯文本内容）"><a href="#过滤调用（只调用纯文本内容）" class="headerlink" title="过滤调用（只调用纯文本内容）"></a>过滤调用（只调用纯文本内容）</h2><p>如果是要过滤掉文本中的html，使用如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(html2text(@me),330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>idlist 是要调用文章的id, channelid 是这个内容模型id,  addfields 是要调用附加表里面的字段.</p>
-<blockquote>
-<p>本文参考地址<a href="http://www.xiuzhanwang.com/dedecms_jq/765.html" target="_blank" rel="noopener">来源</a></p>
+        <h3 id="演示说明"><a href="#演示说明" class="headerlink" title="演示说明"></a>演示说明</h3><p><img src="http://www.freejs.net/demo/278/demo.jpg" alt="form-input-1"><br><a href="http://www.freejs.net/demo/278/index.html" target="_blank" rel="noopener">点击查看演示</a></p>
+<h3 id="主要实现代码"><a href="#主要实现代码" class="headerlink" title="主要实现代码"></a>主要实现代码</h3><p>HTML代码部分<br>主要展示一个input输入框，一个点击事件的按钮；删除时判断至少存在一个元素，增加时可以限制最大允许生成的input个数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;span&gt;&lt;a href=<span class="string">"#"</span> id=<span class="string">"AddMoreFileBox"</span> class=<span class="string">"btn btn-info"</span>&gt;添加更多的input输入框&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;  </span><br><span class="line">&lt;div id=<span class="string">"InputsWrapper"</span>&gt;  </span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"mytext[]"</span> id=<span class="string">"field_1"</span> value=<span class="string">"Text 1"</span>/&gt;</span><br><span class="line">        &lt;a href=<span class="string">"#"</span> class=<span class="string">"removeclass"</span>&gt;×&lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;  </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>JavaScript代码部分<br>首先引入jQuery文件，调用代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;  </span><br><span class="line">$(document).ready(<span class="function"><span class="title">function</span></span>() &#123;  </span><br><span class="line">  </span><br><span class="line">    var MaxInputs       = 8; //maximum input boxes allowed  </span><br><span class="line">    var InputsWrapper   = $(<span class="string">"#InputsWrapper"</span>); //Input boxes wrapper ID  </span><br><span class="line">    var AddButton       = $(<span class="string">"#AddMoreFileBox"</span>); //Add button ID  </span><br><span class="line">  </span><br><span class="line">    var x = InputsWrapper.length; //initlal text box count  </span><br><span class="line">    var FieldCount=1; //to keep track of text box added  </span><br><span class="line">  </span><br><span class="line">    $(AddButton).click(<span class="keyword">function</span> (e)  //on add input button click  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span>(x &lt;= MaxInputs) //max input box allowed  </span><br><span class="line">        &#123;  </span><br><span class="line">            FieldCount++; //text box added increment  </span><br><span class="line">            //add input box  </span><br><span class="line">            $(InputsWrapper).append(<span class="string">'&lt;div&gt;&lt;input type="text" name="mytext['</span>+FieldCount+<span class="string">']" id="field_'</span>+ FieldCount +<span class="string">'" value="Text '</span>+ FieldCount +<span class="string">'"/&gt;&lt;a href="#" class="removeclass"&gt;×&lt;/a&gt;&lt;/div&gt;'</span>);  </span><br><span class="line">            x++; //text box increment  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;);  </span><br><span class="line">  </span><br><span class="line">    $(<span class="string">"body"</span>).on(<span class="string">"click"</span>,<span class="string">".removeclass"</span>, <span class="keyword">function</span>(e)&#123; //user click on remove text  </span><br><span class="line">        <span class="keyword">if</span>( x &gt; 1 ) &#123;  </span><br><span class="line">                $(this).parent(<span class="string">'div'</span>).remove(); //remove text box  </span><br><span class="line">                x--; //decrement textbox  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;)   </span><br><span class="line">  </span><br><span class="line">&#125;);  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><blockquote>
+<p>原文地址:<a href="http://www.freejs.net/article_biaodan_278.html" target="_blank" rel="noopener">http://www.freejs.net/article_biaodan_278.html</a></p>
 </blockquote>
 
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">织梦</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">body</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/16/dede-article-2/">展开全文 >></a>
-        </p>
       
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/25/form-input-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/23/html5-video-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用HTML5 &lt;video&gt; 标签-调用视频的当前播放时间值</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -371,382 +332,30 @@ var _hmt = _hmt || [];
 
 
 
-
-  
-    <article id="post-dede-article-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/16/dede-article-1/">Dedecms判断文章是否有缩略图没有就不显示默认图片</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/16/dede-article-1/" class="archive-article-date">
-  	<time datetime="2017-12-15T16:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="调用参考代码："><a href="#调用参考代码：" class="headerlink" title="调用参考代码："></a>调用参考代码：</h2><p>以下代码可直接复制使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[field:array runphp=<span class="string">'yes'</span>]  </span><br><span class="line">@me=(strpos(@me[<span class="string">'litpic'</span>],<span class="string">'defaultpic'</span>)?<span class="string">''</span>:<span class="string">"&lt;a href='&#123;@me['arcurl']&#125;' alt='&#123;@me['title']&#125;'&gt;&lt;img src='&#123;@me['litpic']&#125;' alt='&#123;@me['title']&#125;'/&gt;&lt;/a&gt;"</span>);  </span><br><span class="line">[/field:array]</span><br></pre></td></tr></table></figure></p>
-<p>以上代码意思是，如果没有缩略图就显示为空白，有则显示</p>
-<h2 id="编译之后的代码如下："><a href="#编译之后的代码如下：" class="headerlink" title="编译之后的代码如下："></a>编译之后的代码如下：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">'&#123;@me['</span>arcurl<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>&gt; &lt;img src=<span class="string">'&#123;@me['</span>litpic<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>/&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>如果你想自定义没有缩略图的样式，则修改’defaultpic’)?’’问号后面的单引号里面的内容。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">缩略图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/16/dede-article-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dede-admin-404-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/16/dede-admin-404-1/">DedeCMS网站搬家重装后，登陆后台404</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/16/dede-admin-404-1/" class="archive-article-date">
-  	<time datetime="2017-12-15T16:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="主要现象"><a href="#主要现象" class="headerlink" title="主要现象"></a>主要现象</h2><p>DedeCMS网站搬家重装完成后，正常登陆后台提示404错误</p>
-<h2 id="测试分析"><a href="#测试分析" class="headerlink" title="测试分析"></a>测试分析</h2><p>测试重新安装dede目录无效；<br>测试修改目录权限无效；<br>在本地搭建正常打开</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在本地搭建后，对dede程序升级备份，重新打包上传；测试可以正常安装打开</p>
-<h2 id="实测案例"><a href="#实测案例" class="headerlink" title="实测案例"></a>实测案例</h2><p>dede程序源码版本由20150522更新到20150618后，404问题解决</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>个人猜测可能是因为新的主机环境版本和以前不大一样，对PHP等支持的兼容性造成的</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">织梦</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/16/dede-admin-404-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Github-Pages-Hexo搭建博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/13/Github-Pages-Hexo搭建博客/">Github Pages + Hexo搭建博客</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/13/Github-Pages-Hexo搭建博客/" class="archive-article-date">
-  	<time datetime="2017-12-13T15:40:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。</p>
-<h2 id="Mac搭建参考网址说明"><a href="#Mac搭建参考网址说明" class="headerlink" title="Mac搭建参考网址说明"></a>Mac搭建参考网址说明</h2><p><a href="http://www.jianshu.com/p/484e4ca7edf0" target="_blank" rel="noopener">在Mac上搭建基于Hexo的个人博客网站</a><br><a href="http://fanzhenyu.me/categories/Hexo/" target="_blank" rel="noopener">Github Pages + Hexo搭建博客</a></p>
-</blockquote>
-<h2 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h2><h3 id="Cmd-MarkDown编辑器"><a href="#Cmd-MarkDown编辑器" class="headerlink" title="Cmd MarkDown编辑器"></a>Cmd MarkDown编辑器</h3><p><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">在线MarkDown文本编辑</a></p>
-<h2 id="Hexo-Theme"><a href="#Hexo-Theme" class="headerlink" title="Hexo Theme"></a>Hexo Theme</h2><h3 id="yilia-https-github-com-litten-hexo-theme-yilia-issues-63"><a href="#yilia-https-github-com-litten-hexo-theme-yilia-issues-63" class="headerlink" title="[yilia] (https://github.com/litten/hexo-theme-yilia/issues/63)"></a>[yilia] (<a href="https://github.com/litten/hexo-theme-yilia/issues/63" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia/issues/63</a>)</h3><p>作者：<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a><br>第三方评论工具：<a href="https://livere.com/" target="_blank" rel="noopener">来必力</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Hexo//" class="article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/13/Github-Pages-Hexo搭建博客/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/13/hello-world/">第一篇博客，记录转载学习随笔</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/13/hello-world/" class="archive-article-date">
-  	<time datetime="2017-12-13T14:40:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>默认生成的Hexo第一篇博客，在我开始搭建的时候，Python开始进入中学课本……<br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-</blockquote>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<h3 id="新建一个页面目录"><a href="#新建一个页面目录" class="headerlink" title="新建一个页面目录"></a>新建一个页面目录</h3><p>在命令行里面输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page <span class="string">"about"</span></span><br></pre></td></tr></table></figure></p>
-<p>然后你会发现source里面多了个目录about，里面有个index.md。其实你也可以手动建立。页面的格式和文章一样。<br>接着把链接加上，themes/<theme_name>/_config.yml里面的menu一项，添加一行About: /about。<br>完事。来源：<a href="https://segmentfault.com/q/1010000000618915" target="_blank" rel="noopener">Hexo菜单中添加分类和页面</a> 还有<a href="https://www.zhihu.com/question/33324071" target="_blank" rel="noopener">知乎</a></theme_name></p>
-<p>###<a href="http://www.jianshu.com/p/e6e54389c88f" target="_blank" rel="noopener">Hexo主题中实现多级分类</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/13/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2017/12/25/form-input-1/",
+  owner: 'WangEn',
+  repo: 'wangen.github.io',
+  oauth: {
+    client_id: 'db735e989798d278af48',
+    client_secret: '3da5c63978d7547aeebb8c963224d1c4c752829e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -769,8 +378,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
