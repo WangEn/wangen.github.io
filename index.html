@@ -175,6 +175,117 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-form-input-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/26/form-input-2/">结合layui实现无刷新添加和删除input输入框，自动生成不同name值</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/26/form-input-2/" class="archive-article-date">
+  	<time datetime="2017-12-26T15:47:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前情回顾"><a href="#前情回顾" class="headerlink" title="前情回顾"></a>前情回顾</h3><blockquote>
+<p>随意删除添加后保存到服务端的input，再次编辑时（先调用服务端保存的值）添加新的input输入框name值可能会生成重复，提交保存时，name值重复的input元素会覆盖已有元素。</p>
+</blockquote>
+<p>昨天借鉴<a href="/2017/12/25/form-input-1/">jquery无刷新添加和删除input输入框 增加减少input框</a> 的思路实现了jQuery无刷新随意添加和删除input输入框，但是在使用layui结合ajax提交时，发现随意添加/删除后会生成重复name值的input输入框（比如name=”edu_bg[5]” / name=”edu_bg[6]” / name=”edu_bg[5]” 三个输入框）进行编辑提交，提交后只保存了后两个值，因为layui表单中name不支持数组的形式，相同的name也只会提交最后一个，layui社区也有朋友分享出解决方法：<a href="http://fly.layui.com/jie/9166/" target="_blank" rel="noopener">表单input不支持数组方式询问+解决办法</a>，可以借鉴下。</p>
+<h3 id="思路整理"><a href="#思路整理" class="headerlink" title="思路整理"></a>思路整理</h3><blockquote>
+<p>综合了一大堆搜索及意见，也不想改动框架的代码，决定采用以下方式：</p>
+</blockquote>
+<p>1、获取已经存在的子元素input的长度及name值，将获取的name值推入一个数组arr1中；<br>2、定义初始值key=0,定义插入函数insertInput()，key++循环；<br>3、当edu_bg[key]不在数组arr1中时，创建元素并append()推入父元素内完成，否则，重新执行insertInput()函数。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="HTML代码"><a href="#HTML代码" class="headerlink" title="HTML代码"></a>HTML代码</h4><p>主要是定义几个已有的包含input的子元素（模拟从服务端获取的已有元素），然后定义一个包含点击事件的按钮元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"layui-form-item yf-input-del"</span>&gt;</span><br><span class="line">    &lt;label class=<span class="string">"layui-form-label"</span>&gt;教育背景&lt;/label&gt;</span><br><span class="line">    &lt;div class=<span class="string">"layui-input-block"</span> id=<span class="string">"edu_bg"</span>&gt;</span><br><span class="line">        <span class="comment">#//测试随机创建几个连续和不连续的子元素，真实场景下直接循环出你已有的子元素即可</span></span><br><span class="line">        &lt;div class=<span class="string">"layui-input-inline"</span>&gt;</span><br><span class="line">            //input文本框</span><br><span class="line">            &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"edu_bg[5]"</span> value=<span class="string">""</span> autocomplete=<span class="string">"off"</span> placeholder=<span class="string">"请输入"</span> lay-verify=<span class="string">"required"</span> class=<span class="string">"layui-input"</span>&gt;</span><br><span class="line">            //删除按钮</span><br><span class="line">            &lt;i class=<span class="string">"layui-icon deleteEduBg"</span>&gt;&amp;<span class="comment">#x1006;&lt;/i&gt;</span></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=<span class="string">"layui-input-inline"</span>&gt;</span><br><span class="line">            &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"edu_bg[6]"</span> value=<span class="string">""</span> autocomplete=<span class="string">"off"</span> placeholder=<span class="string">"请输入"</span> lay-verify=<span class="string">"required"</span> class=<span class="string">"layui-input"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"layui-icon deleteEduBg"</span>&gt;&amp;<span class="comment">#x1006;&lt;/i&gt;</span></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=<span class="string">"layui-input-inline"</span>&gt;</span><br><span class="line">            &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"edu_bg[9]"</span> value=<span class="string">""</span> autocomplete=<span class="string">"off"</span> placeholder=<span class="string">"请输入"</span> lay-verify=<span class="string">"required"</span> class=<span class="string">"layui-input"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"layui-icon deleteEduBg"</span>&gt;&amp;<span class="comment">#x1006;&lt;/i&gt;</span></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"layui-form-item"</span> id=<span class="string">"edu_bg_add"</span>&gt;</span><br><span class="line">    &lt;label class=<span class="string">"layui-form-label"</span>&gt;&lt;/label&gt;</span><br><span class="line">    &lt;div class=<span class="string">"layui-input-inline"</span>&gt;</span><br><span class="line">        &lt;a href=<span class="string">"javascript:;"</span> class=<span class="string">"layui-btn site-demo-active"</span> onclick=<span class="string">"insertInput()"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"layui-icon"</span>&gt;&amp;<span class="comment">#xe654;&lt;/i&gt; 新增1条教育背景</span></span><br><span class="line">        &lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h4><p>定义一个插入函数insertInput()和一个点击删除函数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//引入layui.js</span><br><span class="line">&lt;script src=<span class="string">"/layui/dist/layui.all.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var $ = layui.jquery; //引用layui内置的jQuery，也可以自己调用</span><br><span class="line">    var key1=$(<span class="string">"#edu_bg"</span>).children(<span class="string">".layui-input-inline"</span>).length;</span><br><span class="line">    var FieldCount1=0;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">insertInput</span></span>() &#123;</span><br><span class="line">        //检索已有的input包含的name值</span><br><span class="line">        var arr1=[];</span><br><span class="line">        FieldCount1++;</span><br><span class="line">        $(<span class="string">"#edu_bg input[type='text']"</span>).each(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            arr1.push($(this).attr(<span class="string">'name'</span>));</span><br><span class="line">        &#125;);</span><br><span class="line">        //console.log(arr1);</span><br><span class="line">        //所有name加入数组arr1</span><br><span class="line">        var div1 = $(<span class="string">"&lt;div&gt;&lt;/div&gt;"</span>).addClass(<span class="string">"layui-input-inline"</span>);</span><br><span class="line">        //console.log(edu_bg[FieldCount1]);</span><br><span class="line">        var newCount1=<span class="string">"edu_bg["</span>+FieldCount1+<span class="string">"]"</span>;</span><br><span class="line">        //判断新生成的name值是否在已存在的数组中</span><br><span class="line">        <span class="keyword">if</span>($.inArray(newCount1, arr1) === -1)&#123;</span><br><span class="line">            FieldCount1=FieldCount1;</span><br><span class="line">            var input1 = <span class="string">"&lt;input type='text' name='edu_bg["</span>+FieldCount1 +<span class="string">"]' value='' autocomplete='off' placeholder='请输入' lay-verify='required' class='layui-input'&gt;"</span></span><br><span class="line">            var icon1 = <span class="string">"&lt;i class='layui-icon deleteEduBg' onclick='deleteElement(this)'&gt;&amp;#x1006;&lt;/i&gt;"</span>;</span><br><span class="line">            div1.append(input1, icon1);</span><br><span class="line">            $(<span class="string">"#edu_bg"</span>).append(div1);  // 追加新元素</span><br><span class="line">            key1++;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            FieldCount1++;</span><br><span class="line">            insertInput();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $(<span class="string">"body"</span>).on(<span class="string">"click"</span>,<span class="string">".deleteEduBg"</span>, <span class="keyword">function</span>(e)&#123; //user click on remove text  </span><br><span class="line">        <span class="keyword">if</span>( key1 &gt; 1 ) &#123;  </span><br><span class="line">            $(this).parent(<span class="string">'div'</span>).remove(); //移除对应的父级div元素  </span><br><span class="line">            key1--; //decrement textbox  </span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            alert(<span class="string">"请至少填写1条教育背景信息！"</span>);</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;) </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="补充CSS样式"><a href="#补充CSS样式" class="headerlink" title="补充CSS样式"></a>补充CSS样式</h4><p>这部分没必要，自己来就行，只是为了自己测试时样式顺眼一丢丢。。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"/layui/dist/css/layui.css"</span>&gt;</span><br><span class="line">&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">    /* 新增删除图标的样式 */</span><br><span class="line">    .yf-input-del .layui-input-inline .layui-input &#123;</span><br><span class="line">        padding-right: 20px;</span><br><span class="line">        margin-bottom: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">    .yf-input-del .layui-input-inline i.layui-icon &#123;</span><br><span class="line">        position: absolute;</span><br><span class="line">        right: 2px;</span><br><span class="line">        top: 8px;</span><br><span class="line">        color: <span class="comment">#999999;</span></span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>整个实现的过程是自己摸索和反复测试的过程，代码中也还有不少需要优化的地方，也可能会在以后的使用中继续优化整改，抛砖引玉，仅供大家参考。</p>
+<blockquote>
+<p>layui官网文档 <a href="http://www.layui.com/doc/" target="_blank" rel="noopener">http://www.layui.com/doc/</a></p>
+<p>jQuery API中文文档 <a href="http://www.css88.com/jqapi-1.9/" target="_blank" rel="noopener">http://www.css88.com/jqapi-1.9/</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">form</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">input</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">layui</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/form//" class="article-tag-list-link color5">form</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/26/form-input-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-form-input-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -209,7 +320,37 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">form</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">input</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/form//" class="article-tag-list-link color5">form</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -459,11 +600,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Video.js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">视频</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">视频</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Video.js</a>
         		</li>
       		
 		</ul>
@@ -1133,127 +1274,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-dede-list-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/16/dede-list-1/">DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/16/dede-list-1/" class="archive-article-date">
-  	<time datetime="2017-12-16T03:28:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>我们用织梦制作时，点击进入每个栏目时，都会有“关于我们”，“新闻中心”，“产品展示”等提示性的图片，单独调用这些图片比较麻烦，我们可以修改程序，实现每个栏目都有上传栏目缩略图的功能，就方便多了。</p>
-</blockquote>
-<h2 id="修改方法如下："><a href="#修改方法如下：" class="headerlink" title="修改方法如下："></a>修改方法如下：</h2><h3 id="第一步：执行SQL命令为数据库的栏目表结构添加一个字段"><a href="#第一步：执行SQL命令为数据库的栏目表结构添加一个字段" class="headerlink" title="第一步：执行SQL命令为数据库的栏目表结构添加一个字段"></a>第一步：执行SQL命令为数据库的栏目表结构添加一个字段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table `dede_arctype` add `typeimg` char(100) NOT NULL default <span class="string">''</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="第二步：修改涉及到文件："><a href="#第二步：修改涉及到文件：" class="headerlink" title="第二步：修改涉及到文件："></a>第二步：修改涉及到文件：</h3><ul>
-<li style="list-style: none"><input type="checkbox" checked> dede/catalog_add.php </li>
-<li style="list-style: none"><input type="checkbox" checked> dede/catalog_edit.php</li>
-<li style="list-style: none"><input type="checkbox" checked> dede/templets/catalog_add.htm</li>
-<li style="list-style: none"><input type="checkbox" checked> dede/templets/catalog_edit.htm<h4 id="1、打开dede-catalog-add-php"><a href="#1、打开dede-catalog-add-php" class="headerlink" title="1、打开dede/catalog_add.php"></a>1、打开dede/catalog_add.php</h4></li>
-</ul>
-<p>查找<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$queryTemplate</span> = <span class="string">"INSERT INTO `#@__arctype`</span></span><br></pre></td></tr></table></figure></p>
-<p>定义添加新变量字段typeimg,将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(reid,topid,sortrank,typename,typedir,</span><br></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(reid,topid,sortrank,typename,typedir,typeimg,</span><br></pre></td></tr></table></figure></p>
-<p>将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'~reid~'</span>,<span class="string">'~topid~'</span>,<span class="string">'~rank~'</span>,<span class="string">'~typename~'</span>,<span class="string">'~typedir~'</span>,</span><br></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'~reid~'</span>,<span class="string">'~topid~'</span>,<span class="string">'~rank~'</span>,<span class="string">'~typename~'</span>,<span class="string">'~typedir~'</span>,<span class="string">'~typeimg~'</span>,</span><br></pre></td></tr></table></figure></p>
-<h4 id="2、打开dede-catalog-edit-php"><a href="#2、打开dede-catalog-edit-php" class="headerlink" title="2、打开dede/catalog_edit.php"></a>2、打开dede/catalog_edit.php</h4><p>查找(一般是Ctrl+F快捷键)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$upquery</span> = <span class="string">"Update</span></span><br></pre></td></tr></table></figure></p>
-<p>在其下面新加一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeimg=<span class="string">'$typeimg'</span>,</span><br></pre></td></tr></table></figure></p>
-<h4 id="3、打开dede-templets-catalog-add-htm"><a href="#3、打开dede-templets-catalog-add-htm" class="headerlink" title="3、打开dede/templets/catalog_add.htm"></a>3、打开dede/templets/catalog_add.htm</h4><p>修改后台的页面模板，查找<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">   &lt;td height=<span class="string">"26"</span> style=<span class="string">"padding-left:10px;"</span>&gt;列表命名规则：&lt;/td&gt;</span><br><span class="line">   &lt;td&gt;</span><br><span class="line">      &lt;input name=<span class="string">"namerule2"</span> <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"namerule2"</span> value=<span class="string">"&#123;typedir&#125;/list_&#123;tid&#125;_&#123;page&#125;.html"</span>  class=<span class="string">"pubinputs"</span>  style=<span class="string">"width:250px"</span> /&gt;</span><br><span class="line">      &lt;img src=<span class="string">"images/help.gif"</span> alt=<span class="string">"帮助"</span> width=<span class="string">"16"</span> height=<span class="string">"16"</span> border=<span class="string">"0"</span> style=<span class="string">"cursor:pointer"</span> onClick=<span class="string">"ShowHide('helpvar3')"</span>/&gt;&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure></p>
-<p>在其下面增加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td height=<span class="string">"65"</span> style=<span class="string">"padding-left:10px;"</span>&gt;栏目图片：&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;</span><br><span class="line">     &lt;input name=<span class="string">"typeimg"</span> <span class="built_in">type</span>=<span class="string">"text"</span> style=<span class="string">"width:250px"</span> id=<span class="string">"typeimg"</span> class=<span class="string">"alltxt"</span> value=<span class="string">""</span> /&gt;</span><br><span class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"set9"</span> value=<span class="string">"浏览... "</span>class=<span class="string">"coolbg np"</span> style=<span class="string">"width:60px"</span> onClick=<span class="string">"SelectImage('form1.typeimg','');"</span> /&gt;</span><br><span class="line">   &lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure></p>
-<p>并在文件的<head></head>里面增加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">'javascript'</span> src=<span class="string">"js/main.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="4、打开dede-templets-catalog-edit-htm"><a href="#4、打开dede-templets-catalog-edit-htm" class="headerlink" title="4、打开dede/templets/catalog_edit.htm"></a>4、打开dede/templets/catalog_edit.htm</h4><p>在第3步文件（同上catalog_add.htm）同样的位置插入修改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">   &lt;td height=<span class="string">"26"</span> style=<span class="string">"padding-left:10px;"</span>&gt;列表命名规则：&lt;/td&gt;</span><br><span class="line">   &lt;td&gt;</span><br><span class="line">      &lt;input name=<span class="string">"namerule2"</span> <span class="built_in">type</span>=<span class="string">"text"</span> id=<span class="string">"namerule2"</span> value=<span class="string">"&#123;typedir&#125;/list_&#123;tid&#125;_&#123;page&#125;.html"</span>  class=<span class="string">"pubinputs"</span>  style=<span class="string">"width:250px"</span> /&gt;</span><br><span class="line">      &lt;img src=<span class="string">"images/help.gif"</span> alt=<span class="string">"帮助"</span> width=<span class="string">"16"</span> height=<span class="string">"16"</span> border=<span class="string">"0"</span> style=<span class="string">"cursor:pointer"</span> onClick=<span class="string">"ShowHide('helpvar3')"</span>/&gt;&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure></p>
-<p>在其下面加入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">  &lt;td height=<span class="string">"65"</span> style=<span class="string">"padding-left:10px;"</span>&gt;栏目图片：&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;</span><br><span class="line">     &lt;input name=<span class="string">"typeimg"</span> <span class="built_in">type</span>=<span class="string">"text"</span> style=<span class="string">"width:250px"</span> id=<span class="string">"typeimg"</span> class=<span class="string">"alltxt"</span> value=<span class="string">"&lt;?php echo <span class="variable">$myrow</span>['typeimg']?&gt;"</span> /&gt;</span><br><span class="line"> &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"set9"</span> value=<span class="string">"浏览... "</span>class=<span class="string">"coolbg np"</span> style=<span class="string">"width:60px"</span> onClick=<span class="string">"SelectImage('form1.typeimg','');"</span> /&gt;</span><br><span class="line">   &lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>备注说明：下面这句会调用出已添加的路片路径。<br>&lt;?php echo $myrow[‘typeimg’]?&gt;<br>和第三步一样，在文件的<head></head>里面增加以下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">'javascript'</span> src=<span class="string">"js/main.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="在前台栏目模板中调用自定义缩略图"><a href="#在前台栏目模板中调用自定义缩略图" class="headerlink" title="在前台栏目模板中调用自定义缩略图"></a>在前台栏目模板中调用自定义缩略图</h3><blockquote>
-<p>在模版里用：{dede:field.typeimg /} 是调不出数据的，所以改成SQL调用。<br>原来是这样的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:channel <span class="built_in">type</span>=<span class="string">'top'</span> row=<span class="string">'13'</span>&#125;</span><br><span class="line">     &lt;li&gt;&lt;a href=<span class="string">'[field:typeurl/]'</span> [field:rel/]&gt;[field:typeimg/]&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&#123;/dede:channel&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>在这里面加上[field:typeimg]是调不出来的，栏目缩略图就是通过循环出来的，而循环不出来则意义不大，所以改成了如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:sql sql=<span class="string">"SELECT typename,typedir,typeimg FROM dede_arctype"</span>&#125;</span><br><span class="line">    &lt;li&gt;&lt;a href=<span class="string">"[field:typedir/]"</span>&gt;[field:typeimg/]&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&#123;/dede:sql&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样就顺利的调出来了,当然如果你要调用子ID的话，只要加上相应的条件ID调用就可以了。</p>
-<blockquote>
-<p>添加或修改图片时在DedeCMS后台-《栏目管理》-高级选项中操作管理</p>
-<h3 id="以下内容个人尚未实例测试"><a href="#以下内容个人尚未实例测试" class="headerlink" title="以下内容个人尚未实例测试"></a>以下内容个人尚未实例测试</h3><p>如果想同时在文章内容页调用自定义添加的缩略图<br>打开\include\arc.archives.class.php<br>查找<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$this</span>-&gt;ChannelUnit-&gt;ChannelInfos[<span class="string">'issystem'</span>]!=-1)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$query</span> = <span class="string">"Select arc.*,tp.reid,tp.typedir,ch.addtable</span></span><br><span class="line"><span class="string">                 from `ant_archives` arc</span></span><br><span class="line"><span class="string">                          left join ant_arctype tp on tp.id=arc.typeid</span></span><br><span class="line"><span class="string">                           left join ant_channeltype as ch on arc.channel = ch.id</span></span><br><span class="line"><span class="string">                           where arc.id='<span class="variable">$aid</span>' "</span>;</span><br><span class="line">                 <span class="variable">$this</span>-&gt;Fields = <span class="variable">$this</span>-&gt;dsql-&gt;GetOne(<span class="variable">$query</span>);</span><br></pre></td></tr></table></figure></p>
-<p>替换为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$query</span> = <span class="string">"Select arc.*,tp.reid,tp.typedir,tp.typeimg,ch.addtable</span></span><br><span class="line"><span class="string">                 from `ant_archives` arc</span></span><br><span class="line"><span class="string">                          left join ant_arctype tp on tp.id=arc.typeid</span></span><br><span class="line"><span class="string">                           left join ant_channeltype as ch on arc.channel = ch.id</span></span><br><span class="line"><span class="string">                           where arc.id='<span class="variable">$aid</span>' "</span>;</span><br><span class="line">                 <span class="variable">$this</span>-&gt;Fields = <span class="variable">$this</span>-&gt;dsql-&gt;GetOne(<span class="variable">$query</span>);</span><br></pre></td></tr></table></figure></p>
-<p>即可。<br>如果需要在内容页中使用栏目缩略图的朋友，可以去试一下。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/16/dede-list-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1404,19 +1424,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Template</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">组件</a>
+                <a href="javascript:void(0)" class="js-tag color5">form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">input</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">layui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1432,11 +1460,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">视频</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Video.js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">视频</a>
+                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">组件</a>
               </li>
              
               <li class="article-tag-list-item">
