@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/photos/index.html</loc>
+    
+    <lastmod>2018-01-04T13:28:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/photos/data.json</loc>
+    
+    <lastmod>2018-01-04T13:28:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/12/26/form-input-2/</loc>
     
     <lastmod>2017-12-26T15:59:46.755Z</lastmod>
