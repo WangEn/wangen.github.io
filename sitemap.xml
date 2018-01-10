@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/photos/index.html</loc>
+    <loc>http://yoursite.com/photos/data.json</loc>
     
-    <lastmod>2018-01-04T13:28:14.000Z</lastmod>
+    <lastmod>2018-01-10T14:11:16.006Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/photos/data.json</loc>
+    <loc>http://yoursite.com/photos/index.html</loc>
     
     <lastmod>2018-01-04T13:28:14.000Z</lastmod>
     
@@ -131,13 +131,6 @@
     <loc>http://yoursite.com/2017/12/13/hello-world/</loc>
     
     <lastmod>2017-12-15T15:54:56.806Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/photos/index.html</loc>
-    
-    <lastmod>2017-12-15T15:48:04.794Z</lastmod>
     
   </url>
   
