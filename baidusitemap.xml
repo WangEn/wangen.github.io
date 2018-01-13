@@ -3,6 +3,118 @@
 
 
     
+  <url>
+    <loc>https://wangen.github.io/2017/12/17/png-gif-transparency/</loc>
+    <lastmod>2018-01-13T10:35:27.492Z</lastmod>
+    <data>
+        <display>
+        <title>制作透明背景 PNG 图片和 GIF 动图的几种方法</title>
+        <pubTime>2017-12-16T16:51:42.000Z</pubTime>
+        
+        <tag>png</tag>
+         
+        <tag>gif</tag>
+         
+        <tag>Photoshop</tag>
+         
+        <tag>PowerPoint</tag>
+         
+         
+           
+             
+              <breadCrumb title="Images" url="https://wangen.github.io/categories/Images/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wangen.github.io/2017/12/23/html5-video-2/</loc>
+    <lastmod>2018-01-13T10:35:19.272Z</lastmod>
+    <data>
+        <display>
+        <title>使用HTML5 <video> 标签-调用视频的当前播放时间值</title>
+        <pubTime>2017-12-23T15:37:37.000Z</pubTime>
+        
+        <tag>HTML5</tag>
+         
+        <tag>Video</tag>
+         
+        <tag>视频</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTML5" url="https://wangen.github.io/categories/HTML5/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wangen.github.io/2017/12/16/dede-list-2/</loc>
+    <lastmod>2018-01-13T10:34:53.023Z</lastmod>
+    <data>
+        <display>
+        <title>dedecms织梦列表页内容页栏目高亮和当前栏目调用二级三级栏目</title>
+        <pubTime>2017-12-16T04:00:39.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wangen.github.io/2017/12/16/dede-list-1/</loc>
+    <lastmod>2018-01-13T10:34:47.370Z</lastmod>
+    <data>
+        <display>
+        <title>DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能</title>
+        <pubTime>2017-12-16T03:28:35.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wangen.github.io/2017/12/17/dede-email-1/</loc>
+    <lastmod>2018-01-13T10:34:38.121Z</lastmod>
+    <data>
+        <display>
+        <title>Dedecms织梦会员邮件验证与自定义表单发送邮件-官方类版-支持QQ邮箱163邮箱</title>
+        <pubTime>2017-12-16T16:11:03.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+        <tag>邮件</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
     
     
@@ -10,7 +122,7 @@
     
     
   <url>
-    <loc>http://yoursite.com/2017/12/26/form-input-2/</loc>
+    <loc>https://wangen.github.io/2017/12/26/form-input-2/</loc>
     <lastmod>2017-12-26T15:59:46.755Z</lastmod>
     <data>
         <display>
@@ -26,7 +138,7 @@
          
            
              
-              <breadCrumb title="form" url="http://yoursite.com/categories/form/"/>
+              <breadCrumb title="form" url="https://wangen.github.io/categories/form/"/>
           
         </display>
     </data>
@@ -34,7 +146,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/25/form-input-1/</loc>
+    <loc>https://wangen.github.io/2017/12/25/form-input-1/</loc>
     <lastmod>2017-12-26T15:49:15.044Z</lastmod>
     <data>
         <display>
@@ -50,7 +162,7 @@
          
            
              
-              <breadCrumb title="form" url="http://yoursite.com/categories/form/"/>
+              <breadCrumb title="form" url="https://wangen.github.io/categories/form/"/>
           
         </display>
     </data>
@@ -58,7 +170,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/23/html5-video-1/</loc>
+    <loc>https://wangen.github.io/2017/12/23/html5-video-1/</loc>
     <lastmod>2017-12-23T15:59:07.986Z</lastmod>
     <data>
         <display>
@@ -76,7 +188,7 @@
          
            
              
-              <breadCrumb title="HTML5" url="http://yoursite.com/categories/HTML5/"/>
+              <breadCrumb title="HTML5" url="https://wangen.github.io/categories/HTML5/"/>
           
         </display>
     </data>
@@ -84,31 +196,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/23/html5-video-2/</loc>
-    <lastmod>2017-12-23T15:55:26.489Z</lastmod>
-    <data>
-        <display>
-        <title>使用HTML5 <video> 标签-调用视频的当前播放时间值</title>
-        <pubTime>2017-12-23T15:37:37.000Z</pubTime>
-        
-        <tag>HTML5</tag>
-         
-        <tag>Video</tag>
-         
-        <tag>视频</tag>
-         
-         
-           
-             
-              <breadCrumb title="HTML5" url="http://yoursite.com/categories/HTML5/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/20/office-word-1/</loc>
+    <loc>https://wangen.github.io/2017/12/20/office-word-1/</loc>
     <lastmod>2017-12-20T15:19:21.304Z</lastmod>
     <data>
         <display>
@@ -124,7 +212,7 @@
          
            
              
-              <breadCrumb title="Office" url="http://yoursite.com/categories/Office/"/>
+              <breadCrumb title="Office" url="https://wangen.github.io/categories/Office/"/>
           
         </display>
     </data>
@@ -132,7 +220,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/19/firefox-set-1/</loc>
+    <loc>https://wangen.github.io/2017/12/19/firefox-set-1/</loc>
     <lastmod>2017-12-20T15:08:47.040Z</lastmod>
     <data>
         <display>
@@ -146,7 +234,7 @@
          
            
              
-              <breadCrumb title="Browser" url="http://yoursite.com/categories/Browser/"/>
+              <breadCrumb title="Browser" url="https://wangen.github.io/categories/Browser/"/>
           
         </display>
     </data>
@@ -154,33 +242,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/17/png-gif-transparency/</loc>
-    <lastmod>2017-12-16T17:17:42.591Z</lastmod>
-    <data>
-        <display>
-        <title>制作透明背景 PNG 图片和 GIF 动图的几种方法</title>
-        <pubTime>2017-12-16T16:51:42.000Z</pubTime>
-        
-        <tag>png</tag>
-         
-        <tag>gif</tag>
-         
-        <tag>Photoshop</tag>
-         
-        <tag>PowerPoint</tag>
-         
-         
-           
-             
-              <breadCrumb title="Images" url="http://yoursite.com/categories/Images/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/17/dede-web-1/</loc>
+    <loc>https://wangen.github.io/2017/12/17/dede-web-1/</loc>
     <lastmod>2017-12-16T16:32:26.428Z</lastmod>
     <data>
         <display>
@@ -194,7 +256,7 @@
          
            
              
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
           
         </display>
     </data>
@@ -202,29 +264,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/17/dede-email-1/</loc>
-    <lastmod>2017-12-16T16:24:45.003Z</lastmod>
-    <data>
-        <display>
-        <title>Dedecms织梦会员邮件验证与自定义表单发送邮件-官方类版-支持QQ邮箱163邮箱</title>
-        <pubTime>2017-12-16T16:11:03.000Z</pubTime>
-        
-        <tag>DedeCMS</tag>
-         
-        <tag>邮件</tag>
-         
-         
-           
-             
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/16/dede-admin-404-1/</loc>
+    <loc>https://wangen.github.io/2017/12/16/dede-admin-404-1/</loc>
     <lastmod>2017-12-16T16:14:02.162Z</lastmod>
     <data>
         <display>
@@ -238,7 +278,7 @@
          
            
              
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
           
         </display>
     </data>
@@ -246,7 +286,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2017-12-16T16:13:22.428Z</lastmod>
     <data>
         <display>
@@ -262,7 +302,7 @@
          
            
              
-              <breadCrumb title="Hexo" url="http://yoursite.com/categories/Hexo/"/>
+              <breadCrumb title="Hexo" url="https://wangen.github.io/categories/Hexo/"/>
           
         </display>
     </data>
@@ -270,7 +310,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/16/dede-template-1/</loc>
+    <loc>https://wangen.github.io/2017/12/16/dede-template-1/</loc>
     <lastmod>2017-12-16T08:57:14.179Z</lastmod>
     <data>
         <display>
@@ -284,7 +324,7 @@
          
            
              
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
           
         </display>
     </data>
@@ -292,7 +332,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/16/dede-article-2/</loc>
+    <loc>https://wangen.github.io/2017/12/16/dede-article-2/</loc>
     <lastmod>2017-12-16T08:56:57.505Z</lastmod>
     <data>
         <display>
@@ -308,7 +348,7 @@
          
            
              
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
           
         </display>
     </data>
@@ -316,7 +356,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/16/dede-article-1/</loc>
+    <loc>https://wangen.github.io/2017/12/16/dede-article-1/</loc>
     <lastmod>2017-12-16T08:55:09.264Z</lastmod>
     <data>
         <display>
@@ -330,7 +370,7 @@
          
            
              
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
           
         </display>
     </data>
@@ -338,47 +378,7 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/12/16/dede-list-2/</loc>
-    <lastmod>2017-12-16T04:19:50.033Z</lastmod>
-    <data>
-        <display>
-        <title>dedecms织梦列表页内容页栏目高亮和当前栏目调用二级三级栏目</title>
-        <pubTime>2017-12-16T04:00:39.000Z</pubTime>
-        
-        <tag>DedeCMS</tag>
-         
-         
-           
-             
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/16/dede-list-1/</loc>
-    <lastmod>2017-12-16T03:54:48.321Z</lastmod>
-    <data>
-        <display>
-        <title>DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能</title>
-        <pubTime>2017-12-16T03:28:35.000Z</pubTime>
-        
-        <tag>DedeCMS</tag>
-         
-         
-           
-             
-              <breadCrumb title="DedeCMS" url="http://yoursite.com/categories/DedeCMS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/12/13/hello-world/</loc>
+    <loc>https://wangen.github.io/2017/12/13/hello-world/</loc>
     <lastmod>2017-12-15T15:54:56.806Z</lastmod>
     <data>
         <display>
