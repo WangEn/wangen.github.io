@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dedediy.com/uploads/allimg/channlecurrent.gif">
 <meta property="og:image" content="http://www.dedediy.com/uploads/allimg/QQimg20170807131443.png">
-<meta property="og:updated_time" content="2018-01-13T10:34:53.023Z">
+<meta property="og:updated_time" content="2018-01-13T13:59:14.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dedecms织梦列表页内容页栏目高亮和当前栏目调用二级三级栏目">
 <meta name="twitter:description" content="在处理企业站的时候，经常会用到在列表页或内容页调用二三级栏目，且需要跟随栏目切换高亮显示。   具体实现方法如下1、打开 \include\taglib\channelartlist.lib.php 找到1$tpsql = &quot; reid=&apos;$typeid&apos; AND ispart&amp;lt;&amp;gt;2 AND ishidden&amp;lt;&amp;gt;1 &quot;; 改成 123456789if($type==&apos;so">
@@ -197,31 +197,7 @@ var _hmt = _hmt || [];
       </header>
     
     <!-- 目录内容 -->
-    
-      <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-            <span class="btn-bg"></span>
-            <span class="btn-text">文章导航</span>
-            </p>
-    <div id="toc-article" class="toc-article">
-        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-      <strong class="toc-title">文章目录</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现方法如下"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;" class="headerlink" title="&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;"></a>&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、打开-include-taglib-channelartlist-lib-php-找到"><span class="toc-number">1.1.</span> <span class="toc-text"><a href="#1&#x3001;&#x6253;&#x5F00;-include-taglib-channelartlist-lib-php-&#x627E;&#x5230;" class="headerlink" title="1&#x3001;&#x6253;&#x5F00; \include\taglib\channelartlist.lib.php &#x627E;&#x5230;"></a>1&#x3001;&#x6253;&#x5F00; \include\taglib\channelartlist.lib.php &#x627E;&#x5230;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、打开-include-taglib-channel-lib-php-找到"><span class="toc-number">1.2.</span> <span class="toc-text"><a href="#2&#x3001;&#x6253;&#x5F00;-include-taglib-channel-lib-php-&#x627E;&#x5230;" class="headerlink" title="2&#x3001;&#x6253;&#x5F00; \include\taglib\channel.lib.php &#x627E;&#x5230;"></a>2&#x3001;&#x6253;&#x5F00; \include\taglib\channel.lib.php &#x627E;&#x5230;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、去掉模板引擎禁用PHP标签"><span class="toc-number">1.3.</span> <span class="toc-text"><a href="#3&#x3001;&#x53BB;&#x6389;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7981;&#x7528;PHP&#x6807;&#x7B7E;" class="headerlink" title="3&#x3001;&#x53BB;&#x6389;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7981;&#x7528;PHP&#x6807;&#x7B7E;"></a>3&#x3001;&#x53BB;&#x6389;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7981;&#x7528;PHP&#x6807;&#x7B7E;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前台模板文件中调用代码如下："><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x524D;&#x53F0;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x4E2D;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x524D;&#x53F0;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x4E2D;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;"></a>&#x524D;&#x53F0;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x4E2D;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</span></a></li></ol>
-          </div>
-    <script type="text/javascript">
-    function showToc(){
-      var toc_article = document.getElementById("toc-article");
-      var show_toc_btn = document.getElementById("show-toc-btn");
-      toc_article.setAttribute("style","display:block");
-      show_toc_btn.setAttribute("style","display:none");
-      };
-    function showBtn(){
-      var toc_article = document.getElementById("toc-article");
-      var show_toc_btn = document.getElementById("show-toc-btn");
-      toc_article.setAttribute("style","display:none");
-      show_toc_btn.setAttribute("style","display:block");
-      };
-    </script>
-        		
+    		
     <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
@@ -395,19 +371,6 @@ var _hmt = _hmt || [];
         </div>
         
         
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现方法如下"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;" class="headerlink" title="&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;"></a>&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、打开-include-taglib-channelartlist-lib-php-找到"><span class="toc-number">1.1.</span> <span class="toc-text"><a href="#1&#x3001;&#x6253;&#x5F00;-include-taglib-channelartlist-lib-php-&#x627E;&#x5230;" class="headerlink" title="1&#x3001;&#x6253;&#x5F00; \include\taglib\channelartlist.lib.php &#x627E;&#x5230;"></a>1&#x3001;&#x6253;&#x5F00; \include\taglib\channelartlist.lib.php &#x627E;&#x5230;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、打开-include-taglib-channel-lib-php-找到"><span class="toc-number">1.2.</span> <span class="toc-text"><a href="#2&#x3001;&#x6253;&#x5F00;-include-taglib-channel-lib-php-&#x627E;&#x5230;" class="headerlink" title="2&#x3001;&#x6253;&#x5F00; \include\taglib\channel.lib.php &#x627E;&#x5230;"></a>2&#x3001;&#x6253;&#x5F00; \include\taglib\channel.lib.php &#x627E;&#x5230;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、去掉模板引擎禁用PHP标签"><span class="toc-number">1.3.</span> <span class="toc-text"><a href="#3&#x3001;&#x53BB;&#x6389;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7981;&#x7528;PHP&#x6807;&#x7B7E;" class="headerlink" title="3&#x3001;&#x53BB;&#x6389;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7981;&#x7528;PHP&#x6807;&#x7B7E;"></a>3&#x3001;&#x53BB;&#x6389;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7981;&#x7528;PHP&#x6807;&#x7B7E;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前台模板文件中调用代码如下："><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x524D;&#x53F0;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x4E2D;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x524D;&#x53F0;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x4E2D;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;"></a>&#x524D;&#x53F0;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x4E2D;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
     </div>
 </aside>
 
@@ -551,6 +514,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DedeCMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">织梦</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">缩略图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -563,19 +538,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DedeCMS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">织梦</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">body</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">缩略图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,27 +546,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Template</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">form</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">input</a>
+                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,7 +562,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">layui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">input</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,7 +586,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Video.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">视频</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,10 +607,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Video.js</a>
               </li>
              
               <li class="article-tag-list-item">
