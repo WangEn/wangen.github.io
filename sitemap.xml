@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/photos/data.json</loc>
+    <loc>http://yoursite.com/photos/index.html</loc>
     
-    <lastmod>2018-01-10T16:29:48.090Z</lastmod>
+    <lastmod>2018-01-13T09:17:04.343Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/photos/index.html</loc>
+    <loc>http://yoursite.com/photos/videos.html</loc>
     
-    <lastmod>2018-01-04T13:28:14.000Z</lastmod>
+    <lastmod>2018-01-13T09:16:15.734Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/photos/data.json</loc>
+    
+    <lastmod>2018-01-11T16:33:41.001Z</lastmod>
     
   </url>
   
