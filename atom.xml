@@ -38,11 +38,11 @@
       <category term="form" scheme="http://yoursite.com/categories/form/"/>
     
     
-      <category term="layui" scheme="http://yoursite.com/tags/layui/"/>
-    
       <category term="form" scheme="http://yoursite.com/tags/form/"/>
     
       <category term="input" scheme="http://yoursite.com/tags/input/"/>
+    
+      <category term="layui" scheme="http://yoursite.com/tags/layui/"/>
     
   </entry>
   
@@ -67,11 +67,11 @@
       <category term="form" scheme="http://yoursite.com/categories/form/"/>
     
     
+      <category term="jQuery" scheme="http://yoursite.com/tags/jQuery/"/>
+    
       <category term="form" scheme="http://yoursite.com/tags/form/"/>
     
       <category term="input" scheme="http://yoursite.com/tags/input/"/>
-    
-      <category term="jQuery" scheme="http://yoursite.com/tags/jQuery/"/>
     
   </entry>
   
