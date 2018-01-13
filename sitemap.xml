@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangen.github.io/photos/data.json</loc>
+    
+    <lastmod>2018-01-13T17:01:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangen.github.io/2017/12/16/dede-list-1/</loc>
     
     <lastmod>2018-01-13T13:59:20.437Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://wangen.github.io/photos/index.html</loc>
     
     <lastmod>2018-01-13T09:17:04.343Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangen.github.io/photos/data.json</loc>
-    
-    <lastmod>2018-01-11T16:33:41.001Z</lastmod>
     
   </url>
   
