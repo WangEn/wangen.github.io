@@ -3,6 +3,54 @@
 
 
     
+  <url>
+    <loc>https://wangen.github.io/2018/01/15/Mac-file-1/</loc>
+    <lastmod>2018-01-15T16:05:17.609Z</lastmod>
+    <data>
+        <display>
+        <title>Mac OS常用操作命令备忘</title>
+        <pubTime>2018-01-15T15:45:22.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+        <tag>文件操作</tag>
+         
+        <tag>目录路径</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mac" url="https://wangen.github.io/categories/Mac/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2018-01-15T15:44:17.687Z</lastmod>
+    <data>
+        <display>
+        <title>Github Pages + Hexo搭建博客</title>
+        <pubTime>2017-12-13T15:40:07.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+        <tag>Github</tag>
+         
+        <tag>博客搭建</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="https://wangen.github.io/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
     
   <url>
@@ -129,11 +177,11 @@
         <title>结合layui实现无刷新添加和删除input输入框，自动生成不同name值</title>
         <pubTime>2017-12-26T15:47:09.000Z</pubTime>
         
-        <tag>layui</tag>
-         
         <tag>form</tag>
          
         <tag>input</tag>
+         
+        <tag>layui</tag>
          
          
            
@@ -153,11 +201,11 @@
         <title>jquery无刷新添加和删除input输入框 增加减少input框</title>
         <pubTime>2017-12-25T14:48:11.000Z</pubTime>
         
+        <tag>jQuery</tag>
+         
         <tag>form</tag>
          
         <tag>input</tag>
-         
-        <tag>jQuery</tag>
          
          
            
@@ -279,30 +327,6 @@
            
              
               <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2017-12-16T16:13:22.428Z</lastmod>
-    <data>
-        <display>
-        <title>Github Pages + Hexo搭建博客</title>
-        <pubTime>2017-12-13T15:40:07.000Z</pubTime>
-        
-        <tag>Hexo</tag>
-         
-        <tag>Github</tag>
-         
-        <tag>博客搭建</tag>
-         
-         
-           
-             
-              <breadCrumb title="Hexo" url="https://wangen.github.io/categories/Hexo/"/>
           
         </display>
     </data>

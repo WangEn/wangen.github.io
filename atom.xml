@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangen.github.io/"/>
-  <updated>2017-12-26T15:59:46.755Z</updated>
+  <updated>2018-01-15T16:05:17.609Z</updated>
   <id>https://wangen.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac OS常用操作命令备忘</title>
+    <link href="https://wangen.github.io/2018/01/15/Mac-file-1/"/>
+    <id>https://wangen.github.io/2018/01/15/Mac-file-1/</id>
+    <published>2018-01-15T15:45:22.000Z</published>
+    <updated>2018-01-15T16:05:17.609Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="查看复制文件路径"><a href="#查看复制文件路径" class="headerlink" title="查看复制文件路径"></a>查看复制文件路径</h2><p>Launchpad-【其他】中打开<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES</span><br></pre></td></tr></table></figure></p><p>之后，就能在Finder顶部看见完整的路径地址了<br><img src="https://pic4.zhimg.com/80/031824973905702098e296e7352eb679_hd.jpg" alt="Finder顶部路径"><br>在Finder顶端的地址栏右键，还可以直接访问路径中的任意一层<br><img src="https://pic1.zhimg.com/80/64e6693cb7cae3bca2d0e41379d8c5fa_hd.jpg" alt="Finder右键路径"><br>复制路径的方法：<br>1、推荐方案-『复制路径可以用 Option+Command+C』<br>2、右键文件-显示简介（或者使用快捷键cmd + i），复制位置信息，在文本中粘贴即可得到路径信息。<br>3、打开一个可以粘贴文字的应用（比如说终端，记事本），然后把要获取路径的【文件/文件夹】拖进去，看到的就是对应的绝对路径。</p><h2 id="常用快捷键一览"><a href="#常用快捷键一览" class="headerlink" title="常用快捷键一览"></a>常用快捷键一览</h2><p><img src="https://pic2.zhimg.com/80/c0aac5dd3da4676884d58eb41f5eea59_hd.jpg" alt="Mac OS X快捷键"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;查看复制文件路径&quot;&gt;&lt;a href=&quot;#查看复制文件路径&quot; class=&quot;headerlink&quot; title=&quot;查看复制文件路径&quot;&gt;&lt;/a&gt;查看复制文件路径&lt;/h2&gt;&lt;p&gt;Launchpad-【其他】中打开&lt;figure class=&quot;highlight plai
+      
+    
+    </summary>
+    
+      <category term="Mac" scheme="https://wangen.github.io/categories/Mac/"/>
+    
+    
+      <category term="Mac" scheme="https://wangen.github.io/tags/Mac/"/>
+    
+      <category term="文件操作" scheme="https://wangen.github.io/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/"/>
+    
+      <category term="目录路径" scheme="https://wangen.github.io/tags/%E7%9B%AE%E5%BD%95%E8%B7%AF%E5%BE%84/"/>
+    
+  </entry>
   
   <entry>
     <title>结合layui实现无刷新添加和删除input输入框，自动生成不同name值</title>
@@ -38,11 +67,11 @@
       <category term="form" scheme="https://wangen.github.io/categories/form/"/>
     
     
-      <category term="layui" scheme="https://wangen.github.io/tags/layui/"/>
-    
       <category term="form" scheme="https://wangen.github.io/tags/form/"/>
     
       <category term="input" scheme="https://wangen.github.io/tags/input/"/>
+    
+      <category term="layui" scheme="https://wangen.github.io/tags/layui/"/>
     
   </entry>
   
@@ -67,11 +96,11 @@
       <category term="form" scheme="https://wangen.github.io/categories/form/"/>
     
     
+      <category term="jQuery" scheme="https://wangen.github.io/tags/jQuery/"/>
+    
       <category term="form" scheme="https://wangen.github.io/tags/form/"/>
     
       <category term="input" scheme="https://wangen.github.io/tags/input/"/>
-    
-      <category term="jQuery" scheme="https://wangen.github.io/tags/jQuery/"/>
     
   </entry>
   
@@ -457,9 +486,9 @@
     <link href="https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>https://wangen.github.io/2017/12/13/Github-Pages-Hexo搭建博客/</id>
     <published>2017-12-13T15:40:07.000Z</published>
-    <updated>2017-12-16T16:13:22.428Z</updated>
+    <updated>2018-01-15T15:44:17.687Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。</p><h2 id="Mac搭建参考网址说明"><a href="#Mac搭建参考网址说明" class="headerlink" title="Mac搭建参考网址说明"></a>Mac搭建参考网址说明</h2><p><a href="http://www.jianshu.com/p/484e4ca7edf0" target="_blank" rel="noopener">在Mac上搭建基于Hexo的个人博客网站</a><br><a href="http://fanzhenyu.me/categories/Hexo/" target="_blank" rel="noopener">Github Pages + Hexo搭建博客</a></p></blockquote><h2 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h2><h3 id="Cmd-MarkDown编辑器"><a href="#Cmd-MarkDown编辑器" class="headerlink" title="Cmd MarkDown编辑器"></a>Cmd MarkDown编辑器</h3><p><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">在线MarkDown文本编辑</a></p><h2 id="Hexo-Theme"><a href="#Hexo-Theme" class="headerlink" title="Hexo Theme"></a>Hexo Theme</h2><h3 id="yilia-https-github-com-litten-hexo-theme-yilia-issues-63"><a href="#yilia-https-github-com-litten-hexo-theme-yilia-issues-63" class="headerlink" title="[yilia] (https://github.com/litten/hexo-theme-yilia/issues/63)"></a>[yilia] (<a href="https://github.com/litten/hexo-theme-yilia/issues/63" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia/issues/63</a>)</h3><p>作者：<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a><br>第三方评论工具：<a href="https://livere.com/" target="_blank" rel="noopener">来必力</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。</p><h2 id="Mac搭建参考网址说明"><a href="#Mac搭建参考网址说明" class="headerlink" title="Mac搭建参考网址说明"></a>Mac搭建参考网址说明</h2><p><a href="http://www.jianshu.com/p/484e4ca7edf0" target="_blank" rel="noopener">在Mac上搭建基于Hexo的个人博客网站</a><br><a href="http://fanzhenyu.me/categories/Hexo/" target="_blank" rel="noopener">Github Pages + Hexo搭建博客</a></p></blockquote><h2 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h2><h3 id="Cmd-MarkDown编辑器"><a href="#Cmd-MarkDown编辑器" class="headerlink" title="Cmd MarkDown编辑器"></a>Cmd MarkDown编辑器</h3><p><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">在线MarkDown文本编辑</a></p><h2 id="Hexo-Theme"><a href="#Hexo-Theme" class="headerlink" title="Hexo Theme"></a>Hexo Theme</h2><h3 id="yilia-https-github-com-litten-hexo-theme-yilia-issues-63"><a href="#yilia-https-github-com-litten-hexo-theme-yilia-issues-63" class="headerlink" title="[yilia] (https://github.com/litten/hexo-theme-yilia/issues/63)"></a>[yilia] (<a href="https://github.com/litten/hexo-theme-yilia/issues/63" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia/issues/63</a>)</h3><p>作者：<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a><br>第三方评论工具：<a href="https://livere.com/" target="_blank" rel="noopener">来必力</a></p><h2 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"postName"</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo new page <span class="string">"pageName"</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></span><br><span class="line">hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     

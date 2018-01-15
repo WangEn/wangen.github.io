@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://wangen.github.io/photos/videos.html</loc>
+    <loc>https://wangen.github.io/2018/01/15/Mac-file-1/</loc>
     
-    <lastmod>2018-01-15T13:12:24.290Z</lastmod>
+    <lastmod>2018-01-15T16:05:17.609Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2018-01-15T15:44:17.687Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://wangen.github.io/photos/data.json</loc>
     
-    <lastmod>2018-01-14T15:00:34.146Z</lastmod>
+    <lastmod>2018-01-15T15:42:29.384Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangen.github.io/photos/videos.html</loc>
+    
+    <lastmod>2018-01-15T13:12:24.290Z</lastmod>
     
   </url>
   
@@ -103,13 +117,6 @@
     <loc>https://wangen.github.io/2017/12/16/dede-admin-404-1/</loc>
     
     <lastmod>2017-12-16T16:14:02.162Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2017-12-16T16:13:22.428Z</lastmod>
     
   </url>
   
