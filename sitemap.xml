@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wangen.github.io/2018/01/20/dede-list-3/</loc>
+    
+    <lastmod>2018-01-20T14:11:44.550Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangen.github.io/2017/12/16/dede-list-1/</loc>
+    
+    <lastmod>2018-01-20T13:56:41.358Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wangen.github.io/2017/12/16/dede-list-2/</loc>
+    
+    <lastmod>2018-01-20T13:56:26.133Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wangen.github.io/2017/12/13/hello-world/</loc>
     
-    <lastmod>2018-01-20T13:40:12.441Z</lastmod>
+    <lastmod>2018-01-20T13:52:39.620Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
     
-    <lastmod>2018-01-20T13:38:56.187Z</lastmod>
+    <lastmod>2018-01-20T13:52:26.413Z</lastmod>
     
   </url>
   
@@ -51,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://wangen.github.io/design/videos.html</loc>
-    
-    <lastmod>2018-01-15T16:08:13.862Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wangen.github.io/photos/videos.html</loc>
     
     <lastmod>2018-01-15T16:08:13.862Z</lastmod>
@@ -65,16 +79,9 @@
   </url>
   
   <url>
-    <loc>https://wangen.github.io/2017/12/16/dede-list-1/</loc>
+    <loc>https://wangen.github.io/design/videos.html</loc>
     
-    <lastmod>2018-01-13T13:59:20.437Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wangen.github.io/2017/12/16/dede-list-2/</loc>
-    
-    <lastmod>2018-01-13T13:59:14.162Z</lastmod>
+    <lastmod>2018-01-15T16:08:13.862Z</lastmod>
     
   </url>
   

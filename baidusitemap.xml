@@ -4,8 +4,74 @@
 
     
   <url>
+    <loc>https://wangen.github.io/2018/01/20/dede-list-3/</loc>
+    <lastmod>2018-01-20T14:11:44.550Z</lastmod>
+    <data>
+        <display>
+        <title>dedecms织梦特定条件下,隐藏特定栏目的方法,通过css实现</title>
+        <pubTime>2018-01-20T13:54:52.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+        <tag>栏目</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wangen.github.io/2017/12/16/dede-list-1/</loc>
+    <lastmod>2018-01-20T13:56:41.358Z</lastmod>
+    <data>
+        <display>
+        <title>DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能</title>
+        <pubTime>2017-12-16T03:28:35.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+        <tag>栏目</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wangen.github.io/2017/12/16/dede-list-2/</loc>
+    <lastmod>2018-01-20T13:56:26.133Z</lastmod>
+    <data>
+        <display>
+        <title>dedecms织梦列表页内容页栏目高亮和当前栏目调用二级三级栏目</title>
+        <pubTime>2017-12-16T04:00:39.000Z</pubTime>
+        
+        <tag>DedeCMS</tag>
+         
+        <tag>栏目</tag>
+         
+         
+           
+             
+              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://wangen.github.io/2017/12/13/hello-world/</loc>
-    <lastmod>2018-01-20T13:40:12.441Z</lastmod>
+    <lastmod>2018-01-20T13:52:39.620Z</lastmod>
     <data>
         <display>
         <title>第一篇博客，记录转载学习随笔</title>
@@ -22,7 +88,7 @@
     
   <url>
     <loc>https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2018-01-20T13:38:56.187Z</lastmod>
+    <lastmod>2018-01-20T13:52:26.413Z</lastmod>
     <data>
         <display>
         <title>Github Pages + Hexo搭建博客</title>
@@ -75,46 +141,6 @@
     
     
     
-    
-  <url>
-    <loc>https://wangen.github.io/2017/12/16/dede-list-1/</loc>
-    <lastmod>2018-01-13T13:59:20.437Z</lastmod>
-    <data>
-        <display>
-        <title>DedeCMS栏目添加自定义字段，增加栏目上传缩略图功能</title>
-        <pubTime>2017-12-16T03:28:35.000Z</pubTime>
-        
-        <tag>DedeCMS</tag>
-         
-         
-           
-             
-              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://wangen.github.io/2017/12/16/dede-list-2/</loc>
-    <lastmod>2018-01-13T13:59:14.162Z</lastmod>
-    <data>
-        <display>
-        <title>dedecms织梦列表页内容页栏目高亮和当前栏目调用二级三级栏目</title>
-        <pubTime>2017-12-16T04:00:39.000Z</pubTime>
-        
-        <tag>DedeCMS</tag>
-         
-         
-           
-             
-              <breadCrumb title="DedeCMS" url="https://wangen.github.io/categories/DedeCMS/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>https://wangen.github.io/2017/12/23/html5-video-2/</loc>
