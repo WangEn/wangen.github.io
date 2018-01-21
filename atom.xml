@@ -125,11 +125,11 @@
       <category term="form" scheme="https://wangen.github.io/categories/form/"/>
     
     
-      <category term="layui" scheme="https://wangen.github.io/tags/layui/"/>
-    
       <category term="form" scheme="https://wangen.github.io/tags/form/"/>
     
       <category term="input" scheme="https://wangen.github.io/tags/input/"/>
+    
+      <category term="layui" scheme="https://wangen.github.io/tags/layui/"/>
     
   </entry>
   
@@ -154,11 +154,11 @@
       <category term="form" scheme="https://wangen.github.io/categories/form/"/>
     
     
+      <category term="jQuery" scheme="https://wangen.github.io/tags/jQuery/"/>
+    
       <category term="form" scheme="https://wangen.github.io/tags/form/"/>
     
       <category term="input" scheme="https://wangen.github.io/tags/input/"/>
-    
-      <category term="jQuery" scheme="https://wangen.github.io/tags/jQuery/"/>
     
   </entry>
   
