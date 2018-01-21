@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
 <meta property="og:description" content="jQuery多个版本或和其他js库冲突主要是常用的$符号的冲突。  一、常规解决办法在同一页面中引入了多个版本的jQuery，导致js失效，可以去掉其中一个版本的jQuery，但是最好保证jQuery的引入在其他js之前。优先尝试保留新版本jQuery，注释掉旧版本的；如若不行，尝试保留旧版本的jQuery。但是有一些特殊情况：我们引入的js插件，有的依赖于新版本jQuery的特性，有的依赖于旧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/WangEn/BlogBackup/blob/master/blogimgs/jqueryClash101.jpg">
-<meta property="og:updated_time" content="2018-01-21T09:21:55.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/jqueryClash101.jpg">
+<meta property="og:updated_time" content="2018-01-21T09:26:26.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery不同版本库同时引入冲突解决办法">
 <meta name="twitter:description" content="jQuery多个版本或和其他js库冲突主要是常用的$符号的冲突。  一、常规解决办法在同一页面中引入了多个版本的jQuery，导致js失效，可以去掉其中一个版本的jQuery，但是最好保证jQuery的引入在其他js之前。优先尝试保留新版本jQuery，注释掉旧版本的；如若不行，尝试保留旧版本的jQuery。但是有一些特殊情况：我们引入的js插件，有的依赖于新版本jQuery的特性，有的依赖于旧">
-<meta name="twitter:image" content="https://github.com/WangEn/BlogBackup/blob/master/blogimgs/jqueryClash101.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/jqueryClash101.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -202,7 +202,7 @@ var _hmt = _hmt || [];
 <p>jQuery多个版本或和其他js库冲突主要是常用的$符号的冲突。</p>
 </blockquote>
 <h2 id="一、常规解决办法"><a href="#一、常规解决办法" class="headerlink" title="一、常规解决办法"></a>一、常规解决办法</h2><p>在同一页面中引入了多个版本的jQuery，导致js失效，可以去掉其中一个版本的jQuery，但是最好保证jQuery的引入在其他js之前。优先尝试保留新版本jQuery，注释掉旧版本的；如若不行，尝试保留旧版本的jQuery。<br>但是有一些特殊情况：我们引入的js插件，有的依赖于新版本jQuery的特性，有的依赖于旧版本jQuery的特性，比如说，你的业务代码采用了最新版的jQuery库，而你选用的第三方插件依赖的更早版本的jQuery库（大多数原因是js插件未持续更新）；又比如说，你正维护着一个系统，它已有的业务代码由于各种原因，引用了较老版本的jQuery库，你新开发的模块采用的是其他版本的jQuery库。这种情况又该如何处理？</p>
-<p><center><br><img src="https://github.com/WangEn/BlogBackup/blob/master/blogimgs/jqueryClash101.jpg" alt="jQuery-clash-1"><br></center><br>最直白的办法，寻找其他可替换的js插件，只保留一个jQuery即可。但是有时候我们必须保留现有的js插件，也就是说两个版本的jQuery都必须保留，怎么办？请继续往下看：</p>
+<p><center><br><img src="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/jqueryClash101.jpg" alt="jQuery-clash-1"><br></center><br>最直白的办法，寻找其他可替换的js插件，只保留一个jQuery即可。但是有时候我们必须保留现有的js插件，也就是说两个版本的jQuery都必须保留，怎么办？请继续往下看：</p>
 <h2 id="二、认识jQuery-noConflict"><a href="#二、认识jQuery-noConflict" class="headerlink" title="二、认识jQuery.noConflict()"></a>二、认识jQuery.noConflict()</h2><p>jQuery是目前使用最广泛的前端框架之一，有大量的第三方库和插件基于它开发。为了避免全局命名空间污染，jQuery提供了jQuery.noConflict()方法解决变量冲突。这个方法，毫无疑问，非常有效。遗憾的是，jQuery的官方文档对该方法的描述不够清晰，许多开发者并不清楚当他们调用jQuery.noConflict()时，究竟发生了什么，从而导致在使用时出现了许多问题。尽管如此，jQuery.noConflict()背后实现原理依然值得Web开发者学习掌握，成为解决类似全局命名空间污染问题的利器。</p>
 <h3 id="1、jQuery-noConflict-的作用？"><a href="#1、jQuery-noConflict-的作用？" class="headerlink" title="1、jQuery.noConflict()的作用？"></a>1、jQuery.noConflict()的作用？</h3><p>jQuery.noConflict()的存在只有一个目的：它允许你在同一个页面加载多个jQuery实例，尤其是不同版本的jQuery。在多版本jQuery共存时，不得不面对jQuery对象/方法冲突的问题。幸运的是，jQuery.noConflict()帮你解决了这个烦恼。</p>
 <h3 id="2、jQuery被加载时发生了什么？"><a href="#2、jQuery被加载时发生了什么？" class="headerlink" title="2、jQuery被加载时发生了什么？"></a>2、jQuery被加载时发生了什么？</h3><p>当jQuery被页面引用/加载时，它被封装在一个自执行函数（匿名函数）里，它提供的所有一切变量、函数、对象都在匿名函数内部的可执行环境内，外部环境无法调用,以防止全局命名空间污染。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
@@ -547,18 +547,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">目录路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -591,15 +579,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Template</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">栏目</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">组件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">input</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">layui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,14 +635,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
               </li>
              
@@ -640,6 +644,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Code</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">目录路径</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,23 +675,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">form</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">input</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">layui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">组件</a>
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
               </li>
             
             <div class="clearfix"></div>

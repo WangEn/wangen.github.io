@@ -4,8 +4,58 @@
 
     
   <url>
+    <loc>https://wangen.github.io/2018/01/15/Mac-file-1/</loc>
+    <lastmod>2018-01-21T09:28:29.078Z</lastmod>
+    <data>
+        <display>
+        <title>Mac OS常用操作命令备忘</title>
+        <pubTime>2018-01-15T15:45:22.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+        <tag>文件操作</tag>
+         
+        <tag>目录路径</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mac" url="https://wangen.github.io/categories/Mac/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://wangen.github.io/2017/12/17/png-gif-transparency/</loc>
+    <lastmod>2018-01-21T09:27:35.866Z</lastmod>
+    <data>
+        <display>
+        <title>制作透明背景 PNG 图片和 GIF 动图的几种方法</title>
+        <pubTime>2017-12-16T16:51:42.000Z</pubTime>
+        
+        <tag>png</tag>
+         
+        <tag>gif</tag>
+         
+        <tag>Photoshop</tag>
+         
+        <tag>PowerPoint</tag>
+         
+         
+           
+             
+              <breadCrumb title="Images" url="https://wangen.github.io/categories/Images/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://wangen.github.io/2018/01/21/jQuery-clash-1/</loc>
-    <lastmod>2018-01-21T09:21:55.000Z</lastmod>
+    <lastmod>2018-01-21T09:26:26.279Z</lastmod>
     <data>
         <display>
         <title>jQuery不同版本库同时引入冲突解决办法</title>
@@ -136,30 +186,6 @@
     
     
     
-  <url>
-    <loc>https://wangen.github.io/2018/01/15/Mac-file-1/</loc>
-    <lastmod>2018-01-19T16:43:24.038Z</lastmod>
-    <data>
-        <display>
-        <title>Mac OS常用操作命令备忘</title>
-        <pubTime>2018-01-15T15:45:22.000Z</pubTime>
-        
-        <tag>Mac</tag>
-         
-        <tag>文件操作</tag>
-         
-        <tag>目录路径</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mac" url="https://wangen.github.io/categories/Mac/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
     
     
     
@@ -182,32 +208,6 @@
            
              
               <breadCrumb title="HTML5" url="https://wangen.github.io/categories/HTML5/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://wangen.github.io/2017/12/17/png-gif-transparency/</loc>
-    <lastmod>2018-01-13T13:58:59.421Z</lastmod>
-    <data>
-        <display>
-        <title>制作透明背景 PNG 图片和 GIF 动图的几种方法</title>
-        <pubTime>2017-12-16T16:51:42.000Z</pubTime>
-        
-        <tag>png</tag>
-         
-        <tag>gif</tag>
-         
-        <tag>Photoshop</tag>
-         
-        <tag>PowerPoint</tag>
-         
-         
-           
-             
-              <breadCrumb title="Images" url="https://wangen.github.io/categories/Images/"/>
           
         </display>
     </data>
