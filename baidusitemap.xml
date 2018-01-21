@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>https://wangen.github.io/2018/01/21/jQuery-clash-1/</loc>
+    <lastmod>2018-01-21T09:21:55.000Z</lastmod>
+    <data>
+        <display>
+        <title>jQuery不同版本库同时引入冲突解决办法</title>
+        <pubTime>2018-01-21T09:08:15.000Z</pubTime>
+        
+        <tag>jQuery</tag>
+         
+        <tag>冲突</tag>
+         
+         
+           
+             
+              <breadCrumb title="jQuery" url="https://wangen.github.io/categories/jQuery/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://wangen.github.io/2018/01/20/dede-list-3/</loc>
-    <lastmod>2018-01-20T14:11:44.550Z</lastmod>
+    <lastmod>2018-01-20T14:13:32.674Z</lastmod>
     <data>
         <display>
         <title>dedecms织梦特定条件下,隐藏特定栏目的方法,通过css实现</title>
@@ -278,9 +300,9 @@
          
         <tag>Video</tag>
          
-        <tag>视频</tag>
-         
         <tag>Video.js</tag>
+         
+        <tag>视频</tag>
          
          
            
