@@ -175,6 +175,202 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-layui-layer-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/28/layui-layer-1/">使用layer的iframe层提交表单后,关闭当前iframe，然后刷新父页面</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/28/layui-layer-1/" class="archive-article-date">
+  	<time datetime="2018-01-28T06:51:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-28</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>需求：需要使用iframe来实现添加新账号的功能，在iframe页面中通过表单提交新账号的资料后，关闭iframe页面，并且刷新父页面账号列表。</p>
+<h2 id="layer参考"><a href="#layer参考" class="headerlink" title="layer参考"></a>layer参考</h2><p>layer独立组件官网：<a href="http://layer.layui.com/" target="_blank" rel="noopener">http://layer.layui.com/</a><br>layui文档：<a href="http://www.layui.com/doc/modules/layer.html" target="_blank" rel="noopener">弹层组件文档</a></p>
+<blockquote>
+<p>iframe层-父子操作子页面主要代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给父页面传值</span></span><br><span class="line">$(<span class="string">'#transmit'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    parent.$(<span class="string">'#parentIframe'</span>).text(<span class="string">'我被改变了'</span>);</span><br><span class="line">    parent.layer.tips(<span class="string">'Look here'</span>, <span class="string">'#parentIframe'</span>, &#123;<span class="attr">time</span>: <span class="number">5000</span>&#125;);</span><br><span class="line">    parent.layer.close(index);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>直接在iframe页面通过<code>$(&#39;#transmit&#39;).on(&#39;click&#39;, function(){});</code>来执行关闭及刷新操作，会造成本页面的form表单无法提交到后台，因此换用ajax来提交form表单，判断ajax提交成功/失败后，再进行父页面传值等操作。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>主要代码如下：</p>
+<h3 id="HTML相关代码"><a href="#HTML相关代码" class="headerlink" title="HTML相关代码"></a>HTML相关代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-body"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group col-sm-6"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputAccount1"</span> <span class="attr">class</span>=<span class="string">"col-sm-4 control-label"</span>&gt;</span>微信号<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputAccount1"</span> <span class="attr">placeholder</span>=<span class="string">"微信号"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group col-sm-6"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputAccount2"</span> <span class="attr">class</span>=<span class="string">"col-sm-4 control-label"</span>&gt;</span>手机号<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputAccount2"</span> <span class="attr">placeholder</span>=<span class="string">"手机号"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group col-sm-12"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputAccount3"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>二维码<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">id</span>=<span class="string">"inputAccount3"</span> <span class="attr">class</span>=<span class="string">"upload"</span>&gt;</span>点击上传图片<span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"change"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span> /&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="js相关代码"><a href="#js相关代码" class="headerlink" title="js相关代码"></a>js相关代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"/js/jquery-2.2.3.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"/js/layer/layer.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	<span class="keyword">var</span> index = parent.layer.getFrameIndex(<span class="built_in">window</span>.name);</span><br><span class="line">	<span class="comment">//获取iframe父页面索引</span></span><br><span class="line">    $(<span class="string">'form'</span>).submit(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    	$.ajax(&#123;</span><br><span class="line">            url:<span class="string">"url"</span>,</span><br><span class="line">            type:<span class="string">"post"</span>,</span><br><span class="line">            data:$(<span class="keyword">this</span>).serialize(),</span><br><span class="line">            success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">                <span class="comment">//console.log(data);</span></span><br><span class="line">                parent.location.reload(); <span class="comment">//刷新父页面</span></span><br><span class="line">		        parent.layer.close(index);  <span class="comment">//关闭当前页面，写在最后面</span></span><br><span class="line">            &#125;,</span><br><span class="line">            error:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            	<span class="comment">//console.log("Error~");</span></span><br><span class="line">                <span class="comment">//console.log(data);</span></span><br><span class="line">                parent.location.reload();</span><br><span class="line">		        parent.layer.close(index);</span><br><span class="line">            &#125;</span><br><span class="line">       &#125;);   </span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><p>关于layer弹层iframe窗的子父操作，<code>parent.layer.close(index)</code>这个关闭操作一定要写在最后面，大概是因为执行关闭执行，其他操作就不会执行了。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><blockquote>
+<p>参考文档1：<a href="http://blog.csdn.net/u011848397/article/details/52353226?locationNum=11" target="_blank" rel="noopener">layer弹窗iframe页面，关闭弹窗方法导致form表单无法提交到服务器</a><br>参考文档2：<a href="http://blog.csdn.net/u011020900/article/details/52083166" target="_blank" rel="noopener">使用layer的iframe层提交表单后，需要关闭当前的iframe层，然后刷新父页面的方法</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">layui</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">layer</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iframe</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/layui//" class="article-tag-list-link color1">layui</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/28/layui-layer-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-web-dom-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/23/web-dom-1/">Web前端学习参考网站备忘</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/23/web-dom-1/" class="archive-article-date">
+  	<time datetime="2018-01-23T14:18:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前端参考文档"><a href="#前端参考文档" class="headerlink" title="前端参考文档"></a>前端参考文档</h3><p><a href="http://caibaojian.com/book/" target="_blank" rel="noopener">精选推荐教程 · 技术文档-在线教程</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/study//" class="article-tag-list-link color1">study</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/23/web-dom-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jQuery-clash-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1100,226 +1296,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-firefox-set-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/19/firefox-set-1/">使用Firefox火狐浏览器模拟手机等多种浏览器</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/19/firefox-set-1/" class="archive-article-date">
-  	<time datetime="2017-12-19T15:58:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="下载旧版本Firefox浏览器"><a href="#下载旧版本Firefox浏览器" class="headerlink" title="下载旧版本Firefox浏览器"></a>下载旧版本Firefox浏览器</h2><p>官方下载地址：<a href="http://ftp.mozilla.org/pub/firefox/releases/" target="_blank" rel="noopener">http://ftp.mozilla.org/pub/firefox/releases/</a><br>因为最新更新的Firefox57版本使用了新引擎，之前的绝大部分扩展组件都不再支持，所以我们要选用适合自己电脑系统的旧版本Firefox浏览器下载作为开发使用。<br>我先用的是<a href="http://ftp.mozilla.org/pub/firefox/releases/53.0/win64/" target="_blank" rel="noopener">Firefox 53.0 64位版本</a>（win10 64位系统环境下），仅作为参考</p>
-<blockquote>
-<p>安装完成后，打开浏览器在【工具】-【选项】-【高级】-【更新】中选择“不检查更新”</p>
-</blockquote>
-<h2 id="安装附加组件User-Agent-Switcher"><a href="#安装附加组件User-Agent-Switcher" class="headerlink" title="安装附加组件User Agent Switcher"></a>安装附加组件User Agent Switcher</h2><p>【工具】-【附加组件】-【搜索】User Agent Switcher，安装后重启浏览器</p>
-<blockquote>
-<p>点击菜单栏的【工具】下拉，选择”iPhone3.0”选项即可在火狐浏览器模拟手机浏览器了</p>
-</blockquote>
-<h2 id="扩展UA列表伪装更多平台版本"><a href="#扩展UA列表伪装更多平台版本" class="headerlink" title="扩展UA列表伪装更多平台版本"></a>扩展UA列表伪装更多平台版本</h2><p>1、工具-default user agent-User Agent Switcher-options，打开User Agent Switcher选项卡，点击右下角网页链接，就能找到最常用的UA列表了<br>2、打开techpatterns网页，下载网页为你提供的.xml文件地址。如果觉得此步骤麻烦，点击以下下载地址进入下载。<br>下载地址：<a href="https://techpatterns.com/forums/about304.html" target="_blank" rel="noopener">https://techpatterns.com/forums/about304.html</a><br>点击 <code>Download via Save As File Dialogue</code>将xml文件下载到本地。<br>3、打开 【User Agent Switcher】组件，在该组件面板【选项】中导入下载的xml文件后重启浏览器即可。导入下载好的.xml文件，即可体验更多的平台模拟了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Firefox</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">组件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Browser//" class="article-tag-list-link color3">Browser</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/19/firefox-set-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-png-gif-transparency" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/17/png-gif-transparency/">制作透明背景 PNG 图片和 GIF 动图的几种方法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/17/png-gif-transparency/" class="archive-article-date">
-  	<time datetime="2017-12-16T16:51:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-17</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>偶尔需要将图片的背景透明，渐渐掌握了几种较为简便的处理方法。写篇文章记录一下经验，免得自己哪天又忘了。</p>
-<h2 id="PowerPoint-→-PNG"><a href="#PowerPoint-→-PNG" class="headerlink" title="PowerPoint → PNG"></a>PowerPoint → PNG</h2><blockquote>
-<p>微软幻灯片工具 PowerPoint 也可以用来简单处理下图片，比如透明化背景。</p>
-</blockquote>
-<p>1、打开 PowerPoint，新建一张幻灯片页面，然后把待处理的图片拖进去。<br>2、依次点击 <strong>格式</strong> 选项卡 - <strong>颜色</strong> 菜单 - <strong>设置透明色</strong> - 点选 <strong>背景色</strong>。这样背景就透明化了，再右键图片另存为 <code>PNG 格式</code> 即可。<br>3、 <strong>删除背景</strong> 功能类似，不过感觉没上面的方式快捷。</p>
-<p><img src="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/PPT-PNG.jpg" alt="PPT-PNG"></p>
-<h2 id="PhotoShop-→-PNG"><a href="#PhotoShop-→-PNG" class="headerlink" title="PhotoShop → PNG"></a>PhotoShop → PNG</h2><blockquote>
-<p>如果电脑上安了 PhotoShop，那我们可以更灵活地制作透明背景图片。<br>1、用 PS 打开待处理的静态图片，双击图层框右侧小锁标志解锁图层;<br>2、选用魔棒工具，调整容差为10左右(容差越大，选取的相似颜色越多)，勾选消除锯齿;<br>3、点选背景，按键盘 <code>del</code>键删除之(按住 <code>shift</code> 键可以多选)，之后将图片另存为 PNG 格式即可。<br><img src="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/PS-PNG.jpg" alt="PS-PNG"></p>
-</blockquote>
-<h2 id="PhotoShop-→-GIF"><a href="#PhotoShop-→-GIF" class="headerlink" title="PhotoShop → GIF"></a>PhotoShop → GIF</h2><blockquote>
-<p>PhotoShop 用来透明化 GIF 动图背景也是很方便的。<br>1、用 PS 打开待处理的 GIF 动图，并确保时间轴窗口已显示(窗口菜单 - 勾选时间轴)；<br>2、全选时间轴中的图片(可利用 <code>shift</code> 键全选)，右键图片，勾选自动(跳过此步生产的动图会有重影)；<br>3、点击文件菜单 - 存储为 Web 所用格式…；<br>4、在颜色表中，先点选的小星点，再点击下方第一个按钮将背景透明，之后点击存储…保存 GIF 到目标位置即可。<br><img src="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/PS-GIF-1.jpg" alt="PS-GIF-1"><br><img src="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/PS-GIF-2.jpg" alt="PS-GIF-2"></p>
-</blockquote>
-<h2 id="一些成品"><a href="#一些成品" class="headerlink" title="一些成品"></a>一些成品</h2><blockquote>
-<p>展示一些已经透明化背景的图片。<br><img src="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/Mihawk.gif" alt="Mihawk"><img src="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/food-boy.gif" alt="food-boy"><img src="https://raw.githubusercontent.com/WangEn/BlogBackup/master/blogimgs/bilibili.gif" alt="bilibili"></p>
-</blockquote>
-<h4 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h4><blockquote>
-<ul>
-<li>移动端图片格式调研 by ibireme on 2015/11/2: <a href="http://blog.ibireme.com/2015/11/02/mobile_image_benchmark/" target="_blank" rel="noopener">http://blog.ibireme.com/2015/11/02/mobile_image_benchmark/</a></li>
-<li>解决GIF动画图去背景后出现的重影 by 有烟飘过 on 2010/5/10: <a href="http://tieba.baidu.com/p/2106457600" target="_blank" rel="noopener">http://tieba.baidu.com/p/2106457600</a></li>
-<li>制作透明背景 PNG 图片和 GIF 动图的几种方法 by MOxFIVE on 2015-11-17: <a href="http://moxfive.xyz/2015/11/16/png-gif-transparency/" target="_blank" rel="noopener">http://moxfive.xyz/2015/11/16/png-gif-transparency/</a></li>
-</ul>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">png</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gif</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Photoshop</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">PowerPoint</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Images//" class="article-tag-list-link color2">Images</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/17/png-gif-transparency/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1471,11 +1450,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">body</a>
+                <a href="javascript:void(0)" class="js-tag color3">邮件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">邮件</a>
+                <a href="javascript:void(0)" class="js-tag color5">body</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1483,11 +1462,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Template</a>
+                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
+                <a href="javascript:void(0)" class="js-tag color4">Template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1511,11 +1490,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">layui</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">layui</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1535,19 +1514,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+                <a href="javascript:void(0)" class="js-tag color1">layer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
+                <a href="javascript:void(0)" class="js-tag color2">iframe</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Word</a>
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Code</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1564,6 +1543,22 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">PowerPoint</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Word</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Code</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
               </li>
             
             <div class="clearfix"></div>

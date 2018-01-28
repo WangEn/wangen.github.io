@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wangen.github.io/"/>
-  <updated>2018-01-21T09:26:26.279Z</updated>
+  <updated>2018-01-28T06:52:34.680Z</updated>
   <id>https://wangen.github.io/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用layer的iframe层提交表单后,关闭当前iframe，然后刷新父页面</title>
+    <link href="https://wangen.github.io/2018/01/28/layui-layer-1/"/>
+    <id>https://wangen.github.io/2018/01/28/layui-layer-1/</id>
+    <published>2018-01-28T06:51:05.000Z</published>
+    <updated>2018-01-28T06:52:34.680Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求：需要使用iframe来实现添加新账号的功能，在iframe页面中通过表单提交新账号的资料后，关闭iframe页面，并且刷新父页面账号列表。</p><h2 id="layer参考"><a href="#layer参考" class="headerlink" title="layer参考"></a>layer参考</h2><p>layer独立组件官网：<a href="http://layer.layui.com/" target="_blank" rel="noopener">http://layer.layui.com/</a><br>layui文档：<a href="http://www.layui.com/doc/modules/layer.html" target="_blank" rel="noopener">弹层组件文档</a></p><blockquote><p>iframe层-父子操作子页面主要代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给父页面传值</span></span><br><span class="line">$(<span class="string">'#transmit'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    parent.$(<span class="string">'#parentIframe'</span>).text(<span class="string">'我被改变了'</span>);</span><br><span class="line">    parent.layer.tips(<span class="string">'Look here'</span>, <span class="string">'#parentIframe'</span>, &#123;<span class="attr">time</span>: <span class="number">5000</span>&#125;);</span><br><span class="line">    parent.layer.close(index);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p></blockquote><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>直接在iframe页面通过<code>$(&#39;#transmit&#39;).on(&#39;click&#39;, function(){});</code>来执行关闭及刷新操作，会造成本页面的form表单无法提交到后台，因此换用ajax来提交form表单，判断ajax提交成功/失败后，再进行父页面传值等操作。</p><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>主要代码如下：</p><h3 id="HTML相关代码"><a href="#HTML相关代码" class="headerlink" title="HTML相关代码"></a>HTML相关代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box-body"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group col-sm-6"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputAccount1"</span> <span class="attr">class</span>=<span class="string">"col-sm-4 control-label"</span>&gt;</span>微信号<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputAccount1"</span> <span class="attr">placeholder</span>=<span class="string">"微信号"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group col-sm-6"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputAccount2"</span> <span class="attr">class</span>=<span class="string">"col-sm-4 control-label"</span>&gt;</span>手机号<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputAccount2"</span> <span class="attr">placeholder</span>=<span class="string">"手机号"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group col-sm-12"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputAccount3"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>二维码<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">id</span>=<span class="string">"inputAccount3"</span> <span class="attr">class</span>=<span class="string">"upload"</span>&gt;</span>点击上传图片<span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"change"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="js相关代码"><a href="#js相关代码" class="headerlink" title="js相关代码"></a>js相关代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"/js/jquery-2.2.3.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"/js/layer/layer.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="keyword">var</span> index = parent.layer.getFrameIndex(<span class="built_in">window</span>.name);</span><br><span class="line"><span class="comment">//获取iframe父页面索引</span></span><br><span class="line">    $(<span class="string">'form'</span>).submit(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">            url:<span class="string">"url"</span>,</span><br><span class="line">            type:<span class="string">"post"</span>,</span><br><span class="line">            data:$(<span class="keyword">this</span>).serialize(),</span><br><span class="line">            success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">                <span class="comment">//console.log(data);</span></span><br><span class="line">                parent.location.reload(); <span class="comment">//刷新父页面</span></span><br><span class="line">        parent.layer.close(index);  <span class="comment">//关闭当前页面，写在最后面</span></span><br><span class="line">            &#125;,</span><br><span class="line">            error:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            <span class="comment">//console.log("Error~");</span></span><br><span class="line">                <span class="comment">//console.log(data);</span></span><br><span class="line">                parent.location.reload();</span><br><span class="line">        parent.layer.close(index);</span><br><span class="line">            &#125;</span><br><span class="line">       &#125;);   </span><br><span class="line">&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure><h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><p>关于layer弹层iframe窗的子父操作，<code>parent.layer.close(index)</code>这个关闭操作一定要写在最后面，大概是因为执行关闭执行，其他操作就不会执行了。</p><h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><blockquote><p>参考文档1：<a href="http://blog.csdn.net/u011848397/article/details/52353226?locationNum=11" target="_blank" rel="noopener">layer弹窗iframe页面，关闭弹窗方法导致form表单无法提交到服务器</a><br>参考文档2：<a href="http://blog.csdn.net/u011020900/article/details/52083166" target="_blank" rel="noopener">使用layer的iframe层提交表单后，需要关闭当前的iframe层，然后刷新父页面的方法</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;需求：需要使用iframe来实现添加新账号的功能，在iframe页面中通过表单提交新账号的资料后，关闭iframe页面，并且刷新父页面账号列表。&lt;/p&gt;
+&lt;h2 id=&quot;layer参考&quot;&gt;&lt;a href=&quot;#layer参考&quot; class=&quot;headerlink&quot; title
+      
+    
+    </summary>
+    
+      <category term="layui" scheme="https://wangen.github.io/categories/layui/"/>
+    
+    
+      <category term="layui" scheme="https://wangen.github.io/tags/layui/"/>
+    
+      <category term="layer" scheme="https://wangen.github.io/tags/layer/"/>
+    
+      <category term="iframe" scheme="https://wangen.github.io/tags/iframe/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Web前端学习参考网站备忘</title>
+    <link href="https://wangen.github.io/2018/01/23/web-dom-1/"/>
+    <id>https://wangen.github.io/2018/01/23/web-dom-1/</id>
+    <published>2018-01-23T14:18:45.000Z</published>
+    <updated>2018-01-23T15:30:02.131Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前端参考文档"><a href="#前端参考文档" class="headerlink" title="前端参考文档"></a>前端参考文档</h3><p><a href="http://caibaojian.com/book/" target="_blank" rel="noopener">精选推荐教程 · 技术文档-在线教程</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前端参考文档&quot;&gt;&lt;a href=&quot;#前端参考文档&quot; class=&quot;headerlink&quot; title=&quot;前端参考文档&quot;&gt;&lt;/a&gt;前端参考文档&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://caibaojian.com/book/&quot; target=&quot;_blank&quot; 
+      
+    
+    </summary>
+    
+      <category term="study" scheme="https://wangen.github.io/categories/study/"/>
+    
+    
+      <category term="Web" scheme="https://wangen.github.io/tags/Web/"/>
+    
+      <category term="前端" scheme="https://wangen.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>jQuery不同版本库同时引入冲突解决办法</title>
@@ -540,60 +597,6 @@
       <category term="DedeCMS" scheme="https://wangen.github.io/tags/DedeCMS/"/>
     
       <category term="织梦" scheme="https://wangen.github.io/tags/%E7%BB%87%E6%A2%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Github Pages + Hexo搭建博客</title>
-    <link href="https://wangen.github.io/2017/12/13/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://wangen.github.io/2017/12/13/Github-Pages-Hexo搭建博客/</id>
-    <published>2017-12-13T15:40:07.000Z</published>
-    <updated>2018-01-20T13:52:26.413Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。</p><h2 id="Mac搭建参考网址说明"><a href="#Mac搭建参考网址说明" class="headerlink" title="Mac搭建参考网址说明"></a>Mac搭建参考网址说明</h2><p><a href="http://www.jianshu.com/p/484e4ca7edf0" target="_blank" rel="noopener">在Mac上搭建基于Hexo的个人博客网站</a><br><a href="http://fanzhenyu.me/categories/Hexo/" target="_blank" rel="noopener">Github Pages + Hexo搭建博客</a><br><a href="http://lawlite.me/2017/04/13/Hexo-Github%E5%AE%9E%E7%8E%B0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">Hexo+Github实现相册功能</a></p></blockquote><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22843115&auto=1&height=66"></iframe><h2 id="MarkDown"><a href="#MarkDown" class="headerlink" title="MarkDown"></a>MarkDown</h2><h3 id="Cmd-MarkDown编辑器"><a href="#Cmd-MarkDown编辑器" class="headerlink" title="Cmd MarkDown编辑器"></a>Cmd MarkDown编辑器</h3><p><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">在线MarkDown文本编辑</a></p><h2 id="Hexo-Theme"><a href="#Hexo-Theme" class="headerlink" title="Hexo Theme"></a>Hexo Theme</h2><h3 id="yilia-https-github-com-litten-hexo-theme-yilia-issues-63"><a href="#yilia-https-github-com-litten-hexo-theme-yilia-issues-63" class="headerlink" title="[yilia] (https://github.com/litten/hexo-theme-yilia/issues/63)"></a>[yilia] (<a href="https://github.com/litten/hexo-theme-yilia/issues/63" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia/issues/63</a>)</h3><p>作者：<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a><br>第三方评论工具：<a href="https://livere.com/" target="_blank" rel="noopener">来必力</a></p><h2 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"postName"</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo new page <span class="string">"pageName"</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></span><br><span class="line">hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;Hexo是一个快速、简洁且高效的博客框架，特别适合于部署静态的博客网站，这里是开始第一步的地方。&lt;/p&gt;
-&lt;h2 id=&quot;Mac搭建参考网址说明&quot;&gt;&lt;a href=&quot;#Mac搭建参考网址说明&quot; class=&quot;headerlink&quot; title=&quot;M
-      
-    
-    </summary>
-    
-      <category term="Hexo" scheme="https://wangen.github.io/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="https://wangen.github.io/tags/Hexo/"/>
-    
-      <category term="Github" scheme="https://wangen.github.io/tags/Github/"/>
-    
-      <category term="博客搭建" scheme="https://wangen.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一篇博客，记录转载学习随笔</title>
-    <link href="https://wangen.github.io/2017/12/13/hello-world/"/>
-    <id>https://wangen.github.io/2017/12/13/hello-world/</id>
-    <published>2017-12-13T14:40:07.000Z</published>
-    <updated>2018-01-20T13:52:39.620Z</updated>
-    
-    <content type="html"><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=432506345&auto=1&height=66"></iframe><blockquote><p>默认生成的Hexo第一篇博客，在我开始搭建的时候，Python开始进入中学课本……<br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p></blockquote><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="新建一个页面目录"><a href="#新建一个页面目录" class="headerlink" title="新建一个页面目录"></a>新建一个页面目录</h3><p>在命令行里面输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page <span class="string">"about"</span></span><br></pre></td></tr></table></figure></p><p>然后你会发现source里面多了个目录about，里面有个index.md。其实你也可以手动建立。页面的格式和文章一样。<br>接着把链接加上，themes/<theme_name>/_config.yml里面的menu一项，添加一行About: /about。<br>完事。来源：<a href="https://segmentfault.com/q/1010000000618915" target="_blank" rel="noopener">Hexo菜单中添加分类和页面</a> 还有<a href="https://www.zhihu.com/question/33324071" target="_blank" rel="noopener">知乎</a></theme_name></p><p>###<a href="http://www.jianshu.com/p/e6e54389c88f" target="_blank" rel="noopener">Hexo主题中实现多级分类</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;//music.163.com/outchain/player?type=2&amp;id=
-      
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="https://wangen.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
