@@ -175,6 +175,112 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-layui-layer-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/29/layui-layer-2/">结合Layui实现iframe无刷新给父页面添加新数据</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/29/layui-layer-2/" class="archive-article-date">
+  	<time datetime="2018-01-29T14:56:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="需求概要"><a href="#需求概要" class="headerlink" title="需求概要"></a>需求概要</h2><p>在父页面会员列表点击【添加】操作，弹出iFrame弹层，包含输入input各项信息的表单，编辑完成提交后，将表单中input的value值传递给父页面，并且在父页面会员列表table中无刷新添加一行表格<code>&lt;tr&gt;</code>，模拟后台数据的提交与接收。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<p><a href="http://layer.layui.com/" target="_blank" rel="noopener">layer:iframe-子父操作</a></p>
+</blockquote>
+<p>主要依赖参考：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给父页面传值</span></span><br><span class="line">$(<span class="string">'#transmit'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    parent.$(<span class="string">'#parentIframe'</span>).text(<span class="string">'我被改变了'</span>);</span><br><span class="line">    parent.layer.tips(<span class="string">'Look here'</span>, <span class="string">'#parentIframe'</span>, &#123;<span class="attr">time</span>: <span class="number">5000</span>&#125;);</span><br><span class="line">    parent.layer.close(index);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="优化实现方法"><a href="#优化实现方法" class="headerlink" title="优化实现方法"></a>优化实现方法</h2><p>frame页面确定增加时，触发给父页面传值事件。结合jQuery查询到父页面table的ID，将form表单提交的field值插入到父页面table结尾。以下示例代码，删除部分不需要内容：</p>
+<h3 id="主要HTML代码"><a href="#主要HTML代码" class="headerlink" title="主要HTML代码"></a>主要HTML代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--父页面添加按钮操作--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"weadmin-block"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"layui-btn layui-btn-danger"</span> <span class="attr">onclick</span>=<span class="string">"delAll()"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"layui-icon"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>批量删除<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"layui-btn"</span> <span class="attr">onclick</span>=<span class="string">"WeAdminShow('添加用户','./add.html',600,400)"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"layui-icon"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--父页面会员列表--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"layui-table"</span> <span class="attr">id</span>=<span class="string">"memberList"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-unselect header layui-form-checkbox"</span> <span class="attr">lay-skin</span>=<span class="string">"primary"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"layui-icon"</span>&gt;</span>&amp;#xe605;<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>ID<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>手机<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>邮箱<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>地址<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>加入时间<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>状态<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-unselect layui-form-checkbox"</span> <span class="attr">lay-skin</span>=<span class="string">"primary"</span> <span class="attr">data-id</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"layui-icon"</span>&gt;</span>&amp;#xe605;<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>小明<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>男<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>13000000000<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>admin@mail.com<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>北京市 朝阳区<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>2017-01-01 11:11:42<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"td-status"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"layui-btn layui-btn-normal layui-btn-xs"</span>&gt;</span>已启用<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--子页面frame 主要表单代码实例--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"layui-form"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_username"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"we-red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>登录名<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"L_username"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">lay-verify</span>=<span class="string">"required|nikename"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span> <span class="attr">class</span>=<span class="string">"layui-input"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-mid layui-word-aux"</span>&gt;</span></span><br><span class="line">			请设置至少5个字符，将会成为您唯一的登录名</span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_sex"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-block"</span> <span class="attr">id</span>=<span class="string">"L_sex"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"男"</span> <span class="attr">title</span>=<span class="string">"男"</span> <span class="attr">checked</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"女"</span> <span class="attr">title</span>=<span class="string">"女"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"未知"</span> <span class="attr">title</span>=<span class="string">"未知"</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_email"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"we-red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>手机<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"L_phone"</span> <span class="attr">name</span>=<span class="string">"phone"</span> <span class="attr">lay-verify</span>=<span class="string">"required|phone"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span> <span class="attr">class</span>=<span class="string">"layui-input"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_email"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"we-red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>邮箱<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"L_email"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">lay-verify</span>=<span class="string">"email"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span> <span class="attr">class</span>=<span class="string">"layui-input"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_repass"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"layui-btn"</span> <span class="attr">lay-filter</span>=<span class="string">"add"</span> <span class="attr">lay-submit</span>=<span class="string">""</span>&gt;</span>增加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="主要JavaScript代码"><a href="#主要JavaScript代码" class="headerlink" title="主要JavaScript代码"></a>主要JavaScript代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">layui.use([<span class="string">'form'</span>, <span class="string">'layer'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	$ = layui.jquery;</span><br><span class="line">	<span class="keyword">var</span> form = layui.form,</span><br><span class="line">		layer = layui.layer;</span><br><span class="line">	<span class="comment">//监听提交</span></span><br><span class="line">	form.on(<span class="string">'submit(add)'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(data.field);</span><br><span class="line">		<span class="keyword">var</span> f = data.field; <span class="comment">//获取表单中提交的value</span></span><br><span class="line">		<span class="comment">//发异步，把数据提交给php后台，此处模拟实现</span></span><br><span class="line">		layer.alert(<span class="string">"增加成功"</span>, &#123;</span><br><span class="line">			icon: <span class="number">6</span></span><br><span class="line">		&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="comment">// 获得frame索引</span></span><br><span class="line">			<span class="keyword">var</span> index = parent.layer.getFrameIndex(<span class="built_in">window</span>.name);</span><br><span class="line"></span><br><span class="line">  			<span class="comment">//获取父页面会员列表的长度，给每条数据赋值不同的data-id属性</span></span><br><span class="line">			<span class="keyword">var</span> _len = parent.$(<span class="string">'#memberList tr'</span>).length;</span><br><span class="line">			alert(_len);</span><br><span class="line">			<span class="comment">//根据需求，按照父页面表格已有字段，在table结尾插入一组数据</span></span><br><span class="line">			parent.$(<span class="string">'#memberList'</span>).append(						</span><br><span class="line">				<span class="string">'&lt;tr data-id="'</span> + _len + <span class="string">'"&gt;'</span> +</span><br><span class="line">					<span class="string">'&lt;td&gt;'</span>+</span><br><span class="line">						<span class="string">'&lt;div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="'</span> + _len + <span class="string">'"&gt;&lt;i class="layui-icon"&gt;&amp;#xe605;&lt;/i&gt;&lt;/div&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;td&gt;'</span> + _len + <span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;td&gt;'</span>+f.username+<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;td&gt;'</span>+f.sex+<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;td&gt;'</span>+f.phone+<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;td&gt;'</span>+f.email+<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;td&gt;2018-01-01 11:11:42&lt;/td&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;td class="td-status"&gt;&lt;span class="layui-btn layui-btn-normal layui-btn-xs"&gt;已启用&lt;/span&gt;&lt;/td&gt;'</span>+</span><br><span class="line">					<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">				<span class="string">'&lt;/tr&gt;'</span>	</span><br><span class="line">			);</span><br><span class="line">			<span class="comment">//关闭当前frame</span></span><br><span class="line">			parent.layer.close(index);</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="给父页面赋值后再添加的实现方法"><a href="#给父页面赋值后再添加的实现方法" class="headerlink" title="给父页面赋值后再添加的实现方法"></a>给父页面赋值后再添加的实现方法</h2><blockquote>
+<p>根据自己的实际需求选择合适的实现方法最好，个人在此项实现场景中不推荐此方法，因为此项目中父页面对应多个frame子页面，每个frame子页面对应的代码写在自己页面内部，感觉可能代码会更规整一些。</p>
+</blockquote>
+<h3 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h3><p>在父页面创建一个隐藏的form表单用来接收frame子页面的传值，在父页面创建一个addMember()函数来在table尾部插入一组新数据；在iframe子页面编辑完成触发事件时，给父页面隐藏表单传值，然后执行父页面的addMember()函数。</p>
+<h3 id="增加HTML主要代码"><a href="#增加HTML主要代码" class="headerlink" title="增加HTML主要代码"></a>增加HTML主要代码</h3><p>在以上实现方法基础上，新增隐藏form表单<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--列表页增加form表单，接收add页面传过来的值，模拟后台提交与接收--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"layui-form"</span> <span class="attr">id</span>=<span class="string">"modalForm"</span> <span class="attr">style</span>=<span class="string">"display: none;"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_username"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"we-red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>登录名</span><br><span class="line">            <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"L_username"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">class</span>=<span class="string">"layui-input"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_sex"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"L_sex"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">class</span>=<span class="string">"layui-input"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_email"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"we-red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>手机</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"L_phone"</span> <span class="attr">name</span>=<span class="string">"phone"</span> <span class="attr">class</span>=<span class="string">"layui-input"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_email"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"we-red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>邮箱</span><br><span class="line">            <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"L_email"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">lass</span>=<span class="string">"layui-input"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-form-item"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"L_pass"</span> <span class="attr">class</span>=<span class="string">"layui-form-label"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"we-red"</span>&gt;</span>*<span class="tag">&lt;/<span class="name">span</span>&gt;</span>密码</span><br><span class="line">      <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"layui-input-inline"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"L_pass"</span> <span class="attr">name</span>=<span class="string">"pass"</span> <span class="attr">class</span>=<span class="string">"layui-input"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="增加JavaScript代码"><a href="#增加JavaScript代码" class="headerlink" title="增加JavaScript代码"></a>增加JavaScript代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父页面创建addMember()函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addMember</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> _len = $(<span class="string">'#memberList tr'</span>).length;</span><br><span class="line">	alert(_len);</span><br><span class="line">	$(<span class="string">'#memberList'</span>).append(						</span><br><span class="line">		<span class="string">'&lt;tr data-id="'</span> + _len + <span class="string">'"&gt;'</span> +</span><br><span class="line">			<span class="string">'&lt;td&gt;'</span>+</span><br><span class="line">				<span class="string">'&lt;div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="5"&gt;&lt;i class="layui-icon"&gt;&amp;#xe605;&lt;/i&gt;&lt;/div&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td&gt;5&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td&gt;'</span>+$(<span class="string">'input[name="username"]'</span>).val()+<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td&gt;'</span>+$(<span class="string">'input[name="sex"]'</span>).val()+<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td&gt;'</span>+$(<span class="string">'input[name="phone"]'</span>).val()+<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td&gt;'</span>+$(<span class="string">'input[name="email"]'</span>).val()+<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td&gt;北京市西城区&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td&gt;2018-01-01 11:11:42&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td class="td-status"&gt;&lt;span class="layui-btn layui-btn-normal layui-btn-xs"&gt;已启用&lt;/span&gt;&lt;/td&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;td class="td-manage"&gt;'</span>+</span><br><span class="line">				<span class="string">'&lt;a onclick="member_stop(this,\'10001\')" href="javascript:;" title="启用"&gt;&lt;i class="layui-icon"&gt;&amp;#xe601;&lt;/i&gt;&lt;/a&gt;'</span>+</span><br><span class="line">				<span class="string">'&lt;a title="编辑" onclick="WeAdminShow(\'编辑\',\'./edit.html\',600,400)" href="javascript:;"&gt;&lt;i class="layui-icon"&gt;&amp;#xe642;&lt;/i&gt;&lt;/a&gt;'</span>+</span><br><span class="line">				<span class="string">'&lt;a onclick="WeAdminShow(\'修改密码\',\'./password.html\',600,400)" title="修改密码" href="javascript:;"&gt;&lt;i class="layui-icon"&gt;&amp;#xe631;&lt;/i&gt;&lt;/a&gt;'</span>+</span><br><span class="line">				<span class="string">'&lt;a title="删除" onclick="member_del(this,\'要删除的id\')" href="javascript:;"&gt;&lt;i class="layui-icon"&gt;&amp;#xe640;&lt;/i&gt;&lt;/a&gt;'</span>+</span><br><span class="line">			<span class="string">'&lt;/td&gt;'</span>+</span><br><span class="line">		<span class="string">'&lt;/tr&gt;'</span>	</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//frame子页面改写点击监听事件</span></span><br><span class="line"><span class="comment">//监听提交</span></span><br><span class="line">form.on(<span class="string">'submit(add)'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(data.field);</span><br><span class="line">	<span class="keyword">var</span> f = data.field;</span><br><span class="line">	<span class="comment">//发异步，把数据提交给php</span></span><br><span class="line">	layer.alert(<span class="string">"增加成功"</span>, &#123;</span><br><span class="line">		icon: <span class="number">6</span></span><br><span class="line">	&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 获得frame索引</span></span><br><span class="line">		<span class="keyword">var</span> index = parent.layer.getFrameIndex(<span class="built_in">window</span>.name);</span><br><span class="line">		<span class="comment">//将form提交的值传递给父页面的隐藏表单对应的input值</span></span><br><span class="line">		parent.$(<span class="string">'input[name="username"]'</span>).val(f.username);</span><br><span class="line">		parent.$(<span class="string">'input[name="sex"]'</span>).val(f.sex);</span><br><span class="line">		parent.$(<span class="string">'input[name="email"]'</span>).val(f.email);</span><br><span class="line">		parent.$(<span class="string">'input[name="phone"]'</span>).val(f.phone);</span><br><span class="line">		parent.$(<span class="string">'input[name="pass"]'</span>).val(f.pass);</span><br><span class="line">		<span class="comment">//然后执行父页面的addMember()函数</span></span><br><span class="line">		parent.addMember();</span><br><span class="line">		<span class="comment">//关闭当前frame</span></span><br><span class="line">		parent.layer.close(index);</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">layui</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">layer</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">iframe</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/layui//" class="article-tag-list-link color1">layui</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/29/layui-layer-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-layui-layer-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1197,105 +1303,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-office-word-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/20/office-word-1/">如何优雅的在 Microsoft word中插入代码</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/20/office-word-1/" class="archive-article-date">
-  	<time datetime="2017-12-20T15:10:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-20</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="打开在线编辑代码网站"><a href="#打开在线编辑代码网站" class="headerlink" title="打开在线编辑代码网站"></a>打开在线编辑代码网站</h2><p>打开<a href="http://www.planetb.ca/syntax-highlight-word" target="_blank" rel="noopener">PlanetB 代码编辑高亮网站</a> </p>
-<h2 id="编辑代码"><a href="#编辑代码" class="headerlink" title="编辑代码"></a>编辑代码</h2><p>1、将你需要插入在word中的代码完整的复制到该网站提示的文本框内，选择你的代码类型，如PHP,JavaScript,HTML等，并点击提交。<br>2、页面会自动跳转生成一个新的页面，包含编辑格式后的代码，此时ctrl+A全选，后ctrl+c复制到word中粘贴就好。</p>
-<h2 id="在Word中使用"><a href="#在Word中使用" class="headerlink" title="在Word中使用"></a>在Word中使用</h2><p>1、插入-表格-插入1*1的表格<br>2、光标放在表格中，将刚刚复制的代码粘贴进入<br>3、设置仅对该文档不使用语法检查</p>
-<blockquote>
-<p>原文地址：<a href="http://blog.csdn.net/u011303443/article/details/50992651" target="_blank" rel="noopener">如何优雅的在 Microsoft word中插入代码</a></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Microsoft</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Word</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Office//" class="article-tag-list-link color2">Office</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/20/office-word-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1414,6 +1421,22 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DedeCMS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">织梦</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">缩略图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">body</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
@@ -1438,15 +1461,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DedeCMS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">织梦</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">缩略图</a>
+                <a href="javascript:void(0)" class="js-tag color3">栏目</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1454,11 +1469,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">body</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">栏目</a>
+                <a href="javascript:void(0)" class="js-tag color4">Template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1466,7 +1477,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Template</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1487,10 +1498,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">input</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1522,11 +1529,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1546,6 +1549,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
               </li>
              
@@ -1555,10 +1566,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
               </li>
             
             <div class="clearfix"></div>
