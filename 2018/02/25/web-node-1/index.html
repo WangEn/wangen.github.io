@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://wangen.github.io">
   <title>nodejs遇到的问题 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="node插件1、nodemon nodemon https://github.com/remy/nodemon  nodemon库是专门调试时候使用的，它会自动检测 node.js 代码的改动，然后帮你自动重启应用。在调试时可以完全用 nodemon 命令代替 node 命令。  nodemon安装：npm i -g nodemon```123456789101112131415161718192">
+  <meta name="description" content="node插件1、nodemon nodemon https://github.com/remy/nodemon  nodemon库是专门调试时候使用的，它会自动检测 node.js 代码的改动，然后帮你自动重启应用。在调试时可以完全用 nodemon 命令代替 node 命令。  nodemon安装：$ npm i -g nodemonnodemon使用：$ nodemon app.js 替代no">
 <meta name="keywords" content="node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs遇到的问题">
 <meta property="og:url" content="https://wangen.github.io/2018/02/25/web-node-1/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="node插件1、nodemon nodemon https://github.com/remy/nodemon  nodemon库是专门调试时候使用的，它会自动检测 node.js 代码的改动，然后帮你自动重启应用。在调试时可以完全用 nodemon 命令代替 node 命令。  nodemon安装：npm i -g nodemon```123456789101112131415161718192">
+<meta property="og:description" content="node插件1、nodemon nodemon https://github.com/remy/nodemon  nodemon库是专门调试时候使用的，它会自动检测 node.js 代码的改动，然后帮你自动重启应用。在调试时可以完全用 nodemon 命令代替 node 命令。  nodemon安装：$ npm i -g nodemonnodemon使用：$ nodemon app.js 替代no">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T15:28:23.767Z">
+<meta property="og:updated_time" content="2018-02-25T15:52:17.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs遇到的问题">
-<meta name="twitter:description" content="node插件1、nodemon nodemon https://github.com/remy/nodemon  nodemon库是专门调试时候使用的，它会自动检测 node.js 代码的改动，然后帮你自动重启应用。在调试时可以完全用 nodemon 命令代替 node 命令。  nodemon安装：npm i -g nodemon```123456789101112131415161718192">
+<meta name="twitter:description" content="node插件1、nodemon nodemon https://github.com/remy/nodemon  nodemon库是专门调试时候使用的，它会自动检测 node.js 代码的改动，然后帮你自动重启应用。在调试时可以完全用 nodemon 命令代替 node 命令。  nodemon安装：$ npm i -g nodemonnodemon使用：$ nodemon app.js 替代no">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -201,12 +201,14 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>nodemon库是专门调试时候使用的，它会自动检测 node.js 代码的改动，然后帮你自动重启应用。在调试时可以完全用 nodemon 命令代替 node 命令。</p>
 <blockquote>
-<p>nodemon安装：<figure class="highlight plain"><figcaption><span>npm i -g nodemon```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt; nodemon使用：```$ nodemon app.js```替代node启动我们的应用</span><br><span class="line"></span><br><span class="line">## node一些问题备忘</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 常见错误</span><br><span class="line"></span><br><span class="line">转载自huansky的文章[nodejs遇到的问题](https://www.cnblogs.com/huansky/p/5524743.html)，在遇到问题6时找到此解决方法。</span><br><span class="line"></span><br><span class="line">### 1、express-session deprecated undefined &lt;font color=#ff0000 &gt;**resave option**&lt;/font&gt;; provide resave option app.js:49:9</span><br><span class="line"></span><br><span class="line">express-session deprecated undefined &lt;font color=#ff0000 &gt;*saveUninitialized option*&lt;/font&gt;; provide saveUninitialized option app.js:49:9</span><br><span class="line">解答：其实我们可以看到斜体的部分就是导致错误的原因</span><br><span class="line">解决办法：</span><br><span class="line">``` javascript</span><br><span class="line">app.use(session(&#123;</span><br><span class="line">    secret: &apos;keyboard cat&apos;, </span><br><span class="line">    cookie: &#123; maxAge: 60000 &#125;, </span><br><span class="line">    resave: true, </span><br><span class="line">    saveUninitialized: true </span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure></p>
+<p>nodemon安装：<code>$ npm i -g nodemon</code><br>nodemon使用：<code>$ nodemon app.js</code> 替代node启动我们的应用</p>
 </blockquote>
+<h2 id="node一些问题备忘"><a href="#node一些问题备忘" class="headerlink" title="node一些问题备忘"></a>node一些问题备忘</h2><h2 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h2><p>转载自huansky的文章<a href="https://www.cnblogs.com/huansky/p/5524743.html" target="_blank" rel="noopener">nodejs遇到的问题</a>，在遇到问题6时找到此解决方法。</p>
+<h3 id="1、express-session-deprecated-undefined-resave-option-provide-resave-option-app-js-49-9"><a href="#1、express-session-deprecated-undefined-resave-option-provide-resave-option-app-js-49-9" class="headerlink" title="1、express-session deprecated undefined resave option; provide resave option app.js:49:9"></a>1、express-session deprecated undefined <font color="#ff0000"><strong>resave option</strong></font>; provide resave option app.js:49:9</h3><p>express-session deprecated undefined <font color="#ff0000"><em>saveUninitialized option</em></font>; provide saveUninitialized option app.js:49:9<br>解答：其实我们可以看到斜体的部分就是导致错误的原因<br>解决办法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(session(&#123;</span><br><span class="line">    secret: <span class="string">'keyboard cat'</span>, </span><br><span class="line">    cookie: &#123; <span class="attr">maxAge</span>: <span class="number">60000</span> &#125;, </span><br><span class="line">    resave: <span class="literal">true</span>, </span><br><span class="line">    saveUninitialized: <span class="literal">true</span> </span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure></p>
 <p>具体参看<a href="https://github.com/expressjs/session#options" target="_blank" rel="noopener">https://github.com/expressjs/session#options</a></p>
 <h3 id="2、failed-to-load-c-bson-extension-using-pure-js-version"><a href="#2、failed-to-load-c-bson-extension-using-pure-js-version" class="headerlink" title="2、failed to load c++ bson extension using pure js version"></a>2、failed to load c++ bson extension using pure js version</h3><p>在package.json修改  “connect-mongo”:“0.8.2” 运行npm install安装模块,打开app.js，添加以下代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.use(session(&#123;</span><br><span class="line">  secret: settings.cookieSecret,</span><br><span class="line">  key: settings.db,<span class="comment">//cookie name</span></span><br><span class="line">  cookie: &#123;<span class="attr">maxAge</span>: <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">30</span>&#125;,<span class="comment">//30 days</span></span><br><span class="line">  store: <span class="keyword">new</span> MongoStore(&#123;</span><br><span class="line">    db: settings.db,</span><br><span class="line">    host: settings.host,</span><br><span class="line">    port: settings.port,</span><br><span class="line">    url: <span class="string">'mongodb://localhost/myblog'</span></span><br><span class="line">  &#125;),</span><br><span class="line">  proxy: <span class="literal">true</span>,</span><br><span class="line">  resave: <span class="literal">true</span>,</span><br><span class="line">  saveUninitialized: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h3 id="3、怎么进入mongodb的shell"><a href="#3、怎么进入mongodb的shell" class="headerlink" title="3、怎么进入mongodb的shell"></a>3、怎么进入mongodb的shell</h3><p>打开一个命令行切换到 <figure class="highlight plain"><figcaption><span>（保证数据库已打开的前提下），输入：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">``` bash</span><br><span class="line">&gt;mongo</span><br><span class="line">&gt;show dbs</span><br><span class="line">&gt;use xxxx;   (此处为你要选择的数据库)</span><br></pre></td></tr></table></figure></p>
+<h3 id="3、怎么进入mongodb的shell"><a href="#3、怎么进入mongodb的shell" class="headerlink" title="3、怎么进入mongodb的shell"></a>3、怎么进入mongodb的shell</h3><p>打开一个命令行切换到 <code>mongodb/bin/</code> （保证数据库已打开的前提下），输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;mongo</span><br><span class="line">&gt;show dbs</span><br><span class="line">&gt;use xxxx;   (此处为你要选择的数据库)</span><br></pre></td></tr></table></figure></p>
 <h3 id="4、在看nodejs权威指南的时候，我发现到了第7章，发现运行telnet-localhost-8431提示说这是外部命令；"><a href="#4、在看nodejs权威指南的时候，我发现到了第7章，发现运行telnet-localhost-8431提示说这是外部命令；" class="headerlink" title="4、在看nodejs权威指南的时候，我发现到了第7章，发现运行telnet localhost   8431提示说这是外部命令；"></a>4、在看nodejs权威指南的时候，我发现到了第7章，发现运行telnet localhost   8431提示说这是外部命令；</h3><p>解决办法：依次打开“开始”→“控制面板”→“打开或关闭Windows功能”，在打开的窗口处，寻找并勾选“Telnet客户端”，然后点击“确定”。顺利安装后，再在运行下输入此命令就OK了。</p>
 <blockquote>
 <p>1.开始–&gt;控制面板–&gt;程序和功能<br>2.左侧–&gt;打开或者关闭windows功能<br>3.找到Telnet客户端，选择安装</p>
@@ -552,11 +554,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">body</a>
+                <a href="javascript:void(0)" class="js-tag color3">邮件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">邮件</a>
+                <a href="javascript:void(0)" class="js-tag color5">body</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,15 +618,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">layer</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">iframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
               </li>
              
               <li class="article-tag-list-item">
