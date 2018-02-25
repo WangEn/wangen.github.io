@@ -175,6 +175,299 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-dede-template-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/dede-template-1/">DedeCMS网站批量更新所有目录模板文件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/dede-template-1/" class="archive-article-date">
+  	<time datetime="2017-12-15T16:23:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>通过MySQL命令来批量修改DedeCMS使用的模板文件，建议使用PHPMyAdmin等数据库管理工具打开操作，建议先备份数据库到本地</p>
+</blockquote>
+<h2 id="修改栏目频道页"><a href="#修改栏目频道页" class="headerlink" title="修改栏目频道页"></a>修改栏目频道页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> tempindex = replace(tempindex,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/index_article.htm"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修改栏目列表页"><a href="#修改栏目列表页" class="headerlink" title="修改栏目列表页"></a>修改栏目列表页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修改栏目内容页"><a href="#修改栏目内容页" class="headerlink" title="修改栏目内容页"></a>修改栏目内容页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> temparticle = replace(temparticle,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/article_article.htm"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修改指定ID栏目的列表页"><a href="#修改指定ID栏目的列表页" class="headerlink" title="修改指定ID栏目的列表页"></a>修改指定ID栏目的列表页</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update dede_arctype <span class="built_in">set</span> templist = replace(templist,<span class="string">"&#123;style&#125;/page.htm"</span>,<span class="string">"&#123;style&#125;/list_article.htm"</span>) <span class="built_in">where</span> id <span class="keyword">in</span>(1,2,3,4,5,6)</span><br></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>以上所有命令都通用，在前三种后面加上where id in(ID1,ID2,ID3,ID4,ID5,……)，里面写入你打算修改的频道/栏目/文章ID，可批量修改指定ID的模板文件。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Template</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/dede-template-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dede-article-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/dede-article-2/">DedeCMS织梦首页调用指定一篇文章body内容的方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/dede-article-2/" class="archive-article-date">
+  	<time datetime="2017-12-15T16:16:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>我们常会碰到一些问题，比如DedeCMS网站在首页调用某一篇文档的正文内容，今天实例讲述了dedecms首页调用指定一篇文章body内容的方法。</p>
+</blockquote>
+<p>分享给大家供大家参考。具体实现方法如下：</p>
+<h2 id="直接调用（包含样式等代码）"><a href="#直接调用（包含样式等代码）" class="headerlink" title="直接调用（包含样式等代码）"></a>直接调用（包含样式等代码）</h2><p>代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(@me,330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="过滤调用（只调用纯文本内容）"><a href="#过滤调用（只调用纯文本内容）" class="headerlink" title="过滤调用（只调用纯文本内容）"></a>过滤调用（只调用纯文本内容）</h2><p>如果是要过滤掉文本中的html，使用如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;dede:arclist idlist=<span class="string">'要调用文章的id'</span> channelid=<span class="string">'1'</span> addfields=<span class="string">'body'</span>&#125;</span><br><span class="line">[field:body <span class="keyword">function</span>=<span class="string">'cn_substr(html2text(@me),330)'</span>/]</span><br><span class="line">&#123;/dede:arclist&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>idlist 是要调用文章的id, channelid 是这个内容模型id,  addfields 是要调用附加表里面的字段.</p>
+<blockquote>
+<p>本文参考地址<a href="http://www.xiuzhanwang.com/dedecms_jq/765.html" target="_blank" rel="noopener">来源</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">织梦</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">body</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/dede-article-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dede-article-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/dede-article-1/">Dedecms判断文章是否有缩略图没有就不显示默认图片</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/dede-article-1/" class="archive-article-date">
+  	<time datetime="2017-12-15T16:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="调用参考代码："><a href="#调用参考代码：" class="headerlink" title="调用参考代码："></a>调用参考代码：</h2><p>以下代码可直接复制使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[field:array runphp=<span class="string">'yes'</span>]  </span><br><span class="line">@me=(strpos(@me[<span class="string">'litpic'</span>],<span class="string">'defaultpic'</span>)?<span class="string">''</span>:<span class="string">"&lt;a href='&#123;@me['arcurl']&#125;' alt='&#123;@me['title']&#125;'&gt;&lt;img src='&#123;@me['litpic']&#125;' alt='&#123;@me['title']&#125;'/&gt;&lt;/a&gt;"</span>);  </span><br><span class="line">[/field:array]</span><br></pre></td></tr></table></figure></p>
+<p>以上代码意思是，如果没有缩略图就显示为空白，有则显示</p>
+<h2 id="编译之后的代码如下："><a href="#编译之后的代码如下：" class="headerlink" title="编译之后的代码如下："></a>编译之后的代码如下：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">'&#123;@me['</span>arcurl<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>&gt; &lt;img src=<span class="string">'&#123;@me['</span>litpic<span class="string">']&#125;'</span> alt=<span class="string">'&#123;@me['</span>title<span class="string">']&#125;'</span>/&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>如果你想自定义没有缩略图的样式，则修改’defaultpic’)?’’问号后面的单引号里面的内容。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">缩略图</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/DedeCMS//" class="article-tag-list-link color3">DedeCMS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/dede-article-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-dede-admin-404-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -579,18 +872,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
@@ -603,6 +884,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">DedeCMS</a>
               </li>
              
@@ -612,6 +901,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">缩略图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,6 +944,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
@@ -656,10 +961,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">layui</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -679,15 +980,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">layer</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">iframe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,11 +1032,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color5">book</a>
               </li>
             
             <div class="clearfix"></div>
