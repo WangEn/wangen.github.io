@@ -175,6 +175,97 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-layui-use-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/26/layui-use-1/">layui use 定义js外部引用函数</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/26/layui-use-1/" class="archive-article-date">
+  	<time datetime="2018-02-26T13:39:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>layui.use 加载layui.define 定义的模块，当外部 js 或 onclick调用 use 内部函数时，需要在 use 中定义 window 函数供外部引用 ，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">layui.use([<span class="string">'layer'</span>,<span class="string">'form'</span>],<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> layer = layui.layer,</span><br><span class="line">       form = layer.form();</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">var</span> Test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">//不能被外部引用</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"call Test"</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="built_in">window</span>.Hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="comment">//可以被外部引用</span></span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"call hello"</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   Test();  <span class="comment">//执行成功</span></span><br><span class="line">   Hello();  <span class="comment">//执行成功</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Hello();  <span class="comment">//可以调用</span></span><br><span class="line">    Test();   <span class="comment">//提供未找到 Test</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>注：需要引用 layui.all.js或者layui.js</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><blockquote>
+<p>转载来源：<a href="http://blog.csdn.net/xcmonline/article/details/75647144" target="_blank" rel="noopener">layui use 定义js外部引用函数</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">layui</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/layui//" class="article-tag-list-link color1">layui</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/26/layui-use-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-web-node-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1439,118 +1530,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-form-input-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/26/form-input-2/">结合layui实现无刷新添加和删除input输入框，自动生成不同name值</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/26/form-input-2/" class="archive-article-date">
-  	<time datetime="2017-12-26T15:47:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前情回顾"><a href="#前情回顾" class="headerlink" title="前情回顾"></a>前情回顾</h3><blockquote>
-<p>随意删除添加后保存到服务端的input，再次编辑时（先调用服务端保存的值）添加新的input输入框name值可能会生成重复，提交保存时，name值重复的input元素会覆盖已有元素。</p>
-</blockquote>
-<p>昨天借鉴<a href="/2017/12/25/form-input-1/">jquery无刷新添加和删除input输入框 增加减少input框</a> 的思路实现了jQuery无刷新随意添加和删除input输入框，但是在使用layui结合ajax提交时，发现随意添加/删除后会生成重复name值的input输入框（比如name=”edu_bg[5]” / name=”edu_bg[6]” / name=”edu_bg[5]” 三个输入框）进行编辑提交，提交后只保存了后两个值，因为layui表单中name不支持数组的形式，相同的name也只会提交最后一个，layui社区也有朋友分享出解决方法：<a href="http://fly.layui.com/jie/9166/" target="_blank" rel="noopener">表单input不支持数组方式询问+解决办法</a>，可以借鉴下。</p>
-<h3 id="思路整理"><a href="#思路整理" class="headerlink" title="思路整理"></a>思路整理</h3><blockquote>
-<p>综合了一大堆搜索及意见，也不想改动框架的代码，决定采用以下方式：</p>
-</blockquote>
-<p>1、获取已经存在的子元素input的长度及name值，将获取的name值推入一个数组arr1中；<br>2、定义初始值key=0,定义插入函数insertInput()，key++循环；<br>3、当edu_bg[key]不在数组arr1中时，创建元素并append()推入父元素内完成，否则，重新执行insertInput()函数。</p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="HTML代码"><a href="#HTML代码" class="headerlink" title="HTML代码"></a>HTML代码</h4><p>主要是定义几个已有的包含input的子元素（模拟从服务端获取的已有元素），然后定义一个包含点击事件的按钮元素。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"layui-form-item yf-input-del"</span>&gt;</span><br><span class="line">    &lt;label class=<span class="string">"layui-form-label"</span>&gt;教育背景&lt;/label&gt;</span><br><span class="line">    &lt;div class=<span class="string">"layui-input-block"</span> id=<span class="string">"edu_bg"</span>&gt;</span><br><span class="line">        <span class="comment">#//测试随机创建几个连续和不连续的子元素，真实场景下直接循环出你已有的子元素即可</span></span><br><span class="line">        &lt;div class=<span class="string">"layui-input-inline"</span>&gt;</span><br><span class="line">            //input文本框</span><br><span class="line">            &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"edu_bg[5]"</span> value=<span class="string">""</span> autocomplete=<span class="string">"off"</span> placeholder=<span class="string">"请输入"</span> lay-verify=<span class="string">"required"</span> class=<span class="string">"layui-input"</span>&gt;</span><br><span class="line">            //删除按钮</span><br><span class="line">            &lt;i class=<span class="string">"layui-icon deleteEduBg"</span>&gt;&amp;<span class="comment">#x1006;&lt;/i&gt;</span></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=<span class="string">"layui-input-inline"</span>&gt;</span><br><span class="line">            &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"edu_bg[6]"</span> value=<span class="string">""</span> autocomplete=<span class="string">"off"</span> placeholder=<span class="string">"请输入"</span> lay-verify=<span class="string">"required"</span> class=<span class="string">"layui-input"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"layui-icon deleteEduBg"</span>&gt;&amp;<span class="comment">#x1006;&lt;/i&gt;</span></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=<span class="string">"layui-input-inline"</span>&gt;</span><br><span class="line">            &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"edu_bg[9]"</span> value=<span class="string">""</span> autocomplete=<span class="string">"off"</span> placeholder=<span class="string">"请输入"</span> lay-verify=<span class="string">"required"</span> class=<span class="string">"layui-input"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"layui-icon deleteEduBg"</span>&gt;&amp;<span class="comment">#x1006;&lt;/i&gt;</span></span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"layui-form-item"</span> id=<span class="string">"edu_bg_add"</span>&gt;</span><br><span class="line">    &lt;label class=<span class="string">"layui-form-label"</span>&gt;&lt;/label&gt;</span><br><span class="line">    &lt;div class=<span class="string">"layui-input-inline"</span>&gt;</span><br><span class="line">        &lt;a href=<span class="string">"javascript:;"</span> class=<span class="string">"layui-btn site-demo-active"</span> onclick=<span class="string">"insertInput()"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"layui-icon"</span>&gt;&amp;<span class="comment">#xe654;&lt;/i&gt; 新增1条教育背景</span></span><br><span class="line">        &lt;/a&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h4><p>定义一个插入函数insertInput()和一个点击删除函数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//引入layui.js</span><br><span class="line">&lt;script src=<span class="string">"/layui/dist/layui.all.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var $ = layui.jquery; //引用layui内置的jQuery，也可以自己调用</span><br><span class="line">    var key1=$(<span class="string">"#edu_bg"</span>).children(<span class="string">".layui-input-inline"</span>).length;</span><br><span class="line">    var FieldCount1=0;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">insertInput</span></span>() &#123;</span><br><span class="line">        //检索已有的input包含的name值</span><br><span class="line">        var arr1=[];</span><br><span class="line">        FieldCount1++;</span><br><span class="line">        $(<span class="string">"#edu_bg input[type='text']"</span>).each(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            arr1.push($(this).attr(<span class="string">'name'</span>));</span><br><span class="line">        &#125;);</span><br><span class="line">        //console.log(arr1);</span><br><span class="line">        //所有name加入数组arr1</span><br><span class="line">        var div1 = $(<span class="string">"&lt;div&gt;&lt;/div&gt;"</span>).addClass(<span class="string">"layui-input-inline"</span>);</span><br><span class="line">        //console.log(edu_bg[FieldCount1]);</span><br><span class="line">        var newCount1=<span class="string">"edu_bg["</span>+FieldCount1+<span class="string">"]"</span>;</span><br><span class="line">        //判断新生成的name值是否在已存在的数组中</span><br><span class="line">        <span class="keyword">if</span>($.inArray(newCount1, arr1) === -1)&#123;</span><br><span class="line">            FieldCount1=FieldCount1;</span><br><span class="line">            var input1 = <span class="string">"&lt;input type='text' name='edu_bg["</span>+FieldCount1 +<span class="string">"]' value='' autocomplete='off' placeholder='请输入' lay-verify='required' class='layui-input'&gt;"</span></span><br><span class="line">            var icon1 = <span class="string">"&lt;i class='layui-icon deleteEduBg' onclick='deleteElement(this)'&gt;&amp;#x1006;&lt;/i&gt;"</span>;</span><br><span class="line">            div1.append(input1, icon1);</span><br><span class="line">            $(<span class="string">"#edu_bg"</span>).append(div1);  // 追加新元素</span><br><span class="line">            key1++;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            FieldCount1++;</span><br><span class="line">            insertInput();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $(<span class="string">"body"</span>).on(<span class="string">"click"</span>,<span class="string">".deleteEduBg"</span>, <span class="keyword">function</span>(e)&#123; //user click on remove text  </span><br><span class="line">        <span class="keyword">if</span>( key1 &gt; 1 ) &#123;  </span><br><span class="line">            $(this).parent(<span class="string">'div'</span>).remove(); //移除对应的父级div元素  </span><br><span class="line">            key1--; //decrement textbox  </span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            alert(<span class="string">"请至少填写1条教育背景信息！"</span>);</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;) </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="补充CSS样式"><a href="#补充CSS样式" class="headerlink" title="补充CSS样式"></a>补充CSS样式</h4><p>这部分没必要，自己来就行，只是为了自己测试时样式顺眼一丢丢。。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"/layui/dist/css/layui.css"</span>&gt;</span><br><span class="line">&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">    /* 新增删除图标的样式 */</span><br><span class="line">    .yf-input-del .layui-input-inline .layui-input &#123;</span><br><span class="line">        padding-right: 20px;</span><br><span class="line">        margin-bottom: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">    .yf-input-del .layui-input-inline i.layui-icon &#123;</span><br><span class="line">        position: absolute;</span><br><span class="line">        right: 2px;</span><br><span class="line">        top: 8px;</span><br><span class="line">        color: <span class="comment">#999999;</span></span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>整个实现的过程是自己摸索和反复测试的过程，代码中也还有不少需要优化的地方，也可能会在以后的使用中继续优化整改，抛砖引玉，仅供大家参考。</p>
-<blockquote>
-<p>layui官网文档 <a href="http://www.layui.com/doc/" target="_blank" rel="noopener">http://www.layui.com/doc/</a></p>
-<p>jQuery API中文文档 <a href="http://www.css88.com/jqapi-1.9/" target="_blank" rel="noopener">http://www.css88.com/jqapi-1.9/</a></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">form</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">input</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">layui</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/form//" class="article-tag-list-link color5">form</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/26/form-input-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1681,6 +1660,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
@@ -1690,14 +1677,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">目录路径</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1713,7 +1692,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">邮件</a>
+                <a href="javascript:void(0)" class="js-tag color3">栏目</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1721,11 +1700,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">栏目</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Template</a>
+                <a href="javascript:void(0)" class="js-tag color3">邮件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1733,11 +1708,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">组件</a>
+                <a href="javascript:void(0)" class="js-tag color4">Template</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1761,6 +1732,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">组件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
@@ -1777,6 +1756,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">layer</a>
               </li>
              
@@ -1785,19 +1768,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Word</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Code</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1817,15 +1792,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Word</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Code</a>
               </li>
              
               <li class="article-tag-list-item">
