@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="https://wangen.github.io">
   <title>Dedecms织梦会员邮件验证与自定义表单发送邮件-官方类版-支持QQ邮箱163邮箱 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="会员邮件验证效果 自定义表单发送邮件效果 设置步骤如下：1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码 2、网站后台 - 系统 - 系统基本参数 - 核心设置 网站发信EMAIL：wuruhua@163.com 或者 65602960@qq.com (本文邮箱均为示例，请按需求填写自己的邮箱) 是否启用smtp方式发送邮件：是 smtp服务器：ssl://smtp.163.com 或">
+  <meta name="description" content="会员邮件验证效果 自定义表单发送邮件效果 设置步骤如下：1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码 2、网站后台 - 系统 - 系统基本参数 - 核心设置 网站发信EMAIL：wuruhua@163.com 或者 65602960@qq.com (本文邮箱均为示例，请按需求填写自己的邮箱)   是否启用smtp方式发送邮件：是   smtp服务器：ssl://smtp.163.c">
 <meta name="keywords" content="DedeCMS,邮件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dedecms织梦会员邮件验证与自定义表单发送邮件-官方类版-支持QQ邮箱163邮箱">
 <meta property="og:url" content="https://wangen.github.io/2017/12/17/dede-email-1/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="会员邮件验证效果 自定义表单发送邮件效果 设置步骤如下：1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码 2、网站后台 - 系统 - 系统基本参数 - 核心设置 网站发信EMAIL：wuruhua@163.com 或者 65602960@qq.com (本文邮箱均为示例，请按需求填写自己的邮箱) 是否启用smtp方式发送邮件：是 smtp服务器：ssl://smtp.163.com 或">
+<meta property="og:description" content="会员邮件验证效果 自定义表单发送邮件效果 设置步骤如下：1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码 2、网站后台 - 系统 - 系统基本参数 - 核心设置 网站发信EMAIL：wuruhua@163.com 或者 65602960@qq.com (本文邮箱均为示例，请按需求填写自己的邮箱)   是否启用smtp方式发送邮件：是   smtp服务器：ssl://smtp.163.c">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dedediy.com/uploads/allimg/QQimg20171031201926.png">
 <meta property="og:image" content="http://www.dedediy.com/uploads/allimg/QQimg20171031201550.png">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="http://www.dedediy.com/uploads/allimg/QQimg20171031195906.png">
 <meta property="og:image" content="http://www.dedediy.com/uploads/allimg/QQimg20171031195754.png">
 <meta property="og:image" content="http://www.dedediy.com/uploads/allimg/QQimg20171031203350.png">
-<meta property="og:updated_time" content="2018-01-13T10:34:38.121Z">
+<meta property="og:updated_time" content="2018-06-07T01:54:16.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dedecms织梦会员邮件验证与自定义表单发送邮件-官方类版-支持QQ邮箱163邮箱">
-<meta name="twitter:description" content="会员邮件验证效果 自定义表单发送邮件效果 设置步骤如下：1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码 2、网站后台 - 系统 - 系统基本参数 - 核心设置 网站发信EMAIL：wuruhua@163.com 或者 65602960@qq.com (本文邮箱均为示例，请按需求填写自己的邮箱) 是否启用smtp方式发送邮件：是 smtp服务器：ssl://smtp.163.com 或">
+<meta name="twitter:description" content="会员邮件验证效果 自定义表单发送邮件效果 设置步骤如下：1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码 2、网站后台 - 系统 - 系统基本参数 - 核心设置 网站发信EMAIL：wuruhua@163.com 或者 65602960@qq.com (本文邮箱均为示例，请按需求填写自己的邮箱)   是否启用smtp方式发送邮件：是   smtp服务器：ssl://smtp.163.c">
 <meta name="twitter:image" content="http://www.dedediy.com/uploads/allimg/QQimg20171031201926.png">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
@@ -207,22 +207,38 @@ var _hmt = _hmt || [];
 <h4 id="自定义表单发送邮件效果"><a href="#自定义表单发送邮件效果" class="headerlink" title="自定义表单发送邮件效果"></a>自定义表单发送邮件效果</h4><p><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031201550.png" alt="form-email"></p>
 <h2 id="设置步骤如下："><a href="#设置步骤如下：" class="headerlink" title="设置步骤如下："></a>设置步骤如下：</h2><h4 id="1、QQ邮箱-或者-163邮箱-开启SMTP服务，拿到授权码"><a href="#1、QQ邮箱-或者-163邮箱-开启SMTP服务，拿到授权码" class="headerlink" title="1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码"></a>1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码</h4><p><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031202215.png" alt="email-shouquanma"></p>
 <h4 id="2、网站后台-系统-系统基本参数-核心设置"><a href="#2、网站后台-系统-系统基本参数-核心设置" class="headerlink" title="2、网站后台 - 系统 - 系统基本参数 - 核心设置"></a>2、网站后台 - 系统 - 系统基本参数 - 核心设置</h4><blockquote>
-<p>网站发信EMAIL：wuruhua@163.com 或者 65602960@qq.com (本文邮箱均为示例，请按需求填写自己的邮箱)</p>
+<p>网站发信EMAIL：<a href="mailto:wuruhua@163.com" target="_blank" rel="noopener">wuruhua@163.com</a> 或者 <a href="mailto:65602960@qq.com" target="_blank" rel="noopener">65602960@qq.com</a> (本文邮箱均为示例，请按需求填写自己的邮箱)</p>
+</blockquote>
+<blockquote>
 <p>是否启用smtp方式发送邮件：是</p>
+</blockquote>
+<blockquote>
 <p>smtp服务器：ssl://smtp.163.com 或者 ssl://smtp.qq.com</p>
+</blockquote>
+<blockquote>
 <p>smtp服务器端口：465</p>
-<p>SMTP服务器的用户邮箱：wuruhua@163.com 或者 65602960@qq.com</p>
+</blockquote>
+<blockquote>
+<p>SMTP服务器的用户邮箱：<a href="mailto:wuruhua@163.com" target="_blank" rel="noopener">wuruhua@163.com</a> 或者 <a href="mailto:65602960@qq.com" target="_blank" rel="noopener">65602960@qq.com</a></p>
+</blockquote>
+<blockquote>
 <p>SMTP服务器的用户帐号：wuruhua 或者 65602960</p>
+</blockquote>
+<blockquote>
 <p>SMTP服务器的用户密码：填你邮箱授权码，不是邮箱登录密码</p>
 </blockquote>
 <p>如图</p>
 <blockquote>
 <p>配置QQ邮箱的是这样<br><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031195906.png" alt="email-qq-set"></p>
+</blockquote>
+<blockquote>
 <p>配置163邮箱的是这样<br><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031195754.png" alt="email-163-set"></p>
+</blockquote>
+<blockquote>
 <p>至此会员邮件验证配置完成，会员就能收到验证邮件了；自定义表单发送邮件的小伙伴继续往下看</p>
 </blockquote>
 <h4 id="3、网站后台-系统-系统基本参数-添加新变量"><a href="#3、网站后台-系统-系统基本参数-添加新变量" class="headerlink" title="3、网站后台 - 系统 - 系统基本参数 - 添加新变量"></a>3、网站后台 - 系统 - 系统基本参数 - 添加新变量</h4><blockquote>
-<p>变量名称：cfg_shoujianren<br>变量类型：文本<br>参数说明：收件人<br>变量值：发送邮件通知者，如65602960@qq.com<br>所属组：站点设置</p>
+<p>变量名称：cfg_shoujianren<br>变量类型：文本<br>参数说明：收件人<br>变量值：发送邮件通知者，如<a href="mailto:65602960@qq.com" target="_blank" rel="noopener">65602960@qq.com</a><br>所属组：站点设置</p>
 </blockquote>
 <p>如图<br><img src="http://www.dedediy.com/uploads/allimg/QQimg20171031203350.png" alt="system-set"></p>
 <h4 id="4、打开-plus-diy-php-找到"><a href="#4、打开-plus-diy-php-找到" class="headerlink" title="4、打开 /plus/diy.php 找到"></a>4、打开 /plus/diy.php 找到</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$dsql</span>-&gt;GetLastID();</span><br></pre></td></tr></table></figure>
@@ -397,7 +413,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#会员邮件验证效果"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x4F1A;&#x5458;&#x90AE;&#x4EF6;&#x9A8C;&#x8BC1;&#x6548;&#x679C;" class="headerlink" title="&#x4F1A;&#x5458;&#x90AE;&#x4EF6;&#x9A8C;&#x8BC1;&#x6548;&#x679C;"></a>&#x4F1A;&#x5458;&#x90AE;&#x4EF6;&#x9A8C;&#x8BC1;&#x6548;&#x679C;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义表单发送邮件效果"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x8868;&#x5355;&#x53D1;&#x9001;&#x90AE;&#x4EF6;&#x6548;&#x679C;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x8868;&#x5355;&#x53D1;&#x9001;&#x90AE;&#x4EF6;&#x6548;&#x679C;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x8868;&#x5355;&#x53D1;&#x9001;&#x90AE;&#x4EF6;&#x6548;&#x679C;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置步骤如下："><span class="toc-number"></span> <span class="toc-text"><a href="#&#x8BBE;&#x7F6E;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x8BBE;&#x7F6E;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;"></a>&#x8BBE;&#x7F6E;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、QQ邮箱-或者-163邮箱-开启SMTP服务，拿到授权码"><span class="toc-number">1.</span> <span class="toc-text"><a href="#1&#x3001;QQ&#x90AE;&#x7BB1;-&#x6216;&#x8005;-163&#x90AE;&#x7BB1;-&#x5F00;&#x542F;SMTP&#x670D;&#x52A1;&#xFF0C;&#x62FF;&#x5230;&#x6388;&#x6743;&#x7801;" class="headerlink" title="1&#x3001;QQ&#x90AE;&#x7BB1; &#x6216;&#x8005; 163&#x90AE;&#x7BB1; &#x5F00;&#x542F;SMTP&#x670D;&#x52A1;&#xFF0C;&#x62FF;&#x5230;&#x6388;&#x6743;&#x7801;"></a>1&#x3001;QQ&#x90AE;&#x7BB1; &#x6216;&#x8005; 163&#x90AE;&#x7BB1; &#x5F00;&#x542F;SMTP&#x670D;&#x52A1;&#xFF0C;&#x62FF;&#x5230;&#x6388;&#x6743;&#x7801;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、网站后台-系统-系统基本参数-核心设置"><span class="toc-number">2.</span> <span class="toc-text"><a href="#2&#x3001;&#x7F51;&#x7AD9;&#x540E;&#x53F0;-&#x7CFB;&#x7EDF;-&#x7CFB;&#x7EDF;&#x57FA;&#x672C;&#x53C2;&#x6570;-&#x6838;&#x5FC3;&#x8BBE;&#x7F6E;" class="headerlink" title="2&#x3001;&#x7F51;&#x7AD9;&#x540E;&#x53F0; - &#x7CFB;&#x7EDF; - &#x7CFB;&#x7EDF;&#x57FA;&#x672C;&#x53C2;&#x6570; - &#x6838;&#x5FC3;&#x8BBE;&#x7F6E;"></a>2&#x3001;&#x7F51;&#x7AD9;&#x540E;&#x53F0; - &#x7CFB;&#x7EDF; - &#x7CFB;&#x7EDF;&#x57FA;&#x672C;&#x53C2;&#x6570; - &#x6838;&#x5FC3;&#x8BBE;&#x7F6E;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、网站后台-系统-系统基本参数-添加新变量"><span class="toc-number">3.</span> <span class="toc-text"><a href="#3&#x3001;&#x7F51;&#x7AD9;&#x540E;&#x53F0;-&#x7CFB;&#x7EDF;-&#x7CFB;&#x7EDF;&#x57FA;&#x672C;&#x53C2;&#x6570;-&#x6DFB;&#x52A0;&#x65B0;&#x53D8;&#x91CF;" class="headerlink" title="3&#x3001;&#x7F51;&#x7AD9;&#x540E;&#x53F0; - &#x7CFB;&#x7EDF; - &#x7CFB;&#x7EDF;&#x57FA;&#x672C;&#x53C2;&#x6570; - &#x6DFB;&#x52A0;&#x65B0;&#x53D8;&#x91CF;"></a>3&#x3001;&#x7F51;&#x7AD9;&#x540E;&#x53F0; - &#x7CFB;&#x7EDF; - &#x7CFB;&#x7EDF;&#x57FA;&#x672C;&#x53C2;&#x6570; - &#x6DFB;&#x52A0;&#x65B0;&#x53D8;&#x91CF;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、打开-plus-diy-php-找到"><span class="toc-number">4.</span> <span class="toc-text"><a href="#4&#x3001;&#x6253;&#x5F00;-plus-diy-php-&#x627E;&#x5230;" class="headerlink" title="4&#x3001;&#x6253;&#x5F00; /plus/diy.php &#x627E;&#x5230;"></a>4&#x3001;&#x6253;&#x5F00; /plus/diy.php &#x627E;&#x5230;</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#会员邮件验证效果"><span class="toc-number">1.</span> <span class="toc-text">会员邮件验证效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义表单发送邮件效果"><span class="toc-number">2.</span> <span class="toc-text">自定义表单发送邮件效果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置步骤如下："><span class="toc-number"></span> <span class="toc-text">设置步骤如下：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、QQ邮箱-或者-163邮箱-开启SMTP服务，拿到授权码"><span class="toc-number">1.</span> <span class="toc-text">1、QQ邮箱 或者 163邮箱 开启SMTP服务，拿到授权码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、网站后台-系统-系统基本参数-核心设置"><span class="toc-number">2.</span> <span class="toc-text">2、网站后台 - 系统 - 系统基本参数 - 核心设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、网站后台-系统-系统基本参数-添加新变量"><span class="toc-number">3.</span> <span class="toc-text">3、网站后台 - 系统 - 系统基本参数 - 添加新变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、打开-plus-diy-php-找到"><span class="toc-number">4.</span> <span class="toc-text">4、打开 /plus/diy.php 找到</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -558,14 +574,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
@@ -575,6 +583,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">目录路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CSS世界</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,10 +606,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">栏目</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">body</a>
               </li>
              
@@ -602,11 +614,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
+                <a href="javascript:void(0)" class="js-tag color3">栏目</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">组件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,14 +654,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">组件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
@@ -654,10 +670,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">layer</a>
               </li>
              
@@ -666,11 +678,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+                <a href="javascript:void(0)" class="js-tag color4">mui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">zepto</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Word</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Code</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,19 +718,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
+                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Word</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Code</a>
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">

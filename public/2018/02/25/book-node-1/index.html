@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://wangen.github.io">
   <title>node入门 | Warn&amp;Christina的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于 作者： Manuel Kiessling翻译： goddyzhao &amp;amp; GrayZhang &amp;amp; MondayChen Github：本书Github代码仓库转载来源：《Node入门》看云阅读：《Node入门》 社区：CNode:Node.js专业中文社区  本书致力于教会你如何用Node.js来开发应用，过程中会传授你所有所需的“高级”JavaScript知识。本书绝不是一本">
+  <meta name="description" content="关于 作者： Manuel Kiessling翻译： goddyzhao &amp;amp; GrayZhang &amp;amp; MondayChen   Github：本书Github代码仓库转载来源：《Node入门》看云阅读：《Node入门》   社区：CNode:Node.js专业中文社区  本书致力于教会你如何用Node.js来开发应用，过程中会传授你所有所需的“高级”JavaScript知识。本书绝">
 <meta name="keywords" content="node,book">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node入门">
 <meta property="og:url" content="https://wangen.github.io/2018/02/25/book-node-1/index.html">
 <meta property="og:site_name" content="Warn&amp;Christina的博客">
-<meta property="og:description" content="关于 作者： Manuel Kiessling翻译： goddyzhao &amp;amp; GrayZhang &amp;amp; MondayChen Github：本书Github代码仓库转载来源：《Node入门》看云阅读：《Node入门》 社区：CNode:Node.js专业中文社区  本书致力于教会你如何用Node.js来开发应用，过程中会传授你所有所需的“高级”JavaScript知识。本书绝不是一本">
+<meta property="og:description" content="关于 作者： Manuel Kiessling翻译： goddyzhao &amp;amp; GrayZhang &amp;amp; MondayChen   Github：本书Github代码仓库转载来源：《Node入门》看云阅读：《Node入门》   社区：CNode:Node.js专业中文社区  本书致力于教会你如何用Node.js来开发应用，过程中会传授你所有所需的“高级”JavaScript知识。本书绝">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-25T15:51:07.309Z">
+<meta property="og:updated_time" content="2018-06-07T01:54:16.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node入门">
-<meta name="twitter:description" content="关于 作者： Manuel Kiessling翻译： goddyzhao &amp;amp; GrayZhang &amp;amp; MondayChen Github：本书Github代码仓库转载来源：《Node入门》看云阅读：《Node入门》 社区：CNode:Node.js专业中文社区  本书致力于教会你如何用Node.js来开发应用，过程中会传授你所有所需的“高级”JavaScript知识。本书绝不是一本">
+<meta name="twitter:description" content="关于 作者： Manuel Kiessling翻译： goddyzhao &amp;amp; GrayZhang &amp;amp; MondayChen   Github：本书Github代码仓库转载来源：《Node入门》看云阅读：《Node入门》   社区：CNode:Node.js专业中文社区  本书致力于教会你如何用Node.js来开发应用，过程中会传授你所有所需的“高级”JavaScript知识。本书绝">
   
     <link rel="alternative" href="/atom.xml" title="Warn&amp;Christina的博客" type="application/atom+xml">
   
@@ -198,7 +198,11 @@ var _hmt = _hmt || [];
       
         <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><blockquote>
 <p>作者： Manuel Kiessling<br>翻译： goddyzhao &amp; GrayZhang &amp; MondayChen</p>
+</blockquote>
+<blockquote>
 <p>Github：<a href="https://github.com/manuelkiessling/nodebeginner.org/tree/master/code/application" target="_blank" rel="noopener">本书Github代码仓库</a><br>转载来源：<a href="https://www.nodebeginner.org/index-zh-cn.html" target="_blank" rel="noopener">《Node入门》</a><br>看云阅读：<a href="https://www.kancloud.cn/thinkphp/node-beginner/40725" target="_blank" rel="noopener">《Node入门》</a></p>
+</blockquote>
+<blockquote>
 <p>社区：<a href="https://cnodejs.org/" target="_blank" rel="noopener">CNode:Node.js专业中文社区</a></p>
 </blockquote>
 <p>本书致力于教会你如何用Node.js来开发应用，过程中会传授你所有所需的“高级”JavaScript知识。本书绝不是一本“Hello World”的教程。</p>
@@ -246,7 +250,7 @@ var _hmt = _hmt || [];
 <h3 id="应用不同模块分析"><a href="#应用不同模块分析" class="headerlink" title="应用不同模块分析"></a>应用不同模块分析</h3><p>我们来分解一下这个应用，为了实现上文的用例，我们需要实现哪些部分呢？</p>
 <ul>
 <li>我们需要提供Web页面，因此需要一个<em>HTTP服务器</em></li>
-<li>对于不同的请求，根据请求的URL，我们的服务器需要给予不同的响应，因此我们需要一个<em>路由</em>，用于把请求对应到请求处理程序（request handler）</li>
+<li>对于不同的请求，根据请求的URL，我们的服务器需要给予不同的响应，因此我们需要一个_路由_，用于把请求对应到请求处理程序（request handler）</li>
 <li>当请求被服务器接收并通过路由传递之后，需要可以对其进行处理，因此我们需要最终的<em>请求处理程序</em></li>
 <li>路由还应该能处理POST数据，并且把数据封装成更友好的格式传递给请求处理入程序，因此需要<em>请求数据处理功能</em></li>
 <li>我们不仅仅要处理URL对应的请求，还要把内容显示出来，这意味着我们需要一些<em>视图逻辑</em> 供请求处理程序使用，以便将内容发送给用户的浏览器</li>
@@ -280,9 +284,9 @@ var _hmt = _hmt || [];
 <p>嗯，这就是Node.js/JavaScript的事件驱动设计能够真正帮上忙的地方了——虽然我们还得学一些新概念才能掌握它。让我们来看看这些概念是怎么应用在我们的服务器代码里的。</p>
 <p>我们创建了服务器，并且向创建它的方法传递了一个函数。无论何时我们的服务器收到一个请求，这个函数就会被调用。</p>
 <p>我们不知道这件事情什么时候会发生，但是我们现在有了一个处理请求的地方：它就是我们传递过去的那个函数。至于它是被预先定义的函数还是匿名函数，就无关紧要了。</p>
-<p>这个就是传说中的<code>回调</code> 。我们给某个方法传递了一个函数，这个方法在有相应事件发生时调用这个函数来进行<em>回调</em>。<br>至少对我来说，需要一些功夫才能弄懂它。你如果还是不太确定的话就再去读读Felix的博客文章。</p>
+<p>这个就是传说中的<code>回调</code> 。我们给某个方法传递了一个函数，这个方法在有相应事件发生时调用这个函数来进行_回调_。<br>至少对我来说，需要一些功夫才能弄懂它。你如果还是不太确定的话就再去读读Felix的博客文章。</p>
 <p>让我们再来琢磨琢磨这个新概念。我们怎么证明，在创建完服务器之后，即使没有HTTP请求进来、我们的回调函数也没有被调用的情况下，我们的代码还继续有效呢？我们试试这个：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request, response</span>)  </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Request received."</span>);</span><br><span class="line">  response.writeHead(<span class="number">200</span>,  &#123;<span class="string">"Content-Type"</span>:  <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">  response.write(<span class="string">"Hello World"</span>);</span><br><span class="line">  response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Server has started."</span>);</span><br></pre></td></tr></table></figure></p>
-<p>注意：在<code>onRequest</code> （我们的回调函数）触发的地方，我用<code>console.log</code> 输出了一段文本。在HTTP服务器开始工作<em>之后</em>，也输出一段文本。<br>当我们与往常一样，运行它<em>node server.js</em>时，它会马上在命令行上输出“Server has started.”。当我们向服务器发出请求（在浏览器访问<a href="http://localhost:8888/），“Request" target="_blank" rel="noopener">http://localhost:8888/），“Request</a> received.”这条消息就会在命令行中出现。<br>这就是事件驱动的异步服务器端JavaScript和它的回调啦！</p>
+<p>注意：在<code>onRequest</code> （我们的回调函数）触发的地方，我用<code>console.log</code> 输出了一段文本。在HTTP服务器开始工作_之后_，也输出一段文本。<br>当我们与往常一样，运行它<em>node server.js</em>时，它会马上在命令行上输出“Server has started.”。当我们向服务器发出请求（在浏览器访问<a href="http://localhost:8888/），“Request" target="_blank" rel="noopener">http://localhost:8888/），“Request</a> received.”这条消息就会在命令行中出现。<br>这就是事件驱动的异步服务器端JavaScript和它的回调啦！</p>
 <p>（请注意，当我们在服务器访问网页时，我们的服务器可能会输出两次“Request received.”。那是因为大部分服务器都会在你访问 <a href="http://localhost:8888" target="_blank" rel="noopener">http://localhost:8888</a> /时尝试读取 <a href="http://localhost:8888/favicon.ico" target="_blank" rel="noopener">http://localhost:8888/favicon.ico</a> )</p>
 <h3 id="服务器是如何处理请求的"><a href="#服务器是如何处理请求的" class="headerlink" title="服务器是如何处理请求的"></a>服务器是如何处理请求的</h3><p>好的，接下来我们简单分析一下我们服务器代码中剩下的部分，也就是我们的回调函数 onRequest() 的主体部分。<br>当回调启动，我们的 onRequest() 函数被触发的时候，有两个参数被传入：request 和 response 。<br>它们是对象，你可以使用它们的方法来处理HTTP请求的细节，并且响应请求（比如向发出请求的浏览器发回一些东西）。</p>
 <p>所以我们的代码就是：当收到请求时，使用 <em>response.writeHead()</em> 函数发送一个HTTP状态200和HTTP头的内容类型（content-type），使用 <em>response.write()</em> 函数在HTTP相应主体中发送文本“Hello World”。<br>最后，我们调用 <em>response.end()</em> 完成响应。<br>目前来说，我们对请求的细节并不在意，所以我们没有使用 <em>request</em> 对象。</p>
@@ -290,7 +294,7 @@ var _hmt = _hmt || [];
 <p>Node.js中自带了一个叫做“http”的模块，我们在我们的代码中请求它并把返回值赋给一个本地变量。</p>
 <p>这把我们的本地变量变成了一个拥有所有 http 模块所提供的公共方法的对象。<br>给这种本地变量起一个和模块名称一样的名字是一种惯例，但是你也可以按照自己的喜好来：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">foo.createServer(...);</span><br></pre></td></tr></table></figure></p>
 <p>很好，怎么使用Node.js内部模块已经很清楚了。我们怎么创建自己的模块，又怎么使用它呢？</p>
-<p>等我们把 <em>server.js</em> 变成一个真正的模块，你就能搞明白了。<br>事实上，我们不用做太多的修改。把某段代码变成模块意味着我们需要把我们希望提供其功能的部分 <em>导出</em> 到请求这个模块的脚本。<br>目前，我们的HTTP服务器需要导出的功能非常简单，因为请求服务器模块的脚本仅仅是需要启动服务器而已。</p>
+<p>等我们把 <em>server.js</em> 变成一个真正的模块，你就能搞明白了。<br>事实上，我们不用做太多的修改。把某段代码变成模块意味着我们需要把我们希望提供其功能的部分 _导出_ 到请求这个模块的脚本。<br>目前，我们的HTTP服务器需要导出的功能非常简单，因为请求服务器模块的脚本仅仅是需要启动服务器而已。</p>
 <p>我们把我们的服务器脚本放到一个叫做 <em>start</em> 的函数里，然后我们会导出这个函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)  </span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">onRequest</span>(<span class="params">request, response</span>)  </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Request received."</span>);</span><br><span class="line">    response.writeHead(<span class="number">200</span>,  &#123;<span class="string">"Content-Type"</span>:  <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">    response.write(<span class="string">"Hello World"</span>);</span><br><span class="line">    response.end();  </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  http.createServer(onRequest).listen(<span class="number">8888</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Server has started."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start = start;</span><br></pre></td></tr></table></figure></p>
 <p>这样，我们现在就可以创建我们的主文件 <em>index.js</em> 并在其中启动我们的HTTP了，虽然服务器的代码还在 <em>server.js</em> 中。<br>创建 <em>index.js</em> 文件并写入以下内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> server = <span class="built_in">require</span>(<span class="string">"./server"</span>);</span><br><span class="line"></span><br><span class="line">server.start();</span><br></pre></td></tr></table></figure></p>
 <p>正如你所看到的，我们可以像使用任何其他的内置模块一样使用server模块：请求这个文件并把它指向一个变量，其中已导出的函数就可以被我们使用了。</p>
@@ -315,7 +319,7 @@ var _hmt = _hmt || [];
 <h3 id="行为驱动执行"><a href="#行为驱动执行" class="headerlink" title="行为驱动执行"></a>行为驱动执行</h3><p>请允许我再次脱离主题，在这里谈一谈函数式编程。</p>
 <p>将函数作为参数传递并不仅仅出于技术上的考量。对软件设计来说，这其实是个哲学问题。想想这样的场景：在index文件中，我们可以将<em>router</em>对象传递进去，服务器随后可以调用这个对象的<em>route</em>函数。</p>
 <p>就像这样，我们传递一个东西，然后服务器利用这个东西来完成一些事。嗨那个叫路由的东西，能帮我把这个路由一下吗？</p>
-<p>但是服务器其实不需要这样的东西。它只需要把事情做完就行，其实为了把事情做完，你根本不需要东西，你需要的是动作。也就是说，你不需要<em>名词</em>，你需要<em>动词</em>。</p>
+<p>但是服务器其实不需要这样的东西。它只需要把事情做完就行，其实为了把事情做完，你根本不需要东西，你需要的是动作。也就是说，你不需要_名词<em>，你需要</em>动词_。</p>
 <p>理解了这个概念里最核心、最基本的思想转换后，我自然而然地理解了函数编程。</p>
 <p>我是在读了Steve Yegge的大作<a href="http://lcwangchao.github.io/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/2012/07/02/excution_in_the_kingdom_of_nouns/" target="_blank" rel="noopener">名词王国中的死刑</a>之后理解函数编程。你也去读一读这本书吧，真的。这是曾给予我阅读的快乐的关于软件的书籍之一。</p>
 <h3 id="路由给真正的请求处理程序"><a href="#路由给真正的请求处理程序" class="headerlink" title="路由给真正的请求处理程序"></a>路由给真正的请求处理程序</h3><p>回到正题，现在我们的HTTP服务器和请求路由模块已经如我们的期望，可以相互交流了，就像一对亲密无间的兄弟。</p>
@@ -402,7 +406,7 @@ var _hmt = _hmt || [];
 <p>服务器，请求路由以及请求处理程序都已经完成了，下面让我们按照此前的用例给网站添加交互：用户选择一个文件，上传该文件，然后在浏览器中看到上传的文件。 为了保持简单，我们假设用户只会上传图片，然后我们应用将该图片显示到浏览器中。</p>
 <p>好，下面就一步步来实现，鉴于此前已经对JavaScript原理性技术性的内容做过大量介绍了，这次我们加快点速度。</p>
 <p>要实现该功能，分为如下两步： 首先，让我们来看看如何处理POST请求（非文件上传），之后，我们使用Node.js的一个用于文件上传的外部模块。之所以采用这种实现方式有两个理由。</p>
-<p>第一，尽管在Node.js中处理基础的POST请求相对比较简单，但在这过程中还是能学到很多。<br>第二，用Node.js来处理文件上传（multipart POST请求）是比较复杂的，它<em>不</em>在本书的范畴，但，如何使用外部模块却是在本书涉猎内容之内。</p>
+<p>第一，尽管在Node.js中处理基础的POST请求相对比较简单，但在这过程中还是能学到很多。<br>第二，用Node.js来处理文件上传（multipart POST请求）是比较复杂的，它_不_在本书的范畴，但，如何使用外部模块却是在本书涉猎内容之内。</p>
 <h4 id="处理POST请求"><a href="#处理POST请求" class="headerlink" title="处理POST请求"></a>处理POST请求</h4><p>考虑这样一个简单的例子：我们显示一个文本区（textarea）供用户输入内容，然后通过POST请求提交给服务器。最后，服务器接受到请求，通过处理程序将输入的内容展示到浏览器中。</p>
 <p><em>/start</em>请求处理程序用于生成带文本区的表单，因此，我们将<em>requestHandlers.js</em>修改为如下形式：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Request handler 'start' was called."</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> body = <span class="string">'&lt;html&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;head&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;meta http-equiv="Content-Type" content="text/html; '</span>+</span><br><span class="line">    <span class="string">'charset=UTF-8" /&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;/head&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;body&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;form action="/upload" method="post"&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;textarea name="text" rows="20" cols="60"&gt;&lt;/textarea&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;input type="submit" value="Submit text" /&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;/form&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;/body&gt;'</span>+</span><br><span class="line">    <span class="string">'&lt;/html&gt;'</span>;</span><br><span class="line"></span><br><span class="line">    response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/html"</span>&#125;);</span><br><span class="line">    response.write(body);</span><br><span class="line">    response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Request handler 'upload' was called."</span>);</span><br><span class="line">  response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">  response.write(<span class="string">"Hello Upload"</span>);</span><br><span class="line">  response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.start = start;</span><br><span class="line">exports.upload = upload;</span><br></pre></td></tr></table></figure></p>
 <p>好了，现在我们的应用已经很完善了，都可以获得威比奖（Webby Awards）了，哈哈。（<em>译者注：威比奖是由国际数字艺术与科学学院主办的评选全球最佳网站的奖项，具体参见详细说明</em>）通过在浏览器中访问<a href="http://localhost:8888/start就可以看到简单的表单了，要记得重启服务器哦！" target="_blank" rel="noopener">http://localhost:8888/start就可以看到简单的表单了，要记得重启服务器哦！</a></p>
@@ -777,14 +781,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
@@ -794,6 +790,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">目录路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CSS世界</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -809,10 +813,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">栏目</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">body</a>
               </li>
              
@@ -821,11 +821,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
+                <a href="javascript:void(0)" class="js-tag color3">栏目</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Template</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">参考网站</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">组件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -849,14 +861,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Firefox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">组件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
@@ -873,10 +877,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">layer</a>
               </li>
              
@@ -885,11 +885,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+                <a href="javascript:void(0)" class="js-tag color4">mui</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">zepto</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">加载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Word</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Code</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -909,19 +925,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Microsoft</a>
+                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Word</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Code</a>
+                <a href="javascript:void(0)" class="js-tag color3">冲突</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
